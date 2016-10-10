@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>Devmedia - PHP, Ajax e jQuery</title>
+
+    <!-- CSS  -->
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Cadastro de tarefas</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <a class="waves-effect waves-light btn-large right modal-trigger" href="#modalCadastro"><i class="mdi-file-add-circle-outline right"></i>Cadastrar Tarefas</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <table id="tblTarefa">
+                <thead>
+                <th data-field="id">Cod.</th>
+                <th data-field="descricao">Descrição</th>
+                <th data-field="dtFinalizacao">Dt. Finalização</th>
+                <th data-field="finalizado">Finalizado?</th>
+                <th data-field="acoes"></th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="modalCadastro" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>Cadastro de tarefa</h4>
+        <div class="row">
+            <form class="col s12" id="formCadastro">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="descricao" name="descricao" type="text" class="validate" required>
+                        <label for="descricao">Descrição</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-green btn-flat modal-action" id="btnCadastrarTarefa">Cadastrar Tarefa</a>
+        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Cancelar / Fechar</a>
+    </div>
+</div>
+
+<div id="modalAlterar" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>Alteração de tarefa</h4>
+
+        <div class="row">
+            <form class="col s12" id="formAlteracao">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="alterarDescricao" name="descricao" type="text" class="validate" required>
+                        <label for="alterarDescricao">Descrição</label>
+                    </div>
+                </div>
+
+                <input type="hidden" name="id" id="id" value="0">
+            </form>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="waves-effect waves-green btn-flat modal-action" id="btnAlterarTarefa">Alterar tarefa</a>
+        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Cancelar / Fechar</a>
+    </div>
+</div>
+
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/tarefa.js"></script>
+<script src="js/init.js"></script>
+
+</body>
+</html>
