@@ -4,7 +4,7 @@
 
 
 function tarefa() {
-    this.url = "servicos/Tarefa.php";
+    this.url = "classes/Tarefa.php";
 
     this.listarTarefas = function (tbody) {
 
