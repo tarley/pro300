@@ -6,7 +6,7 @@
 	<!-- Meta, title, CSS, favicons, etc. -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="Ver gruposport" content="width=device-width, initial-scale=1">
 
 	<title>Projeto 300 </title>
 
@@ -25,7 +25,6 @@
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/nprogress.js"></script>
-	<script src="js/xSwitcher.js"></script>
 
 	<!--[if lt IE 9]>
 	<!--script src="../assets/js/ie8-responsive-file-warning.js"></script-->
@@ -36,7 +35,6 @@
 	<!--script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script-->
 	<![endif]-->
-	-->
 </head>
 
 
@@ -44,90 +42,8 @@
 
 	<div class="container body">
 		<div class="main_container">
-			<div class="col-md-3 left_col">
-				<div class="left_col scroll-view">
 
-					<div class="navbar nav_title" style="border: 0;">
-						<a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Pro300</span></a>
-					</div>
-                                    <div class="clearfix">
-                                        
-                                      
-                                        
-                                    </div>
-  
-					<!-- menu prile quick info -->
-					<div class="profile">
-						<div class="profile_pic">
-							<img src="images/img.jpg" alt="..." class="img-circle profile_img">
-						</div>
-						<div class="profile_info">
-							<span>Bem Vindo,</span>
-							<h2>Professor</h2>
-						</div>
-					</div>
-					<!-- /menu prile quick info -->
-
-					<br />
-
-					<!-- sidebar menu -->
-					<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-
-						<div class="menu_section">
-							<h3>General</h3>
-							<ul class="nav side-menu">
-								<li><a><i class="fa fa-home"></i> Pro300 <span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu" style="display: none">
-										<li><a href="empty.html">Lançar Nota</a>
-										</li>
-										<li><a href="empty.html">Grupo</a>
-										</li>
-									</ul>
-								</li>
-
-									</ul>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<!-- /sidebar menu -->
-
-					<!-- /menu footer buttons -->
-					<div class="sidebar-footer hidden-small">
-						<a data-toggle="tooltip" data-placement="top" title="Settings">
-							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-						</a>
-						<a data-toggle="tooltip" data-placement="top" title="FullScreen">
-							<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-						</a>
-						<a data-toggle="tooltip" data-placement="top" title="Lock">
-							<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-						</a>
-						<a data-toggle="tooltip" data-placement="top" title="Logout">
-							<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-						</a>
-					</div>
-					<!-- /menu footer buttons -->
-				</div>
-			</div>
-
-			<!-- top navigation -->
-			<div class="top_nav">
-
-				<div class="nav_menu">
-					<nav class="" role="navigation">
-						<div class="nav toggle">
-							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
-						</div>
-					</nav>
-				</div>
-
-			</div>
-			<!-- /top navigation -->
-
-
-
-
+			<?php include("includes/menu.php") ?>
 
 
 			<!-- page content -->
@@ -898,7 +814,7 @@
 		});
 	</script>
 	<!-- skycons -->
-	<script src="js/skycons/skycons.min.js"></script>
+	<script src="js/skycons/skycons.js"></script>
 	<script>
 		var icons = new Skycons({
 				"color": "#73879C"
