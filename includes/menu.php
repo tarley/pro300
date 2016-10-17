@@ -29,18 +29,18 @@
                                             <ul class="nav side-menu">
                                                     <li><a><i class="fa fa-home"></i> Menu <span class="fa fa-chevron-down"></span></a>
                                                             <ul class="nav child_menu" style="display: none">
-                                                                    <li><a href="lancamentoNota.html">Lançamento Nota</a></li>
-                                                                    <li><a href="AvaliacaoAjudado.html">Avaliação Ajudado</a></li>
-                                                                    <li><a href="AvaliacaoLider.html">Avaliação Lider</a></li>
-                                                                    <li><a href="CadastroProfessor.html">Cadastro Professor</a></li>
-                                                                    <li><a href="gestao_dos_grupos.html">Gestão Grupos</a></li>
-                                                                    <li><a href="gestao_grupos_filtro_atividade.html">Filtro Atividade</a></li>
-                                                                    <li><a href="parametroAvaliacao.html">Paramentro Avaliação</a></li>
-                                                                    <li><a href="cadastro_aluno.html">Cadastro Aluno</a></li>
-                                                                    <li><a href="cadastro_avaliacao.html">Cadastro Avaliação</a></li>
-                                                                    <li><a href="inscricao_avaliacao.html">Incrição Avaliação</a></li>
-                                                                    <li><a href="relatorioAtividade.html">Relatório Atividade</a></li>
-                                                                    <li><a href="Telafinal.html">Tela Final</a></li>
+                                                                    <li><a href="lancamentoNota.php">Lançamento Nota</a></li>
+                                                                    <li><a href="AvaliacaoAjudado.php">Avaliação Ajudado</a></li>
+                                                                    <li><a href="AvaliacaoLider.php">Avaliação Lider</a></li>
+                                                                    <li><a href="CadastroProfessor.php">Cadastro Professor</a></li>
+                                                                    <li><a href="gestao_dos_grupos.php">Gestão Grupos</a></li>
+                                                                    <li><a href="gestao_grupos_filtro_atividade.php">Filtro Atividade</a></li>
+                                                                    <li><a href="parametroAvaliacao.php">Paramentro Avaliação</a></li>
+                                                                    <li><a href="cadastro_aluno.php">Cadastro Aluno</a></li>
+                                                                    <li><a href="cadastro_avaliacao.php">Cadastro Avaliação</a></li>
+                                                                    <li><a href="inscricao_avaliacao.php">Incrição Avaliação</a></li>
+                                                                    <li><a href="relatorioAtividade.php">Relatório Atividade</a></li>
+                                                                    <li><a href="Telafinal.php">Tela Final</a></li>
                                                             </ul>
                                                     </li>
                                             </ul>
