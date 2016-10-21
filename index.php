@@ -60,8 +60,5 @@
 	</div>
 
 	<?php include("_scripts.php")?>
-
-	<script src="js/moment.js"></script>
-	<script src="js/atividade.js"></script>
 </body>
 </html>
