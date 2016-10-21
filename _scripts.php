@@ -255,3 +255,5 @@
 <script>
     NProgress.done();
 </script>
+
+<script src="js/moment.js"></script>
