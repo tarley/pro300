@@ -6,7 +6,6 @@
 	<?php include("includes/header.php") ?>
 </head>
 
-
 <body class="nav-md">
 
 	<div class="container body">
@@ -14,11 +13,14 @@
 		
 			<?php include("includes/menu.php") ?>
 		
+		
 			<!-- page content -->
 			<div class="right_col" role="main">
+			
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="dashboard_graph">
+						
 							<div class="row x_title">
 								<div class="col-md-6">
 									<h3>Cadastro Avaliação</h3>
@@ -88,8 +90,8 @@
 											<input type="text" name="token" class="form-control">
 										</div>
 										<!--<div class="form-group col-md-12 col-sm-12 col-xs-6">
-                                            <label class="control-label">Período de
-                                                inscrição da Prova300*: </label>
+												<label class="control-label">Período de
+													inscrição da Prova300*: </label>
 												<div class="control-group">
 												  <div class="controls">
 													<div class="input-prepend input-group">
@@ -97,17 +99,17 @@
 													  <input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" value="03/18/2013 - 03/23/2013" />
 													</div>
 												  </div>
-												</div>
+											</div>
 											-->
                                             <!--<div class="control-group">
-                                                <div class="controls">
-                                                    <div class="col-md-5 xdisplay_inputx form-group has-feedback">
-                                                        <input type="text" class="form-control has-feedback-left"
-                                                               id="single_cal3" placeholder="Data Inicial"
-                                                               aria-describedby="inputSuccess2Status3">
-                                                        <span class="fa fa-calendar-o form-control-feedback left"
-                                                              aria-hidden="true"></span>
-                                                        <span id="inputSuccess2Status3" class="sr-only">(success)</span>
+													<div class="controls">
+														<div class="col-md-5 xdisplay_inputx form-group has-feedback">
+															<input type="text" class="form-control has-feedback-left"
+																   id="single_cal3" placeholder="Data Inicial"
+																   aria-describedby="inputSuccess2Status3">
+															<span class="fa fa-calendar-o form-control-feedback left"
+																  aria-hidden="true"></span>
+															<span id="inputSuccess2Status3" class="sr-only">(success)</span>
                                                     </div>
                                                 </div>
                                                 <div class="controls">
@@ -121,7 +123,7 @@
                                                     </div>
                                                 </div>
                                             </div> -->
-                                        </div>
+                                       
                                         <div class="form-group col-md-12 col-sm-12 col-xs-6">
 											<label class="control-label">Descrição da prova*:</label>
 											<textarea class="form-control" rows="4" name="descricao"></textarea>
@@ -137,7 +139,6 @@
 
 											</div>
 										</div>
-										<br/>
 									</form>
 								</div>
 							</div>
@@ -149,8 +150,6 @@
 			<!-- /page content -->
 
 		</div>
-
-	</div>
 
 	<div id="custom_notifications" class="custom-notifications dsp_none">
 		<ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
