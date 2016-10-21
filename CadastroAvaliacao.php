@@ -89,18 +89,17 @@
                                             <label class="control-label">Token*: </label>
 											<input type="text" name="token" class="form-control">
 										</div>
-										<!--<div class="form-group col-md-12 col-sm-12 col-xs-6">
+										<div class="form-group col-md-12 col-sm-12 col-xs-6">
 												<label class="control-label">Período de
 													inscrição da Prova300*: </label>
 												<div class="control-group">
 												  <div class="controls">
 													<div class="input-prepend input-group">
 													  <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-													  <input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" value="03/18/2013 - 03/23/2013" />
+													  <input type="tex	t" style="width: 200px" name="reservation" id="reservation" class="form-control" value="03/18/2013 - 03/23/2013" />
 													</div>
 												  </div>
 											</div>
-											-->
                                             <!--<div class="control-group">
 													<div class="controls">
 														<div class="col-md-5 xdisplay_inputx form-group has-feedback">
@@ -171,8 +170,8 @@
 	<!-- icheck -->
 	<script src="js/icheck/icheck.min.js"></script>
 	<!-- daterangepicker -->
-	<script type="text/javascript" src="js/moment/moment.min.js"></script>
-	<script type="text/javascript" src="js/datepicker/daterangepicker.js"></script>
+	<script type="text/javascript" src="js/moment.min.js"></script>
+	<script type="text/javascript" src="js/daterangepicker.js"></script>
 
 	<script src="js/custom.js"></script>
 
