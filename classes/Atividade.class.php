@@ -60,7 +60,7 @@ class Atividade
     function getListaByProfessor($codProfessor)
     {
         $sql = '
-				SELECT desc_atividade
+		SELECT desc_atividade
                 FROM tb_atividade 
                 WHERE cod_professor = :codProfessor
                 AND data_encerramento_atv IS NULL
