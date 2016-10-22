@@ -3,7 +3,7 @@
 require_once "util/Util.php";
 
 $atv = new Atividade();
-$atv->getListaByProfessor(10);
+$atv->getListaByProfessor(1);
 /**
  * Created by PhpStorm.
  * User: Carina
@@ -60,16 +60,10 @@ class Atividade
     function getListaByProfessor($codProfessor)
     {
         $sql = '
-                SELECT cod_atividade,
-                        desc_atividade,
-                        token,
-                        data_inicio,
-                        data_fim,
-                        data_encerramento_atv,
-                        cod_professor
-                 FROM tb_atividade a
-                 WHERE a.cod_professor = :codProfessor
-                    AND a.data_encerramento_atv IS NOT NULL
+				SELECT desc_atividade
+                FROM tb_atividade 
+                WHERE cod_professor = :codProfessor
+                AND data_encerramento_atv IS NULL
                 ';
 
         try{
