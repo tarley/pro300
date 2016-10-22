@@ -1,3 +1,7 @@
+<?php
+	$permissaoPagina = "P";
+	require_once ("ControleAcesso.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,7 +46,7 @@
 
 										<tbody>
 										  <tr class="even pointer">
-											<td class=" ">�?lgebra Linear e Cálculo Vetorial Sala 01 01/2016</td>
+											<td class=" ">�?lgebra Linear e Cálculo Vetorial Sala 01 01/2016</td>
 												<td>
 												  <a href="#" class="btn btn-primary btn-xs" title="Visualizar grupos da atividade"><i class="fa fa-folder"></i> Ver grupos </a>
 												  <a href="#" class="btn btn-success btn-xs" title="Editar grupos da atividade"><i class="fa fa-pencil"></i> Editar </a>

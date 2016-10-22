@@ -1,3 +1,7 @@
+<?php
+	$permissaoPagina = "P";
+	require_once ("ControleAcesso.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 

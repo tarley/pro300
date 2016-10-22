@@ -34,8 +34,14 @@ function logger($msg)
     fclose($manipular);
 }
 
+function prepararJson($dado, $erro = false, $msg = "") {
+    $result = array("dado" => $dado, "erro" => $erro, "msg" => $msg);
+    respostaJson($result);
+}
+
 function respostaJson($dados) {
     header("Content-type: application/json");
+
     echo json_encode($dados);
     exit;
 }
