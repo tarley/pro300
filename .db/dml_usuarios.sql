@@ -1,0 +1,20 @@
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'albert@newtopaiva.br','teste123','0000','98765-4321','aluno','Albert Rocha');
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'felipe@newtopaiva.br','teste123','0000','98765-4321','aluno','Felipe');
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'tarley@newtopaiva.br','teste123','0000','98765-4321','professores','Tarley');
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'poliana@newtopaiva.br','teste123','0000','98765-4321','aluno','Poliana' 
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'allan@newtopaiva.br','teste123','0000','98765-4321','professores','Allan Silva Ferreira');
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'gustavo.eduardo@newtopaiva.br','teste123','0000','98765-4321','aluno','Gustavo Eduardo'); 
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'andre@newtopaiva.br','teste123','0000','98765-4321','aluno','Andre carvalho');
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'poliana@newtopaiva.br','teste123','0000','98765-4321','aluno','Poliana');
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'carina@newtopaiva.br','teste123','0000','98765-4321','aluno','Carina Roriz Pimenta');
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'joao.heringer@newtopaiva.br','teste123','0000','98765-4321','aluno','João Carlos Heringer');
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'carlos.henrique@newtopaiva.br','teste123','0000','98765-4321','aluno','Carlos Henrique'); 
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'vivian@newtopaiva.br','teste123','0000','98765-4321','aluno','Vivian');
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'felipe.perpetuo@newtopaiva.br','teste123','0000','98765-4321','aluno','Felipe Perpétuo'); 
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'ater@newtopaiva.br','teste123','0000','98765-4321','aluno','Ater Nets'); 
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'igor.henrique@newtopaiva.br','teste123','0000','98765-4321','aluno','Igor Henrique'); 
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'joh@newtopaiva.br','teste123','0000','98765-4321','aluno','Joh'); 
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'vitor.alessandro@newtopaiva.br','teste123','0000','98765-4321','aluno','Vitor alessandro');
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'juliano@newtopaiva.br','teste123','0000','98765-4321','aluno','Juliano'); 
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'bruna@newtopaiva.br','teste123','0000','98765-4321','aluno','Bruna'); 
+insert into tb_usuario (cod_usuario, email, senha, ra, telefone, perfil, nome) values (null,'gustavo.rezende@newtopaiva.br','teste123','0000','98765-4321','aluno','Gustavo Rezende');
