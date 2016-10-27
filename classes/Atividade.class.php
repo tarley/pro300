@@ -1,10 +1,9 @@
 <?php
-require_once  "util\Util.php";
+
+require_once "util/Util.php";
 
 $atv = new Atividade();
 $atv->getListaByProfessor(1);
-
-
 /**
  * Created by PhpStorm.
  * User: Carina
@@ -15,9 +14,11 @@ class Atividade
 {
     private $bd;
 
-    function __construct() {
+    function  __construct()
+    {
         $this->bd = new BDConnection();
     }
+
     /**
      * Insere os dados de uma atividade a partir de um array
      */
@@ -59,32 +60,26 @@ class Atividade
     function getListaByProfessor($codProfessor)
     {
         $sql = '
-            SELECT  cod_atividade,
-                    desc_atividade,
-                    token,
-                    data_inicio,
-                    data_fim,
-                    data_encerramento_atv,
-                    cod_professor
-              FROM  tb_atividade a 
-             WHERE  a.cod_professor = :codProfessor
-               AND  a.data_encerramento_atv IS NULL
-        ';
+		SELECT desc_atividade
+                FROM tb_atividade 
+                WHERE cod_professor = :codProfessor
+                AND data_encerramento_atv IS NULL
+                ';
 
-        try {
+        try{
+
             $conn = $this->bd->getConnection();
             $stm = $conn->prepare($sql);
-            $stm->bindParam(':codProfessor', $codProfessor);
-
+            $stm->bindParam(":codProfessor", $codProfessor);
             $stm->execute();
 
             respostaJson($stm->fetchAll(PDO::FETCH_ASSOC));
-        }catch(PDOException $e) {
+
+        }catch (PDOException $e){
             respostaJsonExcecao($e);
-        } finally {
+        }finally{
             $this->bd->close();
         }
-
     }
 
     /**
