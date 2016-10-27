@@ -59,7 +59,7 @@ class Atividade
     function getListaByProfessor($codProfessor)
     {
         $sql = '
-            SELECT  cod_atividade,b
+            SELECT  cod_atividade,
                     desc_atividade,
                     token,
                     data_inicio,

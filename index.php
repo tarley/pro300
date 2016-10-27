@@ -25,12 +25,12 @@
 							</div>
 
 							<div class="col-md-12 col-sm-12 col-xs-12">
-								<table id="datatable" class="table table-striped table-bordered dataTable no-footer">
+								<table id="datatable" class="table table-striped responsive-utilities jambo_table bulk_action">
 									<thead>
 										<th>#</th>
 										<th>Atividade</th>
-										<th>Data Inicio</th>
-										<th>Data Fim</th>
+										<th>Dt. Inicio</th>
+										<th>Dt. Fim</th>
 										<th></th>
 									</thead>
 									<tbody>
@@ -61,7 +61,13 @@
 
 	<?php include("_scripts.php")?>
 
-	<script src="js/moment.js"></script>
 	<script src="js/atividade.js"></script>
+	<script>
+		var atv = new atividade();
+		var tabela = $('#datatable');
+		var tbody = tabela.find('tbody');
+
+		atv.listarAtividades(tbody);
+	</script>
 </body>
 </html>
