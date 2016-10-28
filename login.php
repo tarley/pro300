@@ -48,19 +48,33 @@
 			</div>
 			<div id="register" class="animate form">
 				<section class="login_content">
-					<form>
+					<form id="formCadastro">
 						<h1>  Cadastro  </h1>
 						<div>
-							<input type="text" class="form-control" placeholder="RA" required="" />
+							<input type="text" class="form-control" placeholder="RA*" id="ra" minlength="8" maxlength="8" />
 						</div>
 						<div>
-							<input type="email" class="form-control" placeholder="Email" required="" />
+							<input type="text" class="form-control" placeholder="Nome*" id="nome"  />
 						</div>
 						<div>
-							<input type="password" class="form-control" placeholder="Senha" required="" />
+							<input type="text" class="form-control" placeholder="Telefone" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" />
 						</div>
 						<div>
-							<a class="btn btn-default submit" href="login.php">Cadastrar</a>
+							<input type="email" class="form-control" placeholder="Email*"  id="emailCadastro"  />
+						</div>
+						<div>
+							<input type="password" class="form-control" placeholder="Senha*" id="senhaCadastro"  maxlength="10" />
+						</div>
+						<div>
+							<input type="password" class="form-control" placeholder="Confirmar Senha*:" id="confirmarSenha" maxlength="10"  />
+						</div>
+						<div>
+							<p id="obrigatorio">* Informações Obrigatórias</p>
+						</div>
+
+						<div>
+						<!--<a class="btn btn-default submit" href="login.php">Cadastrar</a> -->
+							<a id="btnCadastro" class="btn btn-default submit">Cadastrar</a>
 						</div>
 						<div class="clearfix"></div>
 						<div class="separator">
@@ -113,7 +127,84 @@
 
 			e.preventDefault();
 		});
+
+
+		$("#btnCadastro").click(function(e){
+
+			var ra = $("#ra").val();
+			var nome = $("#nome").val();
+			var telefone = $("#telefone").val();
+			var emailCadastro = $("#emailCadastro").val();
+			var senhaCadastro = $("#senhaCadastro").val();
+			var confirmarSenha = $("#confirmarSenha").val();
+
+
+			if (ra == "" || ra.length < 8) {
+				alert("Preencha o campo RA com 8 caracteres!");
+				e.preventDefault();
+				return;
+			}
+
+
+			if (nome == "" || nome.length < 10) {
+				alert("Preencha o campo Nome com pelo menos 10 caracteres!");
+				e.preventDefault();
+				return;
+			}
+
+			if (telefone != "" && telefone.length < 15) {
+				alert("Preencha o campo Telefone no formato (00)00000-0000");
+				e.preventDefault();
+				return;
+			}
+
+			if (emailCadastro == "") {
+				alert("Preencha o campo Email!");
+				e.preventDefault();
+				return;
+			}
+
+			if (senhaCadastro == "") {
+				alert("Preencha o campo senha!");
+				e.preventDefault();
+				return;
+			}
+
+			if (confirmarSenha == "") {
+				alert("Preencha o campo Confirmar senha!");
+				e.preventDefault();
+				return;
+			}
+
+			if (senhaCadastro != confirmarSenha) {
+				alert("Digite senhas iguais!");
+				e.preventDefault();
+				return;
+			}
+
+			if(senhaCadastro.length < 6){
+				alert("A senha deve conter entre 6 e 10 caracteres!");
+				e.preventDefault();
+				return;
+			}
+
+			$.post("classes/Usuario.class.php?acao=cadastro", { ra: ra, nome: nome, telefone: telefone, emailCadastro: emailCadastro, senhaCadastro: senhaCadastro, confirmarSenha: confirmarSenha })
+				.done(function(result){
+					if (result.erro)
+						alert(result.msg);
+
+					else {
+						alert(result.msg);
+						window.location = "index.php";
+					}
+				});
+
+		 	e.preventDefault();
+		});
+
 	</script>
+	<script src="js/mascaraTelefone.js"></script>
+
 </body>
 
 </html>
