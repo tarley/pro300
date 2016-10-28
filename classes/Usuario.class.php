@@ -10,6 +10,7 @@ $usuario = new Usuario();
 
 switch($acao) {
     case 'login': { $usuario->login(); break; }
+    case 'cadastro': { $usuario->cadastro(); break; }
     default: { break; }
 }
 
@@ -52,6 +53,56 @@ class Usuario {
                 prepararJson($result);
             }
 
+        }catch (PDOException $e){
+            respostaJsonExcecao($e);
+        }finally {
+            $this->bd->close();
+        }
+    }
+
+    public function cadastro() {
+        $ra = $_POST['ra'];
+        $nome = $_POST['nome'];
+        $telefone = $_POST['telefone'];
+        $emailCadastro = $_POST['emailCadastro'];
+        $senhaCadastro = $_POST['senhaCadastro'];
+        $perfil = "A";
+
+        //inserir o perfil A na query
+
+        try{
+            $conn = $this->bd->getConnection();
+
+            $sqlConsulta = 'SELECT *
+                              FROM tb_usuario
+                             WHERE email = :email';
+
+            $stmConsulta = $conn->prepare($sqlConsulta);
+            $stmConsulta->bindParam(':email', $emailCadastro);
+            $stmConsulta->execute();
+
+            if($stmConsulta->rowCount() > 0) {
+                respostaJsonErro('Email já cadastrado');
+            }
+
+            $sql = 'INSERT INTO tb_usuario (ra, nome, telefone, email, senha, perfil) VALUES (:ra, :nome, :telefone, :emailCadastro, SHA1(:senhaCadastro), :perfil)';
+
+            $stm = $conn->prepare($sql);
+            $stm->bindParam(':ra', $ra);
+            $stm->bindParam(':nome', $nome);
+            $stm->bindParam(':telefone', $telefone);
+            $stm->bindParam(':emailCadastro', $emailCadastro);
+            $stm->bindParam(':senhaCadastro', $senhaCadastro);
+            $stm->bindParam(':perfil', $perfil);
+            $stm->execute();
+
+            if($stm->rowCount() > 0) {
+                respostaJsonSucesso("Cadastro realizado com sucesso!");
+            } else {
+                respostaJsonErro("Cadastro não realizado.");
+            }
+
+            respostaJsonExcecao($stm->fetchAll(PDO::FETCH_ASSOC));
         }catch (PDOException $e){
             respostaJsonExcecao($e);
         }finally {

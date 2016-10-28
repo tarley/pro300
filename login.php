@@ -73,7 +73,7 @@
 						</div>
 
 						<div>
-						<!--<a class="btn btn-default submit" href="login.php">Cadastrar</a> -->
+							<!--<a class="btn btn-default submit" href="login.php">Cadastrar</a> -->
 							<a id="btnCadastro" class="btn btn-default submit">Cadastrar</a>
 						</div>
 						<div class="clearfix"></div>
@@ -190,13 +190,8 @@
 
 			$.post("classes/Usuario.class.php?acao=cadastro", { ra: ra, nome: nome, telefone: telefone, emailCadastro: emailCadastro, senhaCadastro: senhaCadastro, confirmarSenha: confirmarSenha })
 				.done(function(result){
-					if (result.erro)
-						alert(result.msg);
-
-					else {
-						alert(result.msg);
-						window.location = "index.php";
-					}
+					alert(result.msg);
+					window.location("login.php");
 				});
 
 		 	e.preventDefault();
