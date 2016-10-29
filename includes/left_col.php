@@ -42,7 +42,8 @@
 							<?php elseif($perfil == "A"): ?>
 							<li><a href="avaliacaoAjudado.php">Avaliação Ajudado</a></li>
 							<li><a href="avaliacaoLider.php">Avaliação Lider</a></li>
-							<li><a href="cadastroAluno.php">Cadastro Aluno</a></li>
+							<li><a href="login.php#toregister">Cadastro Aluno</a></li>
+							<li><a href="editarAluno.php">Editar Cadastro</a></li>
 							<li><a href="inscricaoAvaliacao.php">Incrição Avaliação</a></li>
 							<?php endif; ?>
 						</ul>
