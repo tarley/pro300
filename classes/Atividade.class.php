@@ -2,8 +2,12 @@
 
 require_once "util/Util.php";
 
+session_start();
+$codprofessor = $_SESSION['cod_usuario'];
+
 $atv = new Atividade();
-$atv->getListaByProfessor(1);
+$atv->getListaByProfessor($codprofessor);
+
 /**
  * Created by PhpStorm.
  * User: Carina
@@ -89,3 +93,4 @@ class Atividade
 
     }
 }
+
