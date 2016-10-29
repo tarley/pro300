@@ -50,8 +50,12 @@
 
 									</tbody>
 								</table>
+								<!-- Criação das tabelas do pop-up usando o onshow event para executar a query e puxar os dados  -->
 
-								<!--<div class="modal fade avaliacao" tabindex="-1" role="dialog" aria-hidden="true" onshow="">
+								<div class="modal fade avaliacao" tabindex="-1" role="dialog" aria-hidden="true" onshow="">
+
+
+
 									<div class="modal-dialog modal-lg">
 										<div class="modal-content">
 											<div class="modal-header">
@@ -81,7 +85,8 @@
 											</div>
 										</div>
 									</div>
-								</div>-->
+								</div>
+
 							</div>
 						</div>
 					</div>
