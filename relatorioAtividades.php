@@ -53,9 +53,6 @@
 								<!-- Criação das tabelas do pop-up usando o onshow event para executar a query e puxar os dados  -->
 
 								<div class="modal fade avaliacao" tabindex="-1" role="dialog" aria-hidden="true" onshow="">
-
-
-
 									<div class="modal-dialog modal-lg">
 										<div class="modal-content">
 											<div class="modal-header">
@@ -66,7 +63,7 @@
 											</div>
 											<div class="modal-body">
 												<h4>Nota das avaliações realizadas</h4>
-												<table class="table responsive">
+												<table id="tabelaPopupAvaliacao" class="table responsive">
 												<thead>
 													<tr>
 														<th>Nome Aluno</th>
@@ -124,8 +121,9 @@
 	$(document).ready(function () {
 
 		var datatable = $("#datatable");
+		var tbody = datatable.find("tbody");
 
-	relatorio(datatable.find("tbody"));
+		relatorio(tbody);
 	});
 </script>
 
