@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once "util\Util.php";
+require_once "util/Util.php";
 
 $acao = (isset($_GET['acao'])) ? $_GET['acao'] : 'listar';
 

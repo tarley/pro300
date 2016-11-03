@@ -1,6 +1,6 @@
 <?php
 
-require_once "util\Util.php";
+require_once "util/Util.php";
 
 /**
  * Created by PhpStorm.

@@ -5,7 +5,7 @@
  * Date: 09/10/2016
  * Time: 19:27
  */
-require_once "util\Util.php";
+require_once "util/Util.php";
 
 $acao = (isset($_GET['acao'])) ? $_GET['acao'] : 'listar';
 
