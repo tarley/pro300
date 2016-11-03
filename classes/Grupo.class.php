@@ -40,7 +40,7 @@ class Grupo
      */
     function getListaByAvaliacao($codAvaliacao){
     
-        $sql = 'SELECT ra, nome, lider, p1, situacao, grupo
+        $sql = 'SELECT cod_inscricao, ra, nome, lider, p1, situacao, grupo
                 FROM tb_usuario u INNER JOIN tb_inscricao i ON (u.cod_usuario = i.cod_aluno)
                 WHERE cod_atividade = :atividade
                 ORDER BY grupo';
