@@ -11,11 +11,14 @@ function atividade(){
 		}).done(function(data){
 
 			var grupoAtual = null;
-		
+			
 				$.each(data, function (key, val){
 				    if(val.grupo != grupoAtual) {
 
-						table = $('<table id="Grupos" class="table table-striped responsive-utilities jambo_table"/>');
+						var table = $('<table/>');
+						table.attr('id', 'Grupos');
+						table.attr('class', 'table table-striped responsive-utilities jambo_table');
+										
 						div.append(table);
 
 						table.append(
@@ -26,17 +29,28 @@ function atividade(){
 								'<th style= "text-align: center" width=20>Nota</th>' + 
 								'<th style= "text-align: center" width=5>Desabilitdo</th>' +
 							'</thead>');
+							
 						tbody = $("<tbody/>");
-
 						table.append(tbody);
 
 						grupoAtual = val.grupo;
-
 				    }
 			    	
 					tr = $("<tr/>");
-		            tr.append($("<td/>").text(val.ra));
+					td = $("<td/>");
+					td.append(val.ra);
+					
+					var codDescricao = $("<input/>");
+					codDescricao.attr("type", "hidden");
+					codDescricao.attr("name", "codInscricao");
+					codDescricao.val(val.cod_inscricao);
+					
+					td.append(codDescricao);
+					
+					
+		            tr.append(td);					
                 	tr.append($("<td/>").text(val.nome));
+					
                 	tr.append($("<td/>").append("<td style='text-align: center'>"
 											   +"<div class='btn-group btn-toggle text-right' data-toggle='buttons'>"
 											   +"<label class='btn btn-sm btn-primary active'>"
@@ -45,11 +59,29 @@ function atividade(){
 											   +"<input name='options1[]' value='0' type='radio'>Ajudado</label></div>"
 											   +"</td>"));
                 	tr.append($("<td/>").text(val.p1));
-                	tr.append($("<td/>").append("<div class='material-switch pull-right'>"
-											   +"<input id='someSwitchOptionDanger' name='someSwitchOption001' type='checkbox'/>"
-											   +"<label for='someSwitchOptionDanger' class='label-danger'></label>"
-											   +"</div>"));
-	                tbody.append(tr);
+									
+					
+					checkSituacao = $("<input/>");
+					checkSituacao.attr("id", "checkboxSituacao" + val.cod_inscricao);
+					checkSituacao.attr("name", "situacao");
+					checkSituacao.attr("type", "checkbox");
+					checkSituacao.val("on");
+					
+					labelSituacao = $("<label/>");
+					labelSituacao.attr("for", "checkboxSituacao" + val.cod_inscricao);
+					labelSituacao.attr("class", "label-danger");
+					
+					
+					divSituacao = $("<div/>");
+					divSituacao.attr("class", "material-switch pull-right");					
+					divSituacao.append(checkSituacao);
+					divSituacao.append(labelSituacao);
+					
+                	tr.append($("<td/>").append(divSituacao));		
+			
+	                
+					
+					tbody.append(tr);
 
 		
 					$('.btn-toggle .btn').click(function() {
