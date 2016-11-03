@@ -31,27 +31,25 @@
 
 						<div class="x_panel">
 							<div class="x_content">
+
 								<!-- Início do conteudo da página  -->
-								<form action="#" method="get">								
 								<div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
-									
 									<div class="panel">
 
 										<div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-											
 											<div id="tabelaListaGrupo" class="panel-body">
 												
 
-											</div>											
+											</div>
 										</div>
 									</div>
 								</div>
 
 
-								<button type="submit" class="btn btn-primary">Salvar alterações</button>
-								<div class="clearfix"></div>								
-								</form>
+								<button type="button" class="btn btn-primary">Salvar alterações</button>
+								<div class="clearfix"></div>
 								<!-- Fim do conteudo da página  -->
+
 							</div>
 						</div>
 					</div>

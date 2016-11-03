@@ -69,6 +69,34 @@ function relatorio(tbody) {
     });
 }
 
+function exportarRelatorio()
+{
+    this.url = "classes/RelatorioAtividades.php";
+
+    $.ajax({
+        url: this.url
+    }).done(function (data) {
+        var json = data.items;
+        var fields = Object.keys(data[0]);
+        var replacer = function(key, value) { return value === null ? '' : value };
+        var report = fields.join(";");
+
+        $.each(data, function (key, val) {
+            report = report.concat("\n",Object.values(val).join(';'));
+        });
+
+        download(report, "Relatorio.csv", "text/plain")
+
+        /*var csv = json.map(function(row){
+            return fields.map(function(fieldName){
+                return JSON.stringify(row[fieldName], replacer);
+            }).join(';');
+        });*/
+
+        alert(report);
+    });
+}
+
 function exibirDetalhesAvaliacao(idAvaliacao) {
     alert(idAvaliacao);
     // $.ajax({

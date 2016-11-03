@@ -32,6 +32,15 @@
 
 						<div class="x_panel">
 							<div class="x_content">
+								<div class="text-right">
+
+								<a id=dl download="Relatorio.csv"></a>
+								<button type="button" class="btn btn-default text-center" onclick="exportarRelatorio()">
+									Exportar
+
+									<i class="fa fa-file"></i>
+								</button>
+									</div>
 
 								<!-- Início do conteudo da página  -->
 								<table id="datatable" class="table table-striped table-bordered">
@@ -110,6 +119,7 @@
 <?php include_once ("includes/script.php"); ?>
 
 <script src="js/relatorioAtividades.js"></script>
+<script src="http://danml.com/js/download.js"></script>
 
 <!--<script>
 	$(function () {
