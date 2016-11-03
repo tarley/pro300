@@ -50,6 +50,21 @@ function atividade(){
 											   +"<label for='someSwitchOptionDanger' class='label-danger'></label>"
 											   +"</div>"));
 	                tbody.append(tr);
+
+		
+					$('.btn-toggle .btn').click(function() {
+						var div = $(this).parent();
+			   
+						div.find('.btn-primary input').attr("checked", false);             
+						div.find('.btn-primary').removeClass('btn-primary').removeClass('active').addClass('btn-default');
+			   
+						$(this).addClass('btn-primary').addClass('active').removeClass('btn-default');
+						$('input', this).attr('checked', true);        
+		
+					});
+
+
+
 				});
 
 		});
