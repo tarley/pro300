@@ -84,4 +84,27 @@ class Inscricao
     function getDados($codInscricao){
 
     }
+	
+	function editarInscricao($lider, $situacao, $codInscricao){
+		try {
+			$conn = $this->bd->getConnection();// faz a conecção
+			$queryEditarInscricao = "UPDATE tb_inscricao SET lider = :lider, situacao = :situacao WHERE cod_inscricao = :codInscricao";
+			$stm = $conn->prepare($queryEditarInscricao);
+			$stm->bindParam(':lider', $lider);
+			$stm->bindParam(':situacao', $situacao);
+			$stm->bindParam(':codInscricao', $codInscricao);
+			$stm->execute();
+			
+		    if($stm->rowCount() > 0) {
+                respostaJsonSucesso("Alteração realizada com sucesso!");
+            } else {
+                respostaJsonErro("Erro!");
+            }
+        }catch (PDOException $e){
+            respostaJsonExcecao($e);
+        }finally {
+            $this->bd->close();
+        }
+	}
+
 }
