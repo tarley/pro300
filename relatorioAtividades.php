@@ -119,7 +119,7 @@
 <?php include_once ("includes/script.php"); ?>
 
 <script src="js/relatorioAtividades.js"></script>
-<script src="http://danml.com/js/download.js"></script>
+<script src="js/downloadRelatorio.js"></script>
 
 <!--<script>
 	$(function () {
