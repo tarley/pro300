@@ -98,7 +98,13 @@ class Professor
 
     }
 
+    /**
+     * Deleta um professor a partir do seu codigo
+     */
+    function Delete($codProfessor){
 
+    }
+    
     /**
      * Retorna os dados de um professor a partir do seu codigo
      */
