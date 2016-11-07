@@ -64,7 +64,29 @@ class Avaliacao
                          $retorno = $stm2->fetchAll(PDO::FETCH_ASSOC); 
                          $retorno["avaliadorLider"] = "Sim";     
                          respostaJson($retorno);   
-                        } else {  
+                        } else { 
+                                $sqlavaliado ='
+				
+				
+					SELECT *
+					from tb_inscricao I	
+					where i.cod_atividade = :cod_atividade
+					and i.grupo = :grupo
+					and i.lider = 1
+					and i.cod_inscricao <> :codInscricao ';
+				
+				
+				$conn3 = $this->bd->getConnection();
+	            $stm3 = $conn->prepare($sqlavaliado);
+				
+				$stm3->bindParam("cod_atividade", $inscricao["cod_atividade"]);
+				$stm3->bindParam("grupo", $inscricao["grupo"]);
+				$stm3->bindParam("codInscricao", $codInscricao);
+				
+				$stm3-->execute();
+				
+				$retorno = $stm3 ->fetchAll(PDO::FETCH_ASSOC);
+				respostaJson($retorno);
                         }                   
                         /*$sql = 'SELECT cod_usuario, email, senha, ra, nome, telefone, perfil FROM tb_usuario where perfil = "A"'; 
                         $conn = $this->bd->getConnection(); 
