@@ -34,15 +34,15 @@
 							<li><a href="lancamentoNota.php">Lançamento Nota</a></li>
 							<li><a href="cadastroProfessor.php">Cadastro Professor</a></li>
 							<li><a href="gestaoGrupos.php">Gestão Grupos</a></li>
-							<li><a href="gestaoGruposFiltroAtividade.php">Filtro Atividade</a></li>
-							<li><a href="parametroAvaliacao.php">Paramentro Avaliação</a></li>
+                                <!--<li><a href="gestaoGruposFiltroAtividade.php">Filtro Atividade</a></li>-->
+							<li><a href="parametroAvaliacao.php">Parâmetro Avaliação</a></li>
 							<li><a href="cadastroAvaliacao.php">Cadastro Avaliação</a></li>
 							<li><a href="relatorioAtividades.php">Relatório Atividade</a></li>
-							<li><a href="telaFinal.php">Tela Final</a></li>
+                                <!--<li><a href="telaFinal.php">Tela Final</a></li>-->
 							<?php elseif($perfil == "A"): ?>
 							<li><a href="avaliacaoAjudado.php">Avaliação Ajudado</a></li>
-							<li><a href="avaliacaoLider.php">Avaliação Lider</a></li>
-							<li><a href="login.php#toregister">Cadastro Aluno</a></li>
+							<li><a href="avaliacaoLider.php">Avaliação Líder</a></li>
+							<!--<li><a href="login.php#toregister">Cadastro Aluno</a></li>-->
 							<li><a href="editarAluno.php">Editar Cadastro</a></li>
 							<li><a href="inscricaoAvaliacao.php">Incrição Avaliação</a></li>
 							<?php endif; ?>

@@ -6,7 +6,14 @@ session_start();
 $codprofessor = $_SESSION['cod_usuario'];
 
 $atv = new Atividade();
-$atv->getListaByProfessor($codprofessor);
+
+$acao = (isset($_GET['acao'])) ? $_GET['acao'] : 'listar';
+
+switch($acao) {
+    case 'encerrar': { $atv->EncerrarAtividade(); break; }
+    default: { $atv->getListaByProfessor($codprofessor); break; }
+}
+
 
 /**
  * Created by PhpStorm.
@@ -40,8 +47,34 @@ class Atividade
     /**
      * Encerra uma atividade a partir do seu codigo
      */
-    function EncerrarAtividade($codAtividade){
+    function EncerrarAtividade(){
+        try{
 
+            $codAtividade = $_POST['cod_atividade'];
+            $conn = $this->bd->getConnection();
+
+            $sql = '
+                UPDATE tb_atividade
+                SET data_encerramento_atv = NOW()
+                WHERE cod_atividade = :codAtividade
+                ';
+
+            $stm = $conn->prepare($sql);
+            $stm->bindParam(':codAtividade', $codAtividade);
+
+            $stm->execute();
+
+            if($stm->rowCount() > 0) {
+                respostaJsonSucesso("Atividade encerrada!");
+            } else {
+                respostaJsonErro("Erro ao encerrar atividade.");
+            }
+        }
+        catch (PDOException $e){
+            respostaJsonExcecao($e);
+        }finally{
+            $this->bd->close();
+        }
     }
 
     /**
@@ -64,7 +97,7 @@ class Atividade
     function getListaByProfessor($codProfessor)
     {
         $sql = '
-		SELECT desc_atividade
+		SELECT desc_atividade, cod_atividade
                 FROM tb_atividade 
                 WHERE cod_professor = :codProfessor
                 AND data_encerramento_atv IS NULL

@@ -46,10 +46,20 @@ class Inscricao
 			if($stmConsulta->rowCount() == 0){ // se não retornar nenhuma linha 
                 respostaJsonErro("Token não encontrado!");
             }
-			
-			$row = $stmConsulta->fetch(PDO::FETCH_ASSOC);
-			$codatividade = $row['cod_atividade'];     
-        
+
+            $row = $stmConsulta->fetch(PDO::FETCH_ASSOC);
+            $codatividade = $row['cod_atividade'];
+
+            $sqlValidaInscricao = 'SELECT cod_inscricao FROM tb_inscricao WHERE cod_aluno = :codAluno AND cod_atividade = :codAtividade';
+
+            $stmValidaInscricao = $conn->prepare($sqlValidaInscricao);
+            $stmValidaInscricao->bindParam(':codAluno', $codAluno);
+            $stmValidaInscricao->bindParam(':codAtividade', $codatividade);
+            $stmValidaInscricao->execute();
+
+            if($stmValidaInscricao->rowCount() > 0){ // se não retornar nenhuma linha
+                respostaJsonErro("Inscrição já realizada!");
+            }
         
             $sql = 'INSERT INTO tb_inscricao (data_inscricao, situacao, cod_aluno, cod_atividade)	
 					VALUES (now(), 1, :cod_aluno, :cod_atividade)';

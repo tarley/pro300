@@ -74,9 +74,12 @@
 			$.post("classes/Inscricao.class.php?acao=inserir", { token: token1 })
 				.done(function(result){
 					if (result.erro)
-						alert("Campo não preenchido corretamente. Erro: " + result.msg);
-					else
+						alert(result.msg);
+					else{
 						alert("Inscrição realizada com sucesso!");
+						window.location = "homeAluno.php";
+					}
+
 				});
 
 			e.preventDefault();

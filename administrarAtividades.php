@@ -25,7 +25,7 @@
 						</div>
 					</div>
 
-					<div class="clearfix"> <a href="#" style="float:right" type="button" class="btn btn-default">Criar nova atividade</a></div>
+					<div class="clearfix"> <a href="cadastroAvaliacao.php" style="float:right" type="button" class="btn btn-default">Criar nova atividade</a></div>
 					
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-xs-12">
@@ -77,7 +77,24 @@
 		var tbody = tabela.find('tbody');
 		
 		atv.listarAtividades(tbody);
-		
+
+		$(document).ready(function() {
+			$(document).on("click", "#btnEncerrarAtividade", function(e){
+				var cod_atividade = $(this).parent().parent().attr("id");
+				console.log(cod_atividade);
+				$.post("classes/Atividade.class.php?acao=encerrar", { cod_atividade: cod_atividade })
+					.done(function(result){
+						alert(result.msg);
+
+						if(result.erro == false)
+						{
+							atv.listarAtividades(tbody);
+						}
+					});
+
+				e.preventDefault();
+			});
+		});
 	</script>
 
 </body>

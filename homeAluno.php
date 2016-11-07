@@ -21,7 +21,7 @@
 
 					<div class="page-title">
 						<div class="title_left">
-							<h3>Home Aluno</h3>
+							<h3>Home</h3>
 						</div>
 					</div>
 
@@ -32,7 +32,7 @@
 
 							<div class="x_panel">
 								<div class="x_content">
-									Seu conteudo aqui
+									Seja bem vindo!
 								</div>
 							</div>
 						</div>
