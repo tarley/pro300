@@ -40,6 +40,7 @@
 							<li><a href="relatorioAtividades.php">Relatório Atividade</a></li>
                                 <!--<li><a href="telaFinal.php">Tela Final</a></li>-->
 							<?php elseif($perfil == "A"): ?>
+							<li><a href="listarAtividades.php">Atividades</a></li>
 							<li><a href="avaliacaoAjudado.php">Avaliação Ajudado</a></li>
 							<li><a href="avaliacaoLider.php">Avaliação Líder</a></li>
 							<!--<li><a href="login.php#toregister">Cadastro Aluno</a></li>-->

@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS `pro300`.`tb_atividade` (
   `data_fim` DATETIME NOT NULL,
   `data_encerramento_atv` DATETIME NULL,
   `cod_professor` INT NOT NULL,
+  `situacao` INT NOT NULL DEFAULT 1,
   PRIMARY KEY (`cod_atividade`),
   INDEX `tb_atividade_i1` (`cod_professor` ASC),
   INDEX `tb_atividade_i2` (`desc_atividade` ASC),

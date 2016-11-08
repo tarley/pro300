@@ -34,6 +34,11 @@ switch($acao) {
         break;
     }
 
+	case 'listarPorAluno':{
+		$atividade->getListByAluno();
+		break;
+	}
+
     default: {
         $atividade->getListaByProfessor($codprofessor);
         break;
@@ -273,4 +278,38 @@ class Atividade
     function InscricaoAvaliacao($codAtividade, $codAluno){
 
     }
+
+	function getListByAluno()
+	{
+		$codAluno = $_SESSION['cod_usuario'];
+
+		$sql = 'SELECT a.*, i.cod_inscricao
+                FROM tb_atividade a INNER JOIN tb_inscricao i ON (a.cod_atividade = i.cod_atividade)
+                WHERE i.cod_aluno = :codAluno
+                AND a.data_encerramento_atv IS NULL
+                ORDER BY a.data_inicio DESC
+                ';
+
+		try{
+
+			$conn = $this->bd->getConnection();
+			$stm = $conn->prepare($sql);
+			$stm->bindParam(":codAluno", $codAluno);
+			$stm->execute();
+
+			$result = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+			for ($i = 0; $i < sizeof($result); $i++) {
+				$result[$i]['data_inicio'] = date_format(date_create($result[$i]['data_inicio']), 'd-m-Y');
+				$result[$i]['data_fim'] = date_format(date_create($result[$i]['data_fim']), 'd-m-Y');
+			}
+
+			prepararJson($result);
+
+		}catch (PDOException $e){
+			respostaJsonExcecao($e);
+		}finally{
+			$this->bd->close();
+		}
+	}
 }
