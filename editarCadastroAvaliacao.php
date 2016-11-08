@@ -49,7 +49,7 @@
 													<div class="controls">
 														<div class="input-prepend input-group">
 															<span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-															<input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" value="03/18/2013 - 03/23/2013" />
+															<input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" />
 														</div>
 													</div>
 												</div>
@@ -94,6 +94,8 @@
 </div>
 <?php include_once ("includes/script.php"); ?>
 
+<script type="text/javascript" src="js/datepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="js/moment/moment.min.js"></script>
 <script>
 
 	var codAtividade = <?php echo $_GET['codAtividade'] ?>;
@@ -107,14 +109,19 @@
 		}else {
 			$('#token').val(data[0].token);
 			$('#descricao').val(data[0].desc_atividade);
+			console.log(data[0].data_inicio + ' - ' + data[0].data_fim);
+			$('#reservation').data('daterangepicker').setStartDate(data[0].data_inicio);
+			$('#reservation').data('daterangepicker').setEndDate(data[0].data_fim);
+
 		}
+
     });
-	  
+
 	$("#confirmar").click(function(e) {
 		var token = $("#token").val();
 		var descricao = $("#descricao").val();
-		var dataInicio = null;
-		var dataFim = null;
+		var dataInicio = $('#reservation').data('daterangepicker').startDate.format('YYYY-MM-DD');
+		var dataFim = $('#reservation').data('daterangepicker').endDate.format('YYYY-MM-DD');
 
 		//console.log("Oi");
 

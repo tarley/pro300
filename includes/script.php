@@ -197,7 +197,12 @@
 
 <script>
     $(document).ready(function() {
-        $('#reservation').daterangepicker(null, function(start, end, label) {
+        $('#reservation').daterangepicker(
+        {
+            locale: {
+                format: 'DD-MM-YYYY'
+            }
+        }, function(start, end, label) {
             console.log(start.toISOString(), end.toISOString(), label);
         });
     });
