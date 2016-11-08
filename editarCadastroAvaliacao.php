@@ -37,7 +37,6 @@
 								<!-- alteração -->
 								<div class="col-md-6 col-sm-12 col-xs-6">
 									<div class="x_content">
-										<form action="CadastroAvaliacao.php" method="post">
 											<div class="form-group col-md-12 col-s m-12 col-xs-6" method="get">
 												<label class="control-label">Token*: </label>
 												<input type="text" name="token" class="form-control" id="token">
@@ -66,11 +65,10 @@
 
 											<div class="form-group">
 												<div class="col-md-12 col-sm-0 col-xs-0 col-md-offset-0" style="margin-top:9px">
-													<button type="reset" class="btn btn-primary">Limpar</button>
+													<input type="submit" class="btn btn-primary" name="cancelar" id="cancelar" value="Cancelar">
 													<input type="submit" class="btn btn-success" name="confirmar" id="confirmar" value="Confirmar">
 												</div>
 											</div>
-										</form>
 									</div>
 								</div>
 								<div class="clearfix"></div>
@@ -140,12 +138,19 @@
 					//console.log("sim");
 					window.location = "administrarAtividades.php";
 				}
+				if(result.erro==true){
+					window.location = "administrarAtividades.php";
+				}
 			})
 			.error(function(result) {
 				alert('Erro: ' + result.msg);			
 			});
 
 		e.preventDefault();
+	});
+
+	$("#cancelar").click(function(e){
+		window.location = "administrarAtividades.php";
 	});
   </script>
   

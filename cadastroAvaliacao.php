@@ -65,7 +65,7 @@
 
 										<div class="form-group">
 											<div class="col-md-12 col-sm-0 col-xs-0 col-md-offset-0" style="margin-top:9px">
-												<button type="reset" class="btn btn-primary">Limpar</button>
+												<input type="submit" class="btn btn-primary" name="cancelar" id="cancelar" value="Cancelar">
 												<input type="submit" class="btn btn-success" name="confirmar" id="confirmar" value="Confirmar">
 											</div>
 										</div>
@@ -128,12 +128,10 @@
 
 		e.preventDefault();
 	});
-	
-	/*	
-		$("#cancelar").click(function(e){
+
+	$("#cancelar").click(function(e){
 			window.location = "administrarAtividades.php";
-		});
-	*/
+	});
 
 </script>
 </body>
