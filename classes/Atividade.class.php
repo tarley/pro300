@@ -200,7 +200,6 @@ class Atividade
 
     /**
      * Retorna os dados de uma atividade a partir do seu codigo
-    WHERE a.cod_professor = :codProfessor
      */
     function getDados(){
 
