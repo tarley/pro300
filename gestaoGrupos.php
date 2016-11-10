@@ -77,12 +77,14 @@
 		
 		<script>
 		
-			var atv = new atividade();
+			var codAtividade = <?php echo $_GET['codAtividade']?>;
+		
+			
 			
 			var div = $('#tabelaListaGrupo');
 			
-			atv.listarGrupos(div);
-			
+			var g = new grupo();
+			g.listarGrupos(div, codAtividade);			
 		</script>
 
 </body>
