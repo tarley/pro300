@@ -8,10 +8,31 @@ require_once "util/Util.php";
  * Date: 11/10/2016
  * Time: 21:43
  */
+ 
+$acao = isset($_GET['acao']) ? $_GET['acao'] : 'listar';
 
-$atv = new Grupo();
-$atv->getListaByAvaliacao(1);
+$grupo = new Grupo();
 
+switch($acao) {
+    case 'gerar': {
+        break;
+    }
+
+    case 'alterar': {
+        break;
+    }
+    
+	case 'encerrar':{
+        break;
+    }
+
+    default: {
+        $grupo->getListaByAtividade();
+        break;
+    }
+}
+
+ 
 class Grupo
 {
     private $bd;
@@ -36,9 +57,11 @@ class Grupo
     }
 
     /**
-     * Retorna uma lista de todos os grupos de uma avaliação
+     * Retorna uma lista de todos os grupos de uma atividade
      */
-    function getListaByAvaliacao($codAvaliacao){
+    function getListaByAtividade(){
+	
+		$codAtividade = $_GET['codAtividade'];
     
         $sql = 'SELECT cod_inscricao, ra, nome, lider, p1, situacao, grupo
                 FROM tb_usuario u INNER JOIN tb_inscricao i ON (u.cod_usuario = i.cod_aluno)
@@ -48,22 +71,15 @@ class Grupo
         try{
             $conn = $this->bd->getConnection();
             $stm = $conn->prepare($sql);
-            $stm->bindParam(':atividade', $codAvaliacao);
-            
-            $stm->execute();
-            
+            $stm->bindParam(':atividade', $codAtividade);            
+            $stm->execute();            
             respostaJson($stm->fetchAll(PDO::FETCH_ASSOC));
         
-        }catch(PDOException $e){
-        
-            respostaJsonExcecao($e);
-            
-        }finally{
-        
+        }catch(PDOException $e){        
+            respostaJsonExcecao($e);            
+        }finally{        
             $this->bd->close();
-        }   
-        
-    
+        }    
     }
 
 
