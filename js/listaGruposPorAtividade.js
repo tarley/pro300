@@ -1,15 +1,14 @@
-function atividade(){
+function grupo(){
 
 	this.url = 'classes/Grupo.class.php';
 
-	this.listarGrupos = function(div){
+	this.listarGrupos = function(div, codAtividade){
 		
 		div.empty();
 		
 		$.ajax({
-			url : this.url
+			url : this.url + '?codAtividade=' + codAtividade
 		}).done(function(data){
-
 			var grupoAtual = null;
 			
 				$.each(data, function (key, val){
@@ -78,20 +77,8 @@ function atividade(){
 					divSituacao.append(labelSituacao);
 					
                 	tr.append($("<td/>").append(divSituacao));		
-			
-	                
-					
+				                					
 					tbody.append(tr);
-
-
-
-
-
-
-
-
-
-
 		
 					$('.btn-toggle .btn').click(function() {
 						var div = $(this).parent();
@@ -108,7 +95,11 @@ function atividade(){
 
 				});
 
-		});
+		}).error(
+			function(data){
+				alert(data.responseText);
+			}
+		);
 
 	}
 
