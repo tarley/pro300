@@ -14,6 +14,7 @@ $inscricao = new Inscricao();
  
  switch($acao) {
     case 'inserir': { $inscricao->Insert(); break;}
+	case 'update' : { $inscricao->Update(); break;}
 	default: break;	
 }
 class Inscricao
@@ -95,7 +96,7 @@ class Inscricao
 
     }
 
-    function editarInscricao($lider, $situacao, $codInscricao){
+    function Update($lider, $situacao, $codInscricao){
         try {
             $conn = $this->bd->getConnection();// faz a conecção
             $queryEditarInscricao = "UPDATE tb_inscricao SET lider = :lider, situacao = :situacao WHERE cod_inscricao = :codInscricao";
@@ -108,7 +109,7 @@ class Inscricao
             if($stm->rowCount() > 0) {
                 respostaJsonSucesso("Alteração realizada com sucesso!");
             } else {
-                respostaJsonErro("Erro!");
+                respostaJsonErro("Houve um erro!");
             }
         }catch (PDOException $e){
             respostaJsonExcecao($e);
