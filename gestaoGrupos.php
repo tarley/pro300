@@ -1,6 +1,7 @@
 <?php
 	$permissaoPagina = "P"; // A ou P de acordo com o perfil do usuário
 	require_once ("controleAcesso.php");
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +11,22 @@
 </head>
 
 <body class="nav-md">
+<?php
+	echo "teste";
+	
+	if(isset($_POST['codInscricao'])) {
+		echo "<br/>" . count( $_POST['codInscricao']);
+	}
+	
+	if(isset($_POST['lider'])) {
+		echo "<br/>" . count( $_POST['lider']);
+	}
+	
+	if(isset($_POST['situacao'])) {
+		echo "<br/>" . count( $_POST['situacao']);
+	}
+?>
+
 <div class="container body">
 	<div class="main_container">
 		<?php include_once ("includes/left_col.php"); ?>
@@ -32,7 +49,7 @@
 						<div class="x_panel">
 							<div class="x_content">
 								<!-- Início do conteudo da página  -->
-								<form action="#" method="get">								
+								<form id="editarInscricao" action="gestaoGrupos.php" method="post">								
 								<div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
 									
 									<div class="panel">
@@ -48,7 +65,7 @@
 								</div>
 
 
-								<button type="submit" class="btn btn-primary">Salvar alterações</button>
+								<input type="submit" class="btn btn-primary" value="salvar" id="salvar">Salvar alterações</button>
 								<div class="clearfix"></div>								
 								</form>
 								<!-- Fim do conteudo da página  -->
@@ -78,14 +95,40 @@
 		<script>
 		
 			var codAtividade = <?php echo $_GET['codAtividade']?>;
-		
-			
-			
 			var div = $('#tabelaListaGrupo');
 			
 			var g = new grupo();
-			g.listarGrupos(div, codAtividade);			
+			g.listarGrupos(div, codAtividade);		
+			
 		</script>
+		
+		<script>
+		
+			var atv = new atividade();
+			
+			var tabela = $('#ListarAtividades');
+			var tbody = tabela.find('tbody');
+			
+			atv.listarAtividades(tbody);
 
+			$(document).ready(function() {
+				$(document).on("click", "#btnEncerrarAtividade", function(e){
+					var cod_atividade = $(this).parent().parent().attr("id");
+					console.log(cod_atividade);
+					$.post("classes/Atividade.class.php?acao=encerrar", { cod_atividade: cod_atividade })
+						.done(function(result){
+							alert(result.msg);
+
+							if(result.erro == false)
+							{
+								atv.listarAtividades(tbody);
+							}
+						});
+
+					e.preventDefault();
+				});
+			});
+		</script>
+	
 </body>
 </html>
