@@ -2,7 +2,8 @@
  * Created by Vitor on 23/10/2016.
  */
 function relatorio(tbody) {
-    this.url = "classes/RelatorioAtividades.php";
+
+    this.url = "classes/RelatorioAtividades.php?CodAtividade="+getQueryVariable("CodAtividade");
 
 
     tbody.empty();
@@ -67,6 +68,17 @@ function relatorio(tbody) {
             tbody.append(tr);
         });
     });
+}
+
+function getQueryVariable(variable)
+{
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+        if(pair[0] == variable){return pair[1];}
+    }
+    return(false);
 }
 
 function exportarRelatorio()

@@ -28,6 +28,11 @@ class RelatorioAtividades
 
     public function buscarTodas() {
 
+        if(!isset($_GET['CodAtividade']))
+            respostaJsonErro("Codigo de atividade não informado");
+
+        $codAtividade = (int) $_GET['CodAtividade'];
+
     try{
         $sql = 'SELECT	U.cod_usuario,
             I.cod_inscricao as "CodInscricao",
@@ -42,10 +47,11 @@ INNER JOIN
 		tb_inscricao I
 ON		(U.cod_usuario = I.cod_aluno)
 WHERE U.perfil = "A"
-AND	I.cod_atividade = 1 ';
+AND	I.cod_atividade = :codAtividade ';
 
         $conn = $this->bd->getConnection();
         $stm = $conn->prepare($sql);
+        $stm->bindParam(':codAtividade', $codAtividade);
         $stm->execute();
 
         respostaJson($stm->fetchAll(PDO::FETCH_ASSOC));

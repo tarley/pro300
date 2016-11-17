@@ -135,6 +135,8 @@
 
 		relatorio(tbody);
 	});
+
+
 </script>
 
 
