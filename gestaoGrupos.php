@@ -65,7 +65,7 @@
 								</div>
 
 
-								<input type="submit" class="btn btn-primary" value="salvar" id="salvar">Salvar alterações</button>
+								<input class="btn btn-primary" value="salvar" id="salvar">Salvar alterações</button>
 								<div class="clearfix"></div>								
 								</form>
 								<!-- Fim do conteudo da página  -->
@@ -101,6 +101,44 @@
 			g.listarGrupos(div, codAtividade);		
 			
 		</script>
+		
+		<script>
+		
+			$(document).ready(function() {
+				$(document).on("click", "#btnEncerrarAtividade", function(e){
+					var cod_atividade = $(this).parent().parent().attr("id");
+					console.log(cod_atividade);
+					$.post("classes/Atividade.class.php?acao=encerrar", { cod_atividade: cod_atividade })
+						.done(function(result){
+							alert(result.msg);
+
+							if(result.erro == false)
+							{
+								atv.listarAtividades(tbody);
+							}
+						});
+
+					e.preventDefault();
+				});
+				
+				$(document).on("click", "#salvar", function(e){
+					$('tr[data-tipo="resposta"]').each(function(){
+						var $codInscricao = $("input[name='codInscricao']",this).val();
+						var $tipo = $("input[name=lider][checked]:radio", this);
+						var $situacao = $("input[name=situacao][checked]:radio", this)
+						console.log(this);
+						console.log($codInscricao);
+						console.log($tipo);
+						console.log($situacao);
+					});
+					e.preventDefault();
+				});
+				
+			});
+			
+			
+		</script>
 	
 </body>
 </html>
+
