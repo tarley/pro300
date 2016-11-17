@@ -35,7 +35,7 @@ function grupo(){
 						grupoAtual = val.grupo;
 				    }
 			    	
-					tr = $("<tr/>");
+					tr = $("<tr data-tipo='resposta'/>");
 					td = $("<td/>");
 					td.append(val.ra);
 					
@@ -63,7 +63,7 @@ function grupo(){
 						tr.append($("<td/>").append("<td style='text-align: center'>"
 												   +"<div id='divTipoAluno' class='btn-group btn-toggle text-right' data-toggle='buttons'>"
 												   +"<label class='btn btn-sm btn-primary active'>"
-												   +"<input name='lider' value='1' type='radio' checked>Lider</label>"
+												   +"<input name='lider' value='1' type='radio' checked='true'>Lider</label>"
 												   +"<label class='btn btn-sm btn-default'>"
 												   +"<input name='lider' value='0' type='radio'>Ajudado</label></div>"
 												   +"</td>")); 
@@ -73,7 +73,7 @@ function grupo(){
 												   +"<label class='btn btn-sm btn-default'>"
 												   +"<input name='lider' value='1' type='radio'>Lider</label>"
 												   +"<label class='btn btn-sm btn-primary active'>"
-												   +"<input name='lider' value='0' type='radio' checked>Ajudado</label></div>"
+												   +"<input name='lider' value='0' type='radio' checked='true'>Ajudado</label></div>"
 												   +"</td>")); 
 					}
 					/*		
