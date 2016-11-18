@@ -60,16 +60,16 @@ VALUES ('Estatística', '454', '2016/2/11', '2016/2/12', 'NULL', '3')
 --=========
 
 INSERT INTO tb_inscricao (`p1`, `p300`, `nota_final`, `acrescimo`, `grupo`, `data_inscricao`, `lider`, `situacao`, `cod_aluno`, `cod_atividade`) 
-VALUES ('21', NULL, NULL, NULL, 1, '2016/10/25', '1', '1', '4', '1'); 
+VALUES ('21', NULL, NULL, NULL, 1, '2016/10/25', '1', '1', '1', '1'); 
 
 INSERT INTO tb_inscricao (`p1`, `p300`, `nota_final`, `acrescimo`, `grupo`, `data_inscricao`, `lider`, `situacao`, `cod_aluno`, `cod_atividade`) 
-VALUES ('15', NULL, NULL, NULL, 1, '2016/09/15', '0', '1', '5', '1');
+VALUES ('15', NULL, NULL, NULL, 1, '2016/09/15', '0', '1', '2', '1');
 
 INSERT INTO tb_inscricao (`p1`, `p300`, `nota_final`, `acrescimo`, `grupo`, `data_inscricao`, `lider`, `situacao`, `cod_aluno`, `cod_atividade`) 
-VALUES ('11', NULL, NULL, NULL, 1, '2016/09/20', '0', '1', '5', '1');
+VALUES ('11', NULL, NULL, NULL, 1, '2016/09/20', '0', '1', '3', '1');
 
 INSERT INTO tb_inscricao (`p1`, `p300`, `nota_final`, `acrescimo`, `grupo`, `data_inscricao`, `lider`, `situacao`, `cod_aluno`, `cod_atividade`) 
-VALUES ('17', NULL, NULL, NULL, 1, '2016/10/02', '0', '1', '5', '1');
+VALUES ('17', NULL, NULL, NULL, 1, '2016/10/02', '0', '1', '4', '1');
 
 INSERT INTO tb_inscricao (`p1`, `p300`, `nota_final`, `acrescimo`, `grupo`, `data_inscricao`, `lider`, `situacao`, `cod_aluno`, `cod_atividade`) 
 VALUES ('12', NULL, NULL, NULL, 1, '2016/10/03', '0', '1', '5', '1')
