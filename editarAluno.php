@@ -86,7 +86,7 @@ require_once ("controleAcesso.php");
           </div>
 
       </div>
-        <?php include_once ("includes/footer.php"); ?>
+
     </div>
       <!-- Page Content End -->
   </div>
