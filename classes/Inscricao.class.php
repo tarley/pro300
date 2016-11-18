@@ -96,24 +96,29 @@ class Inscricao
 
     }
 
-    function Update($lider, $situacao, $codInscricao){
+    function Update(){
         try {
-            $conn = $this->bd->getConnection();// faz a conecção
-            $queryEditarInscricao = "UPDATE tb_inscricao SET lider = :lider, situacao = :situacao WHERE cod_inscricao = :codInscricao";
-            $stm = $conn->prepare($queryEditarInscricao);
-            $stm->bindParam(':lider', $lider);
-            $stm->bindParam(':situacao', $situacao);
-            $stm->bindParam(':codInscricao', $codInscricao);
-            $stm->execute();
-
-            if($stm->rowCount() > 0) {
-                respostaJsonSucesso("Alteração realizada com sucesso!");
-            } else {
-                respostaJsonErro("Houve um erro!");
-            }
+			$listaLider = explode(",", $_POST['lider']);
+			$listaSituacao = explode(",", $_POST['situacao']);
+			$listaCodInscricao = explode(",", $_POST['codInscricao']);
+		
+			$conn = $this->bd->getConnection();// faz a conecção
+			$queryEditarInscricao = "UPDATE tb_inscricao SET lider = :lider, situacao = :situacao WHERE cod_inscricao = :codInscricao";
+			$stm = $conn->prepare($queryEditarInscricao);
+					
+			for($i = 0; $i < count($listaLider); $i++ ) {
+				$stm->bindParam(':codInscricao', $listaCodInscricao[$i]); 
+				$stm->bindParam(':lider', $listaLider[$i]); 
+				$stm->bindParam(':situacao', $listaSituacao[$i]); 
+								
+				$stm->execute();			}
+			
+			respostaJsonSucesso("Alteração realizada com sucesso!");
         }catch (PDOException $e){
             respostaJsonExcecao($e);
-        }finally {
+        }catch (Exception $e){
+            respostaJsonExcecao($e);
+        } finally {
             $this->bd->close();
         }
     }
