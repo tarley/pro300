@@ -11,22 +11,6 @@
 </head>
 
 <body class="nav-md">
-<?php
-	echo "teste";
-	
-	if(isset($_POST['codInscricao'])) {
-		echo "<br/>" . count( $_POST['codInscricao']);
-	}
-	
-	if(isset($_POST['lider'])) {
-		echo "<br/>" . count( $_POST['lider']);
-	}
-	
-	if(isset($_POST['situacao'])) {
-		echo "<br/>" . count( $_POST['situacao']);
-	}
-?>
-
 <div class="container body">
 	<div class="main_container">
 		<?php include_once ("includes/left_col.php"); ?>
@@ -49,7 +33,6 @@
 						<div class="x_panel">
 							<div class="x_content">
 								<!-- Início do conteudo da página  -->
-								<form id="editarInscricao" action="gestaoGrupos.php" method="post">								
 								<div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
 									
 									<div class="panel">
@@ -65,16 +48,14 @@
 								</div>
 
 
-								<input class="btn btn-primary" value="salvar" id="salvar">Salvar alterações</button>
+								<input type="button" class="btn btn-primary" value="salvar" id="salvar">Salvar alterações</button>
 								<div class="clearfix"></div>								
-								</form>
 								<!-- Fim do conteudo da página  -->
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
 		<!-- Page Content End -->
 
@@ -122,17 +103,52 @@
 				});
 				
 				$(document).on("click", "#salvar", function(e){
-					$('tr[data-tipo="resposta"]').each(function(){
-						var $codInscricao = $("input[name='codInscricao']",this).val();
-						var $tipo = $("input[name=lider][checked]:radio", this);
-						var $situacao = $("input[name=situacao][checked]:radio", this)
-						console.log(this);
-						console.log($codInscricao);
-						console.log($tipo);
-						console.log($situacao);
+				
+					var listaCodInscricao = "";
+					var listaLider = "";
+					var listaSituacao = "";
+					//var $codInscricao = 
+					$("input[name='codInscricao']").each(function(){
+						if(listaCodInscricao != "")
+							listaCodInscricao += ",";
+							
+						listaCodInscricao += this.value;
 					});
-					e.preventDefault();
+				
+					$("input[name=lider][checked]:radio").each(function(){
+						if(listaLider != "")
+							listaLider += ",";
+							
+						listaLider += this.value;
+					});
+					
+					$("input[name=situacao][checked]:radio").each(function(){
+						if(listaSituacao != "")
+							listaSituacao += ",";
+							
+						listaSituacao += this.value;
+					});
+					
+					console.log(listaCodInscricao);
+					console.log(listaLider);
+					console.log(listaSituacao);
+					
+					$.post("classes/Inscricao.class.php?acao=update", {
+						codInscricao: listaCodInscricao, 
+						lider: listaLider,  
+						situacao: listaSituacao
+					}).done(function(result) {
+						console.log(result);
+						alert(result.msg);
+						
+						// Verificar se precisa disso
+						//g.listarGrupos(div, codAtividade);						
+					}).error(function(error) {
+						console.log(error);
+						alert(error.responseText);						
+					});
 				});
+				
 				
 			});
 			
