@@ -140,6 +140,7 @@ CREATE TABLE IF NOT EXISTS `pro300`.`tb_parametro_prova` (
   UNIQUE INDEX `tb_parametro_prova_i1` (`valor_media_min_melhoria` ASC, `valor_media_max_melhoria` ASC))
 ENGINE = InnoDB;
 
+ALTER TABLE `pro300`.`tb_usuario` DROP PRIMARY KEY, ADD PRIMARY KEY (`cod_usuario`, `email`) USING BTREE;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
