@@ -68,7 +68,6 @@ class Usuario {
         $senhaCadastro = $_POST['senhaCadastro'];
         $perfil = "A";
 
-        //inserir o perfil A na query
 
         try{
             $conn = $this->bd->getConnection();
