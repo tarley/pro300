@@ -46,10 +46,15 @@
 										</div>
 									</div>
 								</div>
-
-
-								<input type="button" class="btn btn-primary" value="salvar" id="salvar">Salvar alterações</button>
-								<div class="clearfix"></div>								
+								
+								
+									<div class="form-group">
+										<div class="col-md-12 col-sm-0 col-xs-0 col-md-offset-0" style="margin-top:9px">
+												<input type="button" class="btn btn-primary" name="voltar" id="voltar" value="Voltar">
+												<input type="button" class="btn btn-success" name="salvar" id="salvar" value="Salvar">
+										</div>
+									</div>
+								
 								<!-- Fim do conteudo da página  -->
 							</div>
 						</div>
@@ -153,6 +158,12 @@
 			});
 			
 			
+		</script>
+		
+		<script>
+		$("#voltar").click(function(e){
+			window.location = "administrarAtividades.php";
+		});
 		</script>
 	
 </body>
