@@ -57,7 +57,7 @@
 							<input type="text" class="form-control" placeholder="Nome*" id="nome"  />
 						</div>
 						<div>
-							<input type="text" class="form-control" placeholder="Telefone" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" />
+							<input type="text" class="form-control" placeholder="Celular" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" />
 						</div>
 						<div>
 							<input type="email" class="form-control" placeholder="Email*"  id="emailCadastro"  />
@@ -191,9 +191,23 @@
 			$.post("classes/Usuario.class.php?acao=cadastro", { ra: ra, nome: nome, telefone: telefone, emailCadastro: emailCadastro, senhaCadastro: senhaCadastro, confirmarSenha: confirmarSenha })
 				.done(function(result){
 					alert(result.msg);
-					window.location("login.php");
-				});
 
+					if (result.erro){
+						
+					}else{
+						window.location = "login.php#tologin";	
+				
+						$("#ra").val("");
+						$("#nome").val("");
+						$("#telefone").val("");
+						$("#emailCadastro").val("");
+						$("#senhaCadastro").val("");
+						$("#confirmarSenha").val("");
+					}
+					
+				
+				});
+					
 		 	e.preventDefault();
 		});
 
