@@ -544,7 +544,19 @@ body.nav-md ul.nav.child_menu li:after {
 li.current-page {
   background: rgba(255, 255, 255, 0.05);
 }
-.nav.side-menu> li.active > a {
+.nav.side-menu> li.active > #menu-geral {
+  color: #ff0000;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5b6479), color-stop(100%, #4c5566)), #686e78;
+  background: -webkit-linear-gradient(#334556, #2C4257), #2A3F54;
+  background: -moz-linear-gradient(#334556, #2C4257), #2A3F54;
+  background: -o-linear-gradient(#334556, #2C4257), #2A3F54;
+  background: linear-gradient(#334556, #2C4257), #2A3F54;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
+  -moz-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
+}
+.nav.side-menu > li.active > #menu-fundadores {
   color: #ff0000;
   text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5b6479), color-stop(100%, #4c5566)), #686e78;
