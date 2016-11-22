@@ -3,7 +3,7 @@
 	$perfil = $_SESSION['perfil'];
 ?>
 <div class="col-md-3 left_col">
-	<div class="left_col scroll-view">
+	<div class="left_col scroll-view" style="width: 100%">
 		<div class="clearfix"></div>
 
 		<!-- menu prile quick info -->
@@ -27,7 +27,7 @@
 
 				<ul class="nav side-menu">
 					<li class="active">
-						<a><i class="fa fa-home"></i> Menu <span class="fa fa-chevron-down"></span></a>
+						<a id="menu-geral"><i class="fa fa-home"></i> Menu <span class="fa fa-chevron-down"></span></a>
 						<ul class="nav child_menu" style="">
 							<?php if($perfil == "P"): ?>
 							<li><a href="administrarAtividades.php">Administrar Atividades</a></li>
@@ -48,6 +48,7 @@
 							<li><a href="inscricaoAvaliacao.php">Incrição Avaliação</a></li>
 							<?php endif; ?>
 						</ul>
+						<a id="menu-fundadores" href="fundadores.php"><i class="fa fa-child"></i> Fundadores</span></a>
 					</li>
 				</ul>
 
