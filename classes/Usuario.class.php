@@ -68,47 +68,6 @@ class Usuario {
         $senhaCadastro = $_POST['senhaCadastro'];
         $perfil = "A";
 
-        
-         try{
-            $conn = $this->bd->getConnection();
-
-            $sqlQuery = 'SELECT *
-                           FROM tb_usuario
-                          WHERE ra = :ra';
-
-            $stmConsulta = $conn->prepare($sqlQuery);
-            $stmConsulta->bindParam(':ra', $ra);
-            $stmConsulta->execute();
-
-            if($stmConsulta->rowCount() > 0) {
-                respostaJsonErro('Este RA já foi cadastrado!');
-            }
-
-            $sql = 'INSERT INTO tb_usuario (ra, nome, telefone, email, senha, perfil) VALUES (:ra, :nome, :telefone, :emailCadastro, SHA1(:senhaCadastro), :perfil)';
-
-            $stm = $conn->prepare($sql);
-            $stm->bindParam(':ra', $ra);
-            $stm->bindParam(':nome', $nome);
-            $stm->bindParam(':telefone', $telefone);
-            $stm->bindParam(':emailCadastro', $emailCadastro);
-            $stm->bindParam(':senhaCadastro', $senhaCadastro);
-            $stm->bindParam(':perfil', $perfil);
-            $stm->execute();
-
-            if($stm->rowCount() > 0) {
-                respostaJsonSucesso("Cadastro realizado com sucesso!");
-            } else {
-                respostaJsonErro("Cadastro não realizado.");
-            }
-
-            respostaJsonExcecao($stm->fetchAll(PDO::FETCH_ASSOC));
-        }catch (PDOException $e){
-            respostaJsonExcecao($e);
-        }finally {
-            $this->bd->close();
-        }
-        
-       
         try{
             $conn = $this->bd->getConnection();
 
