@@ -22,9 +22,9 @@ $professor = new Professor();
 
 switch($acao) {
     //case 'excluir': { $professor->excluir(); break; }
-    case 'alterar': { $professor->alterar(); break; }
+    case 'alterar': { $professor->Update(); break; }
     case 'inserir': { $professor->Insert(); break;}
-    //case 'buscarPorId': {$professor->buscarPorId(); break;}
+    case 'buscarPorId': {$professor->getDados(); break;}
     default: { break; }
 }
 
@@ -108,8 +108,33 @@ class Professor
     /**
      * Retorna os dados de um professor a partir do seu codigo
      */
-    function getDados($codProfessor){
+    function getDados(){
 
+        if(!isset($_SESSION['cod_usuario']))
+            respostaJsonErro('Usuario inválido ');
+
+        $cod_usuario = $_SESSION['cod_usuario'];
+
+        try{
+            $sql = ' nome, 
+ 			    email, 
+ 			    telefone, 
+ 			    senha, 
+ 			    confirmarSenha 
+ 		       FROM tb_usuario 
+ 		      WHERE cod_usuario = :cod_usuario';
+
+            $conn = $this->bd->getConnection();
+            $stm = $conn->prepare($sql);
+            $stm->bindParam(':cod_usuario', $cod_usuario);
+            $stm->execute();
+
+            respostaJson($stm->fetchAll(PDO::FETCH_ASSOC));
+        }catch (Exception $e){
+            respostaJsonExcecao($e);
+        }finally {
+            $this->bd->close();
+        }
     }
 
     /**

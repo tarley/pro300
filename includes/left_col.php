@@ -33,6 +33,7 @@
 							<li><a href="administrarAtividades.php">Administrar Atividades</a></li>
 							<li><a href="lancamentoNota.php">Lançamento Nota</a></li>
 							<li><a href="cadastroProfessor.php">Cadastro Professor</a></li>
+							<li><a href="alterarProfessor.php">Alterar Professor</a></li>
 				<!--li><a href="gestaoGrupos.php">Gestão Grupos</a></li-->
                                 <!--<li><a href="gestaoGruposFiltroAtividade.php">Filtro Atividade</a></li>-->
 							<li><a href="parametroAvaliacao.php">Parâmetro Avaliação</a></li>
