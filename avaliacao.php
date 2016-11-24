@@ -36,27 +36,24 @@
 								<p>Prezado <span id="subTitulo">Ajudante</span>, neste formulário você deverá avaliar, com bastante honestidade, o nível de ajuda oferecida a cada integrante do grupo com base na escala de 1 a 5. <br/>(1 para pouca ajuda e 5 para muita ajuda).</p>
 
 								<!-- start form for validation -->
-								<form id="demo-form" method="POST" >									
-									<input id="cod_insc_avaliador" type="hidden" />
-									<div id="listaAvaliacoes">
-										<!--<br/>
-										<label for="fullname">Nome do Ajudado:</label> 
-										<div class="x_content">
-											<div
-												<div id="stars" class="starrr lead"></div>
-												A nota do lider é: <span id="count">0</span> estrela(s)
+								<input id="cod_insc_avaliador" type="hidden" />
+								<div id="listaAvaliacoes">
+									<!--<br/>
+									<label for="fullname">Nome do Ajudado:</label> 
+									<div class="x_content">
+										<div
+											<div id="stars" class="starrr lead"></div>
+											A nota do lider é: <span id="count">0</span> estrela(s)
+										</div>
+										<div class="row x_title">
+											<div class="col-md-6">
 											</div>
-											<div class="row x_title">
-												<div class="col-md-6">
-												</div>
-												<div class="col-md-6">
-												</div>
+											<div class="col-md-6">
 											</div>
-										</div>-->
-									</div>
-									<input id="salvar" type="submit" class="btn btn-primary"></input>
-									<!--span id="btnSalvar" class="btn btn-primary">Salvar</span-->
-								</form>
+										</div>
+									</div>-->
+								</div>
+								<button id="salvar" class="btn btn-primary">Enviar Avaliação</button>
 								<!-- end form for validations -->
 								<!-- Fim do conteudo da página  -->
 
@@ -66,7 +63,7 @@
 			</div>
 
 		</div>
-
+		<?php include_once ("includes/footer.php"); ?>
 	</div>
 	<!-- Page Content End -->
 
@@ -80,25 +77,9 @@
 </div>
 <?php include_once ("includes/script.php"); ?>
 
-
-
-
 <script>	
 
 	var codInscricao = <?php echo $_GET['codInscricao']?>;
-	
-	
-	/*$.ajax({
-		url: "classes/Atividade.class.php?acao=listar",
-		data: { codAtividade: codAtividade }
-	}).done(function(data){
-		
-		$("#cod_insc_avaliador").val(data.cod_inscricao);
-		
-	});*/
-
-	
-	
 	
 	$.ajax({
 		url: 'classes/Avaliacao.class.php?acao=listar&codInscricao=' + codInscricao
@@ -154,8 +135,7 @@
 							'<div class="row x_title">'+ '<div class="col-md-6"></div>'+ '<div class="col-md-6"></div>' + '</div>' + '</div></div>');
 				});
 			}
-			
-			
+	
 		}
 		
 	});
@@ -164,41 +144,40 @@
 	
 	$("#salvar").click(function (e) {
 		
-		var insc_avaliador = $("#salvar").val();
+		var listaCodInscricaoAvaliado ="";
+		var listaNota = "";
 		
-		
-		var dados = {};
-		var respostas=[];
-		
-		//dados.salvar = insc_avaliador;		
-		//dados.alunos = [];
-		
-		$("div[id*='divAjudado']").each(function(){
-			var obj = [];
-			alert($(this).prop("data"));
-			//var id = $(this).attr("data-id");			
-			var codAvaliado = $("input[name='codAvaliado']", this).val();			
-			var notaAvaliado = $("input[type='radio'][name='count" + id + "']:checked").val();
-			
-			var objRespostas = {};
-			
-			objRespostas['cod_insc_avaliado'] = codAvaliado;
-			objRespostas['nota'] = notaAvaliado;
-			respostas.push(objRespostas);		
-			
+		$("input[name='codAvaliado']").each(function(){
+			if(listaCodInscricaoAvaliado != "")
+				listaCodInscricaoAvaliado += ",";
+				
+			listaCodInscricaoAvaliado += this.value;
 		});
 		
-		
-		
-		arrayObj['Respostas'] = respostas;
-		dados.push(arrayObj);
-		Console.log(dados);
-		
-		$.post("classes/Avaliacao.class.php?acao=insert", dados).done(function(data){
-			
+		$("input[type='radio']:checked").each(function(){
+			if(listaNota != "")
+				listaNota += ",";
+				
+			listaNota += this.value;
 		});
+
+		console.log(listaCodInscricaoAvaliado);
+		console.log(listaNota);
 		
-		
+		$.post("classes/Avaliacao.class.php?acao=inserir", {
+			codAvaliador: codInscricao,
+			listaCodInscricaoAvaliado: listaCodInscricaoAvaliado,
+			listaNota: listaNota
+		}).done(function(result) {
+			//console.log(result);
+			alert(result.msg);			
+			
+			// Verificar se precisa disso
+			//g.listarGrupos(div, codAtividade);						
+		}).error(function(error) {
+			//console.log(error);
+			alert(error.responseText);						
+		});
 	});	
 
 </script>
