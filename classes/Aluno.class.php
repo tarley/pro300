@@ -60,7 +60,7 @@ class Aluno
     /**
      * Atualiza os dados de um aluno a partir de um array
      */
-    function Update(){
+     function Update(){
         if(!isset($_SESSION['cod_usuario']))
             respostaJsonErro("Usuário não informado");
 
@@ -72,6 +72,33 @@ class Aluno
         $emailCadastro = $_POST['emailCadastro'];
 
         try{
+			
+			$conn = $this->bd->getConnection();
+
+            $sqlQuery = 'SELECT *
+                           FROM tb_usuario
+                          WHERE ra = :ra';
+
+            $stmConsulta = $conn->prepare($sqlQuery);
+            $stmConsulta->bindParam(':ra', $ra);
+            $stmConsulta->execute();
+
+            if($stmConsulta->rowCount() > 0) {
+                respostaJsonErro('Este RA já foi cadastrado!');
+            }
+			
+            $sqlConsultaEmail = 'SELECT *
+                                   FROM tb_usuario
+                                  WHERE email = :email';
+
+            $stmConsultaEmail = $conn->prepare($sqlConsultaEmail);
+            $stmConsultaEmail->bindParam(':email', $emailCadastro);
+            $stmConsultaEmail->execute();
+
+            if($stmConsultaEmail->rowCount() > 0) {
+              respostaJsonErro('Este e-mail já foi cadastrado!');
+            }
+			
             $sql= 'UPDATE tb_usuario 
                       SET email = :emailCadastro,
                           ra = :ra,
@@ -79,10 +106,7 @@ class Aluno
                           telefone = :telefone
                     WHERE cod_usuario =  :cod_usuario';
 
-            //$stm = $conn->prepare($sql);
-            //$stm->bindParam(':cod_usuario', $cod_usuario);
-            //$stm->bindParam(':descricao', $descricao);
-
+            
             $conn = $this->bd->getConnection();
             $stm = $conn->prepare($sql);
             $stm->bindParam(':cod_usuario', $cod_usuario);
@@ -105,7 +129,8 @@ class Aluno
             $this->bd->close();
         }
     }
-
+    
+    
     /**
      * Retorna os dados de um aluno a partir do seu codigo
      */
