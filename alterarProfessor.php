@@ -55,7 +55,7 @@ require_once ("controleAcesso.php");
 									</div>
 									<div class="form-group">
 										<div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
-											<label>Senha:</label>
+											<label>Nova Senha:</label>
 											<input id="senha" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="senha" placeholder="Senha" required="required" type="password">
 										</div>
 									</div>
@@ -129,13 +129,13 @@ require_once ("controleAcesso.php");
 			msg += "Preencha o campo telefone\n\r";
 		}
 
-		if (senha == "") {
-			msg += "Preencha o campo senha\n\r";
-		}
-
-		if (confirmarSenha == "") {
-			msg += "Preencha o campo Confirmar senha\n\r";
-		}
+		if (senha != "") {
+			
+		if(senha != confirmarSenha){
+			alert("Campo Senha e Confirmar Senha devem ser iguais.");
+			e.preventDefault();
+			return;
+		}}
 
 		if (msg != "") {
 			alert("Preencha os campos: \n\r" + msg);
@@ -143,11 +143,7 @@ require_once ("controleAcesso.php");
 			return;
 		}
 
-		if(senha != confirmarSenha){
-			alert("Campo Senha e Confirmar Senha devem ser iguais.");
-			e.preventDefault();
-			return;
-		}
+		
 
 
 
