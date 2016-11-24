@@ -77,10 +77,12 @@ class Aluno
 
             $sqlQuery = 'SELECT *
                            FROM tb_usuario
-                          WHERE ra = :ra';
+                          WHERE ra = :ra
+						    AND cod_usuario <>  :cod_usuario';
 
             $stmConsulta = $conn->prepare($sqlQuery);
             $stmConsulta->bindParam(':ra', $ra);
+            $stmConsulta->bindParam(':cod_usuario', $cod_usuario);
             $stmConsulta->execute();
 
             if($stmConsulta->rowCount() > 0) {
@@ -89,10 +91,12 @@ class Aluno
 			
             $sqlConsultaEmail = 'SELECT *
                                    FROM tb_usuario
-                                  WHERE email = :email';
+                                  WHERE email = :email
+								    AND cod_usuario <>  :cod_usuario';
 
             $stmConsultaEmail = $conn->prepare($sqlConsultaEmail);
             $stmConsultaEmail->bindParam(':email', $emailCadastro);
+			$stmConsultaEmail->bindParam(':cod_usuario', $cod_usuario);
             $stmConsultaEmail->execute();
 
             if($stmConsultaEmail->rowCount() > 0) {
@@ -143,12 +147,12 @@ class Aluno
 
         try{
             $sql = ' SELECT email, 
- 							senha, 
- 							ra, 
- 							nome, 
- 							telefone 
- 					  FROM tb_usuario 
- 					 WHERE cod_usuario = :cod_usuario';
+ 			    senha, 
+ 			    ra, 
+ 			    nome, 
+ 			    telefone 
+ 		       FROM tb_usuario 
+ 		      WHERE cod_usuario = :cod_usuario';
 
             $conn = $this->bd->getConnection();
             $stm = $conn->prepare($sql);
