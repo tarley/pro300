@@ -68,19 +68,33 @@ class Usuario {
         $senhaCadastro = $_POST['senhaCadastro'];
         $perfil = "A";
 
-        try{
+        
+		  try{
             $conn = $this->bd->getConnection();
 
-            $sqlConsulta = 'SELECT *
-                              FROM tb_usuario
-                             WHERE email = :email';
+		
+            $sqlQuery = 'SELECT *
+                           FROM tb_usuario
+                          WHERE ra = :ra';
 
-            $stmConsulta = $conn->prepare($sqlConsulta);
-            $stmConsulta->bindParam(':email', $emailCadastro);
+            $stmConsulta = $conn->prepare($sqlQuery);
+            $stmConsulta->bindParam(':ra', $ra);
             $stmConsulta->execute();
 
             if($stmConsulta->rowCount() > 0) {
-                respostaJsonErro('Email já cadastrado');
+                respostaJsonErro('Este RA já foi cadastrado!');
+            }
+			
+            $sqlConsultaEmail = 'SELECT *
+                                   FROM tb_usuario
+                                  WHERE email = :email';
+
+            $stmConsultaEmail = $conn->prepare($sqlConsultaEmail);
+            $stmConsultaEmail->bindParam(':email', $emailCadastro);
+            $stmConsultaEmail->execute();
+
+            if($stmConsultaEmail->rowCount() > 0) {
+              respostaJsonErro('Este e-mail já foi cadastrado!');
             }
 
             $sql = 'INSERT INTO tb_usuario (ra, nome, telefone, email, senha, perfil) VALUES (:ra, :nome, :telefone, :emailCadastro, SHA1(:senhaCadastro), :perfil)';
@@ -104,7 +118,7 @@ class Usuario {
         }catch (PDOException $e){
             respostaJsonExcecao($e);
         }finally {
-            $this->bd->close();
+              $this->bd->close();
         }
     }
 }
