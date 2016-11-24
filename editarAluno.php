@@ -164,6 +164,7 @@ require_once ("controleAcesso.php");
 
       $("#btnCancelar").click(function(e){
           window.location = "homeAluno.php";
+	       e.preventDefault();
       });
 
 
