@@ -149,7 +149,14 @@ require_once ("controleAcesso.php");
       $.post("classes/Aluno.class.php?acao=alterar", { ra: ra, nome: nome, telefone: telefone, emailCadastro: emailCadastro})
           .done(function(result){
             console.log(result);
-              alert(result.msg);
+                alert(result.msg);
+			  
+		 if (result.erro){
+						
+		 }else{
+		 	window.location = "homeAluno.php";	
+		 }
+			  
           });
 
       e.preventDefault();
