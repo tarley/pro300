@@ -69,7 +69,7 @@ class Usuario {
         $perfil = "A";
 
         
-		  try{
+	try{
             $conn = $this->bd->getConnection();
 
 		
