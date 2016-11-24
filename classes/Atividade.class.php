@@ -10,6 +10,11 @@ $codprofessor = $_SESSION['cod_usuario'];
 $atividade = new Atividade();
 
 switch($acao) {
+    case 'enviarEmails':{
+        $atividade->EnviarEmails();
+        break;
+    }
+    
     case 'inserir': {
         $atividade->Insert();
         break;
@@ -51,6 +56,45 @@ class Atividade
 
     function __construct(){
         $this-> bd = new BDConnection();
+    }
+
+    function EnviarEmails(){
+        $codAtividade = $_POST['codAtividade'];
+
+        $sql = "SELECT U.nome, U.email as Email, I.lider
+        FROM tb_atividade A INNER JOIN tb_inscricao I ON(A.cod_atividade = I.cod_atividade)
+                            INNER JOIN tb_usuario U ON (U.cod_usuario = I.cod_aluno)
+        WHERE a.cod_atividade = :codAtividade";
+
+        try{
+            $conn = $this->bd->getConnection();
+            $stm = $conn->prepare($sql);
+            $stm->bindParam(":codAtividade", $codAtividade);
+            $stm->execute();
+
+            $result = $stm->fetchAll(PDO::FETCH_ASSOC);// = 0;
+            $emails = "";
+
+            $subject = "Avaliação disponível";
+
+            $message = "A avaliação está disponível para ser realizada : <a href='www.pro300.com.br'>Pro 300</a>";
+
+            $header = "From:abc@somedomain.com \r\n";
+            $header .= "MIME-Version: 1.0\r\n";
+            $header .= "Content-type: text/html\r\n";
+
+            for ($i = 0; $i < sizeof($result); $i++) {
+                $to = $result[$i]['Email'];
+                $retval = mail ($to,$subject,$message,$header);
+            }
+
+            respostaJsonSucesso("Emails enviados com sucesso a $emails.");
+
+       }catch (PDOException $e){
+           respostaJsonExcecao($e);
+       }finally{
+           $this->bd->close();
+       }
     }
 
     /**
