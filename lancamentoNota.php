@@ -1,6 +1,7 @@
 <?php
 	$permissaoPagina = "P"; // A ou P de acordo com o perfil do usuário
 	require_once ("controleAcesso.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,52 +42,37 @@
 										<th>Nome Aluno</th>
 										<th>Nota P1</th>
 										<th>Nota P300</th>
+										<th>Lider</th>
+										<th>Grupo</th>
 									</tr>
 									</thead>
-									<tbody>
-									<tr>
-										<td>12332</td>
-										<td>Caesar Vance</td>
-										<td><input type="text" size="2" class="form-control" placeholder=""></td>
-										<td><input type="text" size="2" class="form-control" placeholder=""></td>
-									</tr>
-									<tr>
-										<td>5333523</td>
-										<td>Angelica Ramos</td>
-										<td><input type="text" size="2" class="form-control" placeholder=""></td>
-										<td><input type="text" size="2" class="form-control" placeholder=""></td>
-									</tr>
+									<tbody id="filho">
 
-									<tr>
-										<td>452452</td>
-										<td>Gavin Joyce</td>
-										<td><input type="text" size="2" class="form-control" placeholder=""></td>
-										<td><input type="text" size="2" class="form-control" placeholder=""></td>
-									</tr>
-
-									<tr>
-										<td>424242452</td>
-										<td>Shou Itou</td>
-										<td><input type="text" size="2" class="form-control" placeholder=""></td>
-										<td><input type="text" size="2" class="form-control" placeholder=""></td>
-									</tr>
-									<tr>
-										<td>475247524</td>
-										<td>Donna Snider</td>
-										<td><input type="text" size="2" class="form-control" placeholder=""></td>
-										<td><input type="text" size="2" class="form-control" placeholder=""></td>
-									</tr>
 									</tbody>
 								</table>
 
-								<button type="button" align="center" class="btn btn-primary" data-target=".bs-example-modal-sm">Salvar</button>
-								<!-- Início do conteudo da página  -->
-
+								<input type="submit" class="btn btn-success" name="confirmar" id="confirmar" value="confirmar">
+								<span>Quantidade mínima de pessoas por grupo</span>
+								<input type="text" name="qtd-pessoas-por-grupo" id="qtd-pessoas-por-grupo" value="4">
+								<input type="submit" class="btn btn-success" name="gerar_grupos" id="gerar_grupos" value="Gerar grupos">
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Grupo
+				</div>
+				<div class="panel-body">
 
+				</div>
+			</div>
 			</div>
 
 		</div>
@@ -101,5 +87,7 @@
 	<div id="notif-group" class="tabbed_notifications"></div>
 </div>
 <?php include_once ("includes/script.php"); ?>
+<script src="js/lancamentoNota.js"></script>
 </body>
 </html>
+
