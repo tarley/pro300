@@ -257,8 +257,8 @@ class Atividade
             SELECT  cod_atividade,
                     desc_atividade,
                     token,
-                    date_format(data_inicio, \'%m/%d/%Y\') as data_inicio,
-                    date_format(data_fim,\'%m/%d/%Y\') as data_fim,
+                    date_format(data_inicio, \'%d/%m/%Y\') as data_inicio,
+                    date_format(data_fim,\'%d/%m/%Y\') as data_fim,
                     data_encerramento_atv,
                     cod_professor
             FROM tb_atividade a 
