@@ -15,6 +15,7 @@ $RelatorioAtividades = new RelatorioAtividades();
 
 switch($acao) {
     case 'buscarDetalhes': { $RelatorioAtividades->buscarDetalhes(); break; }
+    case 'listar': { $RelatorioAtividades->buscarTodas(); break; }
     default: { $RelatorioAtividades->buscarTodas(); break; }
 }
 
@@ -42,12 +43,12 @@ class RelatorioAtividades
             I.p300 as "NotaP300",
             I.nota_final as "NotaFinal",
            format ((((I.p300 / I.nota_final) -1) * 100),1) as "IndiceMelhoria"
-FROM	tb_usuario U
-INNER JOIN
-		tb_inscricao I
-ON		(U.cod_usuario = I.cod_aluno)
-WHERE U.perfil = "A"
-AND	I.cod_atividade = :codAtividade ';
+            FROM	tb_usuario U
+            INNER JOIN
+                    tb_inscricao I
+            ON		(U.cod_usuario = I.cod_aluno)
+            WHERE U.perfil = "A"
+            AND	I.cod_atividade = :codAtividade ';
 
         $conn = $this->bd->getConnection();
         $stm = $conn->prepare($sql);

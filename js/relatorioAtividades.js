@@ -5,7 +5,6 @@ function relatorio(tbody) {
 
     this.url = "classes/RelatorioAtividades.php?CodAtividade="+getQueryVariable("CodAtividade");
 
-
     tbody.empty();
 
     $.ajax({
@@ -83,7 +82,7 @@ function getQueryVariable(variable)
 
 function exportarRelatorio()
 {
-    this.url = "classes/RelatorioAtividades.php";
+    this.url = "classes/RelatorioAtividades.php?CodAtividade="+getQueryVariable("CodAtividade");
 
     $.ajax({
         url: this.url
@@ -97,7 +96,7 @@ function exportarRelatorio()
             report = report.concat("\n",Object.values(val).join(';'));
         });
 
-        download(report, "Relatorio.csv", "text/plain")
+        download(report, "Relatorio.csv", "text/plain");
 
         /*var csv = json.map(function(row){
             return fields.map(function(fieldName){
@@ -105,7 +104,6 @@ function exportarRelatorio()
             }).join(';');
         });*/
 
-        alert(report);
     });
 }
 
