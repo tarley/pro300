@@ -41,14 +41,14 @@ require_once ("controleAcesso.php");
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
                           <label>RA*:</label>
-                            <input type="text" name="ra" id="ra" class="form-control"  maxlength="8">
+                            <input type="text" name="ra" id="ra" class="form-control"  maxlength="8" onkeyup="mascara( this, soDigitos );">
                         </div>
                       </div>
 
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
                           <label>Nome*:</label>
-                            <input type="text" name="nome" id="nome" class="form-control">
+                            <input type="text" name="nome" id="nome" class="form-control" oninput="javascript:retirarAcento(this);">
                         </div>
                       </div>
 
@@ -167,7 +167,31 @@ require_once ("controleAcesso.php");
 	  e.preventDefault();
       });
 
+     function retirarAcento(objResp) {
+		var varString = new String(objResp.value);
+		var stringAcentos = new String('àâêôûãõáéíóúçüÀÂÊÔÛÃÕÁÉÍÓÚÇÜ1234567890\\!@#$%¨&*()-_+={[}]:;.,?|<>/´\"~^\`\'°');
+		var stringSemAcento = new String('aaeouaoaeioucuAAEOUAOAEIOUCU');
 
+		var i = new Number();
+		var j = new Number();
+		var cString = new String();
+		var varRes = '';
+
+		for (i = 0; i < varString.length; i++) {
+			cString = varString.substring(i, i + 1);
+				for (j = 0; j < stringAcentos.length; j++) {
+					if (stringAcentos.substring(j, j + 1) == cString){
+						cString = stringSemAcento.substring(j, j + 1);
+					}
+				}
+			varRes += cString;
+		}
+		objResp.value = varRes;
+	}
+	  
+	  
+	  
+	  
   </script>
   <script src="js/mascaraTelefone.js"></script>
 
