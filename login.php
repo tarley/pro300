@@ -214,8 +214,8 @@
 		
     	function retirarAcento(objResp) {
 		var varString = new String(objResp.value);
-		var stringAcentos = new String('àâêôûãõáéíóúçüÀÂÊÔÛÃÕÁÉÍÓÚÇÜ1234567890\\!@#$%¨&*()-_+={[}]:;.,?|<>/´\"~^\`\'°');
-		var stringSemAcento = new String('aaeouaoaeioucuAAEOUAOAEIOUCU');
+		var stringAcentos = new String('üÜ1234567890\\!@#$%¨&*()-_+={[}]:;.,?|<>/´\"~^\`\'°');
+		var stringSemAcento = new String('uU');
 
 		var i = new Number();
 		var j = new Number();
