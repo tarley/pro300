@@ -51,10 +51,10 @@
 					<form id="formCadastro">
 						<h1>  Cadastro  </h1>
 						<div>
-							<input type="text" class="form-control" placeholder="RA*" id="ra" minlength="8" maxlength="8" />
+							<input type="text" class="form-control" placeholder="RA*" id="ra" minlength="8" maxlength="8" onkeyup="mascara( this, soDigitos );" />
 						</div>
 						<div>
-							<input type="text" class="form-control" placeholder="Nome*" id="nome"  />
+							<input type="text" class="form-control" placeholder="Nome*" id="nome" oninput="javascript:retirarAcento(this);" />
 						</div>
 						<div>
 							<input type="text" class="form-control" placeholder="Celular" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" />
@@ -211,6 +211,31 @@
 		 	e.preventDefault();
 		});
 
+		
+    	function retirarAcento(objResp) {
+		var varString = new String(objResp.value);
+		var stringAcentos = new String('àâêôûãõáéíóúçüÀÂÊÔÛÃÕÁÉÍÓÚÇÜ1234567890\\!@#$%¨&*()-_+={[}]:;.,?|<>/´\"~^\`\'°');
+		var stringSemAcento = new String('aaeouaoaeioucuAAEOUAOAEIOUCU');
+
+		var i = new Number();
+		var j = new Number();
+		var cString = new String();
+		var varRes = '';
+
+		for (i = 0; i < varString.length; i++) {
+			cString = varString.substring(i, i + 1);
+				for (j = 0; j < stringAcentos.length; j++) {
+					if (stringAcentos.substring(j, j + 1) == cString){
+						cString = stringSemAcento.substring(j, j + 1);
+					}
+				}
+			varRes += cString;
+		}
+		objResp.value = varRes;
+	}
+
+		
+		
 	</script>
 	<script src="js/mascaraTelefone.js"></script>
 
