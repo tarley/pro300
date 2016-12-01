@@ -81,7 +81,7 @@
 
             						<div class="col-sm-3">
 										<div class="team-member">
-											<img src="images/img_fundador/alex.png" class="img-circle img-fundadores" alt="">
+											<img src="images/img_fundador/user.png" class="img-circle img-fundadores" alt="">
 											<h4>Alex</h4>
 											<p class="text-muted"></p>
 											<ul class="list-inline social-buttons">                     
@@ -94,7 +94,7 @@
 									</div>
 									<div class="col-sm-3">
 										<div class="team-member">
-											<img src="images/img_fundador/anderson.png" class="img-circle img-fundadores" alt="">
+											<img src="images/img_fundador/user.png" class="img-circle img-fundadores" alt="">
 											<h4>Anderson</h4>
 											<p class="text-muted"></p>
 											<ul class="list-inline social-buttons">                     
@@ -133,7 +133,7 @@
 									</div>
 									<div class="col-sm-3">
 										<div class="team-member">
-											<img src="images/img_fundador/bruna_frazoni.png" class="img-circle img-fundadores" alt="">
+											<img src="images/img_fundador/user.png" class="img-circle img-fundadores" alt="">
 											<h4>Bruna Frazoni</h4>
 											<p class="text-muted"></p>
 											<ul class="list-inline social-buttons">
@@ -191,14 +191,14 @@
 											<ul class="list-inline social-buttons">
 												<li><a target="_blank"  href="https://facebook.com/fillipeperpetuo"><i class="fa fa-facebook"></i></a>
 												</li>
-												<li><a target="_blank"  href="https://linkedin.com/in/fillipe-perpétuo-639b0075?trk=nav_responsive_tab_profile"><i class="fa fa-linkedin"></i></a>
+												<li><a target="_blank"  href="https://linkedin.com/in/fillipe-perpÃ©tuo-639b0075?trk=nav_responsive_tab_profile"><i class="fa fa-linkedin"></i></a>
 												</li>
 											</ul>
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="team-member">
-											<img src="images/img_fundador/francisco.jpg" class="img-circle img-fundadores" alt="">
+											<img src="images/img_fundador/user.jpg" class="img-circle img-fundadores" alt="">
 											<h4>Francisco Coelho</h4>
 											<p class="text-muted"></p>
 											<ul class="list-inline social-buttons">
@@ -211,7 +211,7 @@
 									</div>
 									<div class="col-sm-3">
 										<div class="team-member">
-											<img src="images/img_fundador/gustavo_eduardo.jpg" class="img-circle img-fundadores" alt="">
+											<img src="images/img_fundador/user.jpg" class="img-circle img-fundadores" alt="">
 											<h4>Gustavo Eduardo</h4>
 											<p class="text-muted"></p>
 											<ul class="list-inline social-buttons">
@@ -224,7 +224,7 @@
 									</div>
 									<div class="col-sm-3">
 										<div class="team-member">
-											<img src="images/img_fundador/gustavo.jpg" class="img-circle img-fundadores" alt="">
+											<img src="images/img_fundador/user.jpg" class="img-circle img-fundadores" alt="">
 											<h4>Gustavo</h4>
 											<p class="text-muted"></p>
 											<ul class="list-inline social-buttons">
