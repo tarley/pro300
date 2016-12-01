@@ -106,21 +106,20 @@
 		var dataInicio = $('#reservation').data('daterangepicker').startDate.format('YYYY-MM-DD');
 		var dataFim = $('#reservation').data('daterangepicker').endDate.format('YYYY-MM-DD');
 
-		console.log("Oi");
-
 		if (token == "") {
 			alert("Preencha o campo Token!");
 			e.preventDefault();
 			return;
 		}
 
-		/*var dtInicio = moment(dataInicio);
-
-		if (dtInicio < now){
+		var dtInicio = moment(dataInicio);
+		now = moment(now, 'YYYY-MM-DD');
+		
+		if (now.isAfter(dtInicio, 'day')){
 			alert("Data inválida!");
 			e.preventDefault();
 			return;
-		}*/
+		}
 
 		if (descricao == "") {
 			alert("Preencha o campo de Descrição!");
