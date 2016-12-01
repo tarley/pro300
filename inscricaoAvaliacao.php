@@ -36,8 +36,8 @@
 											<label>Inserir token*:</label>
 											<input type="text" name="token" id = "token" class="form-control">
 										</div>
-										<button type="submit" class="btn btn-primary">Cancelar</button>
-										<button type="submit" class="btn btn-success" name ="enviar" id = "enviar">Enviar</button>
+										<button type="button" id = "cancel" class="btn btn-primary">Cancelar</button>
+										<button type="submit" class="btn btn-success" name ="enviar" id = "enviar" >Enviar
 									</form>
 								</div>
 							</div>
@@ -62,7 +62,7 @@
 		$("#enviar").click(function(e){
 
 			var token1 = $("#token").val();
-			
+
 
 			if (token1 == "") {
 				alert("Preencha o campo token");
@@ -82,6 +82,11 @@
 
 				});
 
+			e.preventDefault();
+		});
+
+		$("#cancel").click(function(e){
+			window.location = "homeAluno.php";
 			e.preventDefault();
 		});
 	</script>
