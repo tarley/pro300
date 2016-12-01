@@ -21,7 +21,7 @@ require_once ("controleAcesso.php");
 
 				<div class="page-title">
 					<div class="title_left">
-						<h3>Alterar dados do Professor</h3><!-- Título da Página -->
+						<h3>Cadastro Professor</h3><!-- Título da Página -->
 					</div>
 				</div>
 
@@ -55,7 +55,7 @@ require_once ("controleAcesso.php");
 									</div>
 									<div class="form-group">
 										<div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
-											<label>Nova Senha:</label>
+											<label>Senha:</label>
 											<input id="senha" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="senha" placeholder="Senha" required="required" type="password">
 										</div>
 									</div>
@@ -97,18 +97,6 @@ require_once ("controleAcesso.php");
 </body>
 
 <script>
-      $.ajax({
-        url:'classes/Aluno.class.php?acao=buscarPorId'
-      }).done(function(data){
-        if (data.erro) {
-          alert(data.msg);
-          window.location = "login.php";
-        } else {
-          $('#nome').val(data[0].nome);
-          $('#email').val(data[0].email);
-          $('#telefone').val(data[0].telefone);
-        }
-      });
 	$("#salvar").click(function (e) {
 		var nome = $("#nome").val();
 		var email = $("#email").val();
@@ -129,13 +117,13 @@ require_once ("controleAcesso.php");
 			msg += "Preencha o campo telefone\n\r";
 		}
 
-		if (senha != "") {
-			
-		if(senha != confirmarSenha){
-			alert("Campo Senha e Confirmar Senha devem ser iguais.");
-			e.preventDefault();
-			return;
-		}}
+		if (senha == "") {
+			msg += "Preencha o campo senha\n\r";
+		}
+
+		if (confirmarSenha == "") {
+			msg += "Preencha o campo Confirmar senha\n\r";
+		}
 
 		if (msg != "") {
 			alert("Preencha os campos: \n\r" + msg);
@@ -143,7 +131,11 @@ require_once ("controleAcesso.php");
 			return;
 		}
 
-		
+		if(senha != confirmarSenha){
+			alert("Campo Senha e Confirmar Senha devem ser iguais.");
+			e.preventDefault();
+			return;
+		}
 
 
 
