@@ -185,7 +185,7 @@
 									</div>
 									<div class="col-sm-3">
 										<div class="team-member">
-											<img src="images/img_fundador/fillipe_perpetuo.png" class="img-circle img-fundadores" alt="">
+											<img src="images/img_fundador/felipe_sangiorge.png" class="img-circle img-fundadores" alt="">
 											<h4>Felipe Sangiorge</h4>
 											<p class="text-muted"></p>
 											<ul class="list-inline social-buttons">
