@@ -106,22 +106,29 @@ class Atividade
         $dataInicio= $_POST['dataInicio'];
         $dataFim= $_POST['dataFim'];
 
-        //$dataInicio('#dataIDOfDateRangePicker').data('daterangepicker').startDate;
-        //$dataFim('#dataIDOfDateRangePicker').data('daterangepicker').endDate;
-
-        if(!isset($_SESSION['cod_usuario']) || trim($_SESSION['cod_usuario']) == "") // verifica se o que ta inputando tá de acordo com oopadrão
-            respostaJsonErro("Usuario não autenticado!");// respostaJason ( metodo do tarley
+        if(!isset($_SESSION['cod_usuario']) || trim($_SESSION['cod_usuario']) == "")
+            respostaJsonErro("Usuario não autenticado!");
 
         $codProfessor = $_SESSION['cod_usuario'];
 
-        $inj = 'INSERT INTO tb_atividade (token,desc_atividade,data_inicio, data_fim,cod_professor)
-             VALUES (:token,:descricao,:dataInicio,:dataFim,:cod_professor)';
-
         try{
             $conn = $this->bd->getConnection();
+
+            $validToken = 'SELECT cod_atividade FROM tb_atividade WHERE token = :token';
+
+            $validToken = $conn->prepare($validToken);
+            $validToken->bindParam(':token', $token);
+            $validToken->execute();
+
+            if($validToken->rowCount() > 0){ // se não retornar nenhuma linha
+                respostaJsonErro("Inscrição já realizada!");
+            }
+
+            $inj = 'INSERT INTO tb_atividade (token,desc_atividade,data_inicio, data_fim,cod_professor)
+             VALUES (:token,:descricao,:dataInicio,:dataFim,:cod_professor)';
+
             $resultado = $conn->prepare($inj);
 
-            // $resultado = $conexao->prepare($select);
             $resultado->bindParam(':token', $token);
             $resultado->bindParam(':descricao', $descricao);
             $resultado->bindParam(':cod_professor', $codProfessor);
@@ -130,9 +137,7 @@ class Atividade
 
             $resultado->execute();
 
-            //contar registro no BD
-
-            if($resultado->rowCount() > 0){ // se inserir algo maior 	que 1 linha vai dá ok
+            if($resultado->rowCount() > 0){
                 respostaJsonSucesso("Cadastro realizado com sucesso!");
             } else {
                 respostaJsonErro("Cadastro não realizado!");
@@ -151,26 +156,11 @@ class Atividade
 
         $codProfessor = $_SESSION['cod_usuario'];
 
-        /*
-        $token = trim(strip_tags($_GET['token']));
-        $descricao = trim(strip_tags($_GET['descricao']));
-        $dataInicio= $_GET['dataInicio'];
-        $dataFim= $_GET['dataFim'];
-        $codAtividade = $_GET['cod_atividade'];
-        */
-
-
         $token = trim(strip_tags($_POST['token']));
         $descricao = trim(strip_tags($_POST['descricao']));
         $dataInicio= $_POST['dataInicio'];
         $dataFim= $_POST['dataFim'];
         $codAtividade = $_POST['cod_atividade'];
-
-
-        //if(!isset($_SESSION['cod_atividade']) || trim($_SESSION['cod_atividade']) == "")
-        //respostaJsonErro("Atividade não encontrada");
-
-
 
         try{
 
@@ -195,7 +185,6 @@ class Atividade
             $stm->bindParam(':codProfessor', $codProfessor);
 
             $stm->execute();
-            //response($stm->fetchAll(PDO::FETCH_ASSOC));
 
             if($stm->rowCount() > 0) {
                 respostaJsonSucesso("Alteracao realizada com sucesso!");
