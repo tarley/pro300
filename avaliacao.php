@@ -21,7 +21,7 @@
 
 				<div class="page-title">
 					<div class="title_left">
-						<h3>Formulario de Avaliação para o <span id="titulo">Ajudante</span></h3><!-- Título da Página -->
+						<h3>Formulario de Avaliação para o <span id="titulo"></span></h3><!-- Título da Página -->
 					</div>
 				</div>
 
@@ -33,7 +33,7 @@
 							<div class="x_content">
 
 								<!-- Início do conteu	do da página  -->
-								<p>Prezado <span id="subTitulo">Ajudante</span>, neste formulário você deverá avaliar, com bastante honestidade, o nível de ajuda oferecida a cada integrante do grupo com base na escala de 1 a 5. <br/>(1 para pouca ajuda e 5 para muita ajuda).</p>
+								<p>Prezado <span id="subTitulo"></span>, neste formulário você deverá avaliar, com bastante honestidade, o nível de ajuda oferecida a cada integrante do grupo com base na escala de 1 a 5. <br/>(1 para pouca ajuda e 5 para muita ajuda).</p>
 
 								<!-- start form for validation -->
 								<input id="cod_insc_avaliador" type="hidden" />
