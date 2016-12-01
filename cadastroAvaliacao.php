@@ -99,6 +99,8 @@
 
 	$("#confirmar").click(function(e) {
 
+		var now = moment();
+
 		var token = $("#token").val();
 		var descricao = $("#descricao").val();
 		var dataInicio = $('#reservation').data('daterangepicker').startDate.format('YYYY-MM-DD');
@@ -111,6 +113,15 @@
 			e.preventDefault();
 			return;
 		}
+
+		/*var dtInicio = moment(dataInicio);
+
+		if (dtInicio < now){
+			alert("Data inválida!");
+			e.preventDefault();
+			return;
+		}*/
+
 		if (descricao == "") {
 			alert("Preencha o campo de Descrição!");
 			e.preventDefault();
