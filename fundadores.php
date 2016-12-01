@@ -186,6 +186,19 @@
 									<div class="col-sm-3">
 										<div class="team-member">
 											<img src="images/img_fundador/fillipe_perpetuo.png" class="img-circle img-fundadores" alt="">
+											<h4>Felipe Sangiorge</h4>
+											<p class="text-muted"></p>
+											<ul class="list-inline social-buttons">
+												<li><a target="_blank"  href=""><i class="fa fa-facebook"></i></a>
+												</li>
+												<li><a target="_blank"  href=""><i class="fa fa-linkedin"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="team-member">
+											<img src="images/img_fundador/fillipe_perpetuo.png" class="img-circle img-fundadores" alt="">
 											<h4>Fillipe Perp&eacute;tuo</h4>
 											<p class="text-muted"></p>
 											<ul class="list-inline social-buttons">
