@@ -42,8 +42,8 @@
                                 <!--<li><a href="telaFinal.php">Tela Final</a></li>-->
 							<?php elseif($perfil == "A"): ?>
 							<li><a href="listarAtividades.php">Atividades</a></li>
-							<li><a href="avaliacaoAjudado.php">Avaliação Ajudado</a></li>
-							<li><a href="avaliacaoLider.php">Avaliação Líder</a></li>
+							<!--<li><a href="avaliacaoAjudado.php">Avaliação Ajudado</a></li>
+							<li><a href="avaliacaoLider.php">Avaliação Líder</a></li>-->
 							<!--<li><a href="login.php#toregister">Cadastro Aluno</a></li>-->
 							<li><a href="editarAluno.php">Editar Cadastro</a></li>
 							<li><a href="inscricaoAvaliacao.php">Incrição Avaliação</a></li>
