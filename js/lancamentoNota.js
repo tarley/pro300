@@ -24,7 +24,13 @@ $(document).ready(function(){
                 itens += "<input type='hidden' value ='"+v.cod_atividade+"'size='2' id='cod_atividade"+k+"'>";
                 itens += "<td><input type='text' disabled value =''size='2' id='eh_lider"+k+"' class='form-control'></td>";
                 itens += "<td><input type='text' disabled value =''size='2' id='grupo"+k+"' class='form-control'></td>";
-                itens += "</tr>";
+
+				if (v.lider == 1)
+					itens += "<td class='text-center' width='10%'><a id='btnGerarNota' class='btn btn-primary btn-xs' data-inscricao='" + v.cod_inscricao + "'>Gerar Nota Final</a></td>";
+				else
+					itens += "<td></td>";
+
+				itens += "</tr>";
             });
         }
         lista.html(itens);
@@ -160,3 +166,12 @@ function atualizarInscricao(linha) {
     })
 }
 
+$(document).on('click','#btnGerarNota', function(){
+
+	var cod_inscricao = $(this).attr("data-inscricao");
+
+	$.post("classes/Grupo.class.php?acao=gerarNotaLider", { cod_inscricao: cod_inscricao })
+		.done(function(result){
+				alert(result.msg);
+		});
+})

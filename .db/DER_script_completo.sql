@@ -70,13 +70,13 @@ DROP TABLE IF EXISTS `pro300`.`tb_inscricao` ;
 
 CREATE TABLE IF NOT EXISTS `pro300`.`tb_inscricao` (
   `cod_inscricao` INT NOT NULL AUTO_INCREMENT,
-  `p1` DECIMAL NULL,
-  `p300` DECIMAL NULL,
-  `nota_final` DECIMAL NULL,
-  `acrescimo` DECIMAL NULL,
+  `p1` DECIMAL(10,2) NULL,
+  `p300` DECIMAL(10,2) NULL,
+  `nota_final` DECIMAL(10,2) NULL,
+  `acrescimo` DECIMAL(10,2) NULL,
   `grupo` CHAR NULL,
   `data_inscricao` DATETIME NULL,
-  `lider` BIT NULL,
+  `lider` CHAR(1) NULL,
   `situacao` INT NULL,
   `cod_aluno` INT NOT NULL,
   `cod_atividade` INT NOT NULL,
@@ -129,13 +129,13 @@ DROP TABLE IF EXISTS `pro300`.`tb_parametro_prova` ;
 
 CREATE TABLE IF NOT EXISTS `pro300`.`tb_parametro_prova` (
   `cod_parametro` INT NOT NULL AUTO_INCREMENT,
-  `valor_media_min_melhoria` DECIMAL NOT NULL,
-  `valor_media_max_melhoria` DECIMAL NOT NULL,
-  `media1` DECIMAL NOT NULL,
-  `media2` DECIMAL NOT NULL,
-  `media3` DECIMAL NOT NULL,
-  `media4` DECIMAL NOT NULL,
-  `media5` DECIMAL NOT NULL,
+  `valor_media_min_melhoria` DECIMAL(10,2) NOT NULL,
+  `valor_media_max_melhoria` DECIMAL(10,2) NOT NULL,
+  `media1` DECIMAL(10,2) NOT NULL,
+  `media2` DECIMAL(10,2) NOT NULL,
+  `media3` DECIMAL(10,2) NOT NULL,
+  `media4` DECIMAL(10,2) NOT NULL,
+  `media5` DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (`cod_parametro`),
   UNIQUE INDEX `tb_parametro_prova_i1` (`valor_media_min_melhoria` ASC, `valor_media_max_melhoria` ASC))
 ENGINE = InnoDB;

@@ -44,6 +44,7 @@
 										<th>Nota P300</th>
 										<th>Lider</th>
 										<th>Grupo</th>
+										<th></th>
 									</tr>
 									</thead>
 									<tbody id="filho">
