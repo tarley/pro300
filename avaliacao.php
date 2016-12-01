@@ -171,6 +171,7 @@
 		}).done(function(result) {
 			//console.log(result);
 			alert(result.msg);			
+			window.location = "listarAtividades.php";
 			
 			// Verificar se precisa disso
 			//g.listarGrupos(div, codAtividade);						
