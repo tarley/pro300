@@ -62,7 +62,7 @@
 									</div>
 									<div class="col-sm-3">
 										<div class="team-member">
-											<img src="images/img_fundador/tarley_lana.png" class="img-circle img-fundadores" alt="">
+											<img src="images/img_fundador/tarley_lana.jpg" class="img-circle img-fundadores" alt="">
 											<h4>Tarley Lana</h4>
 											<p class="text-muted">Prof. Orientador</p>
 											<ul class="list-inline social-buttons">
