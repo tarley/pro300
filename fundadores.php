@@ -81,7 +81,7 @@
 
             						<div class="col-sm-3">
 										<div class="team-member">
-											<img src="images/img_fundador/user.png" class="img-circle img-fundadores" alt="">
+											<img src="images/img_fundador/alex.png" class="img-circle img-fundadores" alt="">
 											<h4>Alex</h4>
 											<p class="text-muted"></p>
 											<ul class="list-inline social-buttons">                     
