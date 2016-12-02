@@ -36,37 +36,32 @@ require_once ("controleAcesso.php");
 								<form class="form-horizontal form-label-left" method="POST" novalidate>
 									<br />
 									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nome <span class="required">*</span>
-										</label>
-										<div class="col-md-8 col-sm-6 col-xs-12">
+										<div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
+											<label>Nome*:</label>
 											<input id="nome" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nome" required="required" type="text">
 										</div>
 									</div>
-									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">E-mail <span class="required">*</span>
-										</label>
-										<div class="col-md-8 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
+											<label>E-mail:</label>
 											<input id="email" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="email" placeholder="E-mail" required="required" type="text">
 										</div>
 									</div>
-									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Telefone <span class="required">*</span>
-										</label>
-										<div class="col-md-6 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
+											<label>Telefone:</label>
 											<input id="telefone" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="telefone" placeholder="Telefone" required="required" type="text">
 										</div>
 									</div>
-									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Senha <span class="required">*</span>
-										</label>
-										<div class="col-md-6 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
+											<label>Senha:</label>
 											<input id="senha" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="senha" placeholder="Senha" required="required" type="password">
 										</div>
 									</div>
-									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Confirmar Senha <span class="required">*</span>
-										</label>
-										<div class="col-md-6 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
+											<label>Confimar Senha:</label>
 											<input id="confirmarSenha" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="confirmarsenha" placeholder="Confirmar Senha" required="required" type="password">
 										</div>
 									</div>
