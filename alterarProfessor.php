@@ -21,7 +21,7 @@ require_once ("controleAcesso.php");
 
 				<div class="page-title">
 					<div class="title_left">
-						<h3>Cadastro Professor</h3><!-- Título da Página -->
+						<h3>Editar Dados Cadastrais</h3><!-- Título da Página -->
 					</div>
 				</div>
 

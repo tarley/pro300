@@ -77,7 +77,7 @@
 						alert(result.msg);
 					else{
 						alert("Inscrição realizada com sucesso!");
-						window.location = "homeAluno.php";
+						window.location = "listarAtividades.php";
 					}
 
 				});
