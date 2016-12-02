@@ -14,6 +14,8 @@
  * Time: 16:00
  */
 
+session_start();
+
 require_once "util/Util.php";
 
 $acao = (isset($_GET['acao'])) ? $_GET['acao'] : 'listar';
@@ -64,7 +66,7 @@ class Professor
             $stmConsulta->execute();
 
             if($stmConsulta->rowCount() > 0) {
-                respostaJsonErro('Email jรก cadastrado');
+                respostaJsonErro('Email já cadastrado');
             }
 
             $sql = 'INSERT INTO tb_usuario (nome, telefone, email, senha, perfil) VALUES (:nome, :telefone, :email, SHA1(:senha), :perfil)';
@@ -95,7 +97,76 @@ class Professor
      * Atualiza os dados de um professor a partir de um array
      */
     function Update($array){
+		if(!isset($_SESSION['cod_usuario']))
+            respostaJsonErro("Usuário não informado");
 
+        $cod_usuario = (int) $_SESSION['cod_usuario'];
+
+		$nome = $_POST['nome'];
+        $telefone = $_POST['telefone'];
+        $email = $_POST['email'];
+        $emailCadastro = $_POST['emailCadastro'];
+
+
+        try{
+			
+			$conn = $this->bd->getConnection();
+
+            $sqlQuery = 'SELECT *
+                           FROM tb_usuario
+                          WHERE email = :email
+						    AND cod_usuario <>  :cod_usuario';
+
+            $stmConsulta = $conn->prepare($sqlQuery);
+            $stmConsulta->bindParam(':email', $emailCadastro);
+            $stmConsulta->bindParam(':cod_usuario', $cod_usuario);
+            $stmConsulta->execute();
+
+            if($stmConsulta->rowCount() > 0) {
+                respostaJsonErro('Este Email já foi cadastrado!');
+            }
+			
+            $sqlConsultaEmail = 'SELECT *
+                                   FROM tb_usuario
+                                  WHERE email = :email
+								    AND cod_usuario <>  :cod_usuario';
+
+            $stmConsultaEmail = $conn->prepare($sqlConsultaEmail);
+            $stmConsultaEmail->bindParam(':email', $emailCadastro);
+			$stmConsultaEmail->bindParam(':cod_usuario', $cod_usuario);
+            $stmConsultaEmail->execute();
+
+            if($stmConsultaEmail->rowCount() > 0) {
+              respostaJsonErro('Este e-mail já foi cadastrado!');
+            }
+			
+            $sql= 'UPDATE tb_usuario 
+                      SET email = :emailCadastro,
+                          nome = :nome,
+                          telefone = :telefone
+                    WHERE cod_usuario =  :cod_usuario';
+
+            
+            $conn = $this->bd->getConnection();
+            $stm = $conn->prepare($sql);
+            $stm->bindParam(':cod_usuario', $cod_usuario);
+            $stm->bindParam(':nome', $nome);
+            $stm->bindParam(':telefone', $telefone);
+            $stm->bindParam(':emailCadastro', $emailCadastro);
+
+            $stm->execute();
+
+            if($stm->rowCount() > 0) {
+                respostaJsonSucesso("Alteração realizada com sucesso!");
+            } else {
+                respostaJsonErro("Nenhum registro alterado.");
+            }
+            response($stm->fetchAll(PDO::FETCH_ASSOC));
+        }catch (PDOException $e){
+            respostaJsonExcecao($e);
+        }finally {
+            $this->bd->close();
+        }
     }
 
     /**
@@ -108,7 +179,7 @@ class Professor
     /**
      * Retorna os dados de um professor a partir do seu codigo
      */
-    function getDados(){
+function getDados(){
 
         if(!isset($_SESSION['cod_usuario']))
             respostaJsonErro('Usuario inválido ');
@@ -116,11 +187,11 @@ class Professor
         $cod_usuario = $_SESSION['cod_usuario'];
 
         try{
-            $sql = ' nome, 
- 			    email, 
- 			    telefone, 
+            $sql = ' SELECT email, 
  			    senha, 
- 			    confirmarSenha 
+ 			    ra, 
+ 			    nome, 
+ 			    telefone 
  		       FROM tb_usuario 
  		      WHERE cod_usuario = :cod_usuario';
 
@@ -136,7 +207,6 @@ class Professor
             $this->bd->close();
         }
     }
-
     /**
      * Retorna uma lista de todos os professores
      */
