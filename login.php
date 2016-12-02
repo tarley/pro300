@@ -23,8 +23,7 @@
 							<input id="senha" type="password" class="form-control" placeholder="Senha" required="" />
 						</div>
 						<div>
-							<a id="btnLogin" class="btn btn-default submit">Entrar</a>
-							<a class="reset_pass" href="#">Esqueceu a Senha?</a>
+							<button id="btnLogin" class="btn btn-default submit">Entrar</button>
 						</div>
 						<div class="clearfix"></div>
 						<div class="separator">

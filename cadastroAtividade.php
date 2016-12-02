@@ -21,7 +21,7 @@
 
 				<div class="page-title">
 					<div class="title_left">
-						<h3>Cadastro Avaliação</h3><!-- Título da Página -->
+						<h3>Cadastro Atividade</h3><!-- Título da Página -->
 					</div>
 				</div>
 

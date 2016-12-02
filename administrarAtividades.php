@@ -27,7 +27,7 @@
 
 
                 <div class="clearfix">
-                    <a href="cadastroAvaliacao.php" style="float:right" type="button" class="btn btn-default">Criar nova atividade</a>
+                    <a href="cadastroAtividade.php" style="float:right" type="button" class="btn btn-default">Criar nova atividade</a>
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">

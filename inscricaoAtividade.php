@@ -21,7 +21,7 @@
 
 					<div class="page-title">
 						<div class="title_left">
-							<h3>Inscrição Avaliação</h3>
+							<h3>Inscrição Atividade</h3>
 						</div>
 					</div>
 					
@@ -31,7 +31,7 @@
 
 							<div class="x_panel">
 								<div class="x_content">
-									<form action ="inscricaoAvaliacao.php" method="post" class="form-group">
+									<form action ="inscricaoAtividade.php" method="post" class="form-group">
 										<div class="form-group">
 											<label>Inserir token*:</label>
 											<input type="text" name="token" id = "token" class="form-control">

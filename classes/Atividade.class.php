@@ -187,7 +187,7 @@ class Atividade
             $stm->execute();
 
             if($stm->rowCount() > 0) {
-                respostaJsonSucesso("Alteracao realizada com sucesso!");
+                respostaJsonSucesso("Alteração realizada com sucesso!");
             } else {
                 respostaJsonErro("Nenhum registro alterado.");
             }
