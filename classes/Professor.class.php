@@ -27,6 +27,7 @@ switch($acao) {
     case 'alterar': { $professor->Update(); break; }
     case 'inserir': { $professor->Insert(); break;}
     case 'buscarPorId': {$professor->getDados(); break;}
+    case 'alterarSenha': {$professor->AlterarSenha(); break;}
     default: { break; }
 }
 
@@ -96,7 +97,7 @@ class Professor
     /**
      * Atualiza os dados de um professor a partir de um array
      */
-    function Update($array){
+    function Update(){
 		if(!isset($_SESSION['cod_usuario']))
             respostaJsonErro("Usuário não informado");
 
@@ -104,7 +105,6 @@ class Professor
 
 		$nome = $_POST['nome'];
         $telefone = $_POST['telefone'];
-        $email = $_POST['email'];
         $emailCadastro = $_POST['emailCadastro'];
 
 
@@ -170,6 +170,62 @@ class Professor
     }
 
     /**
+     * Atualiza senha do professor
+     */
+    function alterarSenha(){
+        if(!isset($_SESSION['cod_usuario']))
+            respostaJsonErro("Usuário não informado");
+
+        $cod_usuario = (int) $_SESSION['cod_usuario'];
+
+        $senhaAtual = $_POST['senhaAtual'];
+        $senha = $_POST['novaSenha'];
+
+        try {
+
+            $conn = $this->bd->getConnection();
+
+            $sqlQuery = 'SELECT *
+                           FROM tb_usuario
+                          WHERE cod_usuario = :cod_usuario
+						    AND senha = :senhaAtual';
+
+            $stmConsulta = $conn->prepare($sqlQuery);
+            $stmConsulta->bindParam(':cod_usuario', $cod_usuario);
+            $stmConsulta->bindParam(':senhaAtual', $senhaAtual);
+            $stmConsulta->execute();
+
+            if($stmConsulta->rowCount() > 0) {
+                respostaJsonErro('Senha atual incorreta!');
+            }
+
+            $sql= 'UPDATE tb_usuario 
+                      SET senha = SHA1(:senha)
+                    WHERE cod_usuario =  :cod_usuario';
+
+
+            $conn = $this->bd->getConnection();
+            $stm = $conn->prepare($sql);
+            $stm->bindParam(':cod_usuario', $cod_usuario);
+            $stm->bindParam(':senha', $senha);
+
+            $stm->execute();
+
+            if($stm->rowCount() > 0) {
+                respostaJsonSucesso("Alteração realizada com sucesso!");
+            } else {
+                respostaJsonErro("Nenhum registro alterado.");
+            }
+            response($stm->fetchAll(PDO::FETCH_ASSOC));
+
+        }catch (PDOException $e){
+            respostaJsonExcecao($e);
+        }finally {
+            $this->bd->close();
+        }
+    }
+
+    /**
      * Deleta um professor a partir do seu codigo
      */
     function Delete($codProfessor){
@@ -179,7 +235,7 @@ class Professor
     /**
      * Retorna os dados de um professor a partir do seu codigo
      */
-function getDados(){
+    function getDados(){
 
         if(!isset($_SESSION['cod_usuario']))
             respostaJsonErro('Usuario inválido ');
@@ -207,6 +263,7 @@ function getDados(){
             $this->bd->close();
         }
     }
+
     /**
      * Retorna uma lista de todos os professores
      */

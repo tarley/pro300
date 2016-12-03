@@ -38,7 +38,7 @@ require_once ("controleAcesso.php");
 									<div class="item form-group">
 										<div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
 											<label>Nome*:</label>
-											<input id="nome" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nome" required="required" type="text">
+											<input id="nome" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nome" required="required" type="text" oninput="javascript:retirarAcento(this);">
 										</div>
 									</div>
 									<div class="form-group">
@@ -50,25 +50,25 @@ require_once ("controleAcesso.php");
 									<div class="form-group">
 										<div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
 											<label>Telefone:</label>
-											<input id="telefone" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="telefone" placeholder="Telefone" required="required" type="text">
+											<input id="telefone" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="telefone" placeholder="Telefone" required="required" type="text" onkeyup="mascara( this, mtel );" maxlength="15">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
 											<label>Senha:</label>
-											<input id="senha" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="senha" placeholder="Senha" required="required" type="password">
+											<input id="senha" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="senha" placeholder="Senha" required="required" type="password" maxlength="10">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
 											<label>Confimar Senha:</label>
-											<input id="confirmarSenha" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="confirmarsenha" placeholder="Confirmar Senha" required="required" type="password">
+											<input id="confirmarSenha" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="confirmarsenha" placeholder="Confirmar Senha" required="required" type="password" maxlength="10">
 										</div>
 									</div>
 									<div class="ln_solid"></div>
 									<div class="form-group">
 										<div class="col-md-6 col-md-offset-3">
-											<button id="cancelar" type="submit" class="btn btn-primary">Cancelar</button>
+											<button id="cancelar" type="button" class="btn btn-primary">Cancelar</button>
 											<button id="salvar" name="salvar" type="submit" class="btn btn-success">Salvar</button>
 										</div>
 									</div>
@@ -155,5 +155,28 @@ require_once ("controleAcesso.php");
 		e.preventDefault();
 	});
 
+	function retirarAcento(objResp) {
+		var varString = new String(objResp.value);
+		var stringAcentos = new String('üÜ1234567890\\!@#$%¨&*()-_+={[}]:;.,?|<>/´\"~^\`\'°');
+		var stringSemAcento = new String('uU');
+
+		var i = new Number();
+		var j = new Number();
+		var cString = new String();
+		var varRes = '';
+
+		for (i = 0; i < varString.length; i++) {
+			cString = varString.substring(i, i + 1);
+			for (j = 0; j < stringAcentos.length; j++) {
+				if (stringAcentos.substring(j, j + 1) == cString) {
+					cString = stringSemAcento.substring(j, j + 1);
+				}
+			}
+			varRes += cString;
+		}
+		objResp.value = varRes;
+	}
+
 </script>
+<script src="js/mascaraTelefone.js"></script>
 </html>

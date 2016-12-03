@@ -70,7 +70,7 @@ require_once("controleAcesso.php");
                                         <div class="ln_solid"></div>
                                         <div class="form-group">
                                             <div class="col-md-6 col-md-offset-3">
-                                                <button type="submit" id="btnCancelar" class="btn btn-primary">
+                                                <button type="button" id="btnCancelar" class="btn btn-primary">
                                                     Cancelar
                                                 </button>
                                                 <button id="btnEnviar" type="submit" class="btn btn-success">Enviar
@@ -144,6 +144,7 @@ $("#btnEnviar").click(function (e) {
         })
  
            .done(function(result){
+               console.log(result);
 				alert(result.msg);
 
                 if (result.erro) {

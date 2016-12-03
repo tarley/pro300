@@ -32,6 +32,7 @@ $perfil = $_SESSION['perfil'];
                             <?php if ($perfil == "P"): ?>
                                 <li><a href="administrarAtividades.php">Administrar Atividades</a></li>
                                 <li><a href="alterarProfessor.php">Editar Cadastro</a></li>
+                                <li><a href="alterarSenhaProfessor.php">Alterar Senha</a></li>
                                 <li><a href="cadastroAtividade.php">Cadastro Atividade</a></li>
                                 <li><a href="cadastroProfessor.php">Cadastro Professor</a></li>
                                 <li><a href="parametroAvaliacao.php">Parâmetro Avaliação</a></li>
