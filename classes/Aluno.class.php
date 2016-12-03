@@ -25,6 +25,10 @@ switch($acao) {
         $aluno->getListaByAtividade();
         break;
     }
+    case 'alterarSenha': {
+        $aluno->alterarSenha();
+        break;
+    }
     default: {
         $aluno->getLista();
         break;
@@ -200,14 +204,14 @@ class Aluno
             $sqlQuery = 'SELECT *
                            FROM tb_usuario
                           WHERE cod_usuario = :cod_usuario
-                            AND senha = :senhaAtual';
+                            AND senha = SHA1(:senhaAtual)';
 
             $stmConsulta = $conn->prepare($sqlQuery);
             $stmConsulta->bindParam(':cod_usuario', $cod_usuario);
             $stmConsulta->bindParam(':senhaAtual', $senhaAtual);
             $stmConsulta->execute();
 
-            if($stmConsulta->rowCount() > 0) {
+            if($stmConsulta->rowCount() == 0) {
                 respostaJsonErro('Senha atual incorreta!');
             }
 
