@@ -180,4 +180,60 @@ class Aluno
     function getListaByAtividade($codAtividade){
 
     }
+
+    /**
+     * Atualiza senha do aluno
+     */
+    function alterarSenha(){
+        if(!isset($_SESSION['cod_usuario']))
+            respostaJsonErro("Usuário não informado");
+
+        $cod_usuario = (int) $_SESSION['cod_usuario'];
+
+        $senhaAtual = $_POST['senhaAtual'];
+        $senha = $_POST['novaSenha'];
+
+        try {
+
+            $conn = $this->bd->getConnection();
+
+            $sqlQuery = 'SELECT *
+                           FROM tb_usuario
+                          WHERE cod_usuario = :cod_usuario
+                            AND senha = :senhaAtual';
+
+            $stmConsulta = $conn->prepare($sqlQuery);
+            $stmConsulta->bindParam(':cod_usuario', $cod_usuario);
+            $stmConsulta->bindParam(':senhaAtual', $senhaAtual);
+            $stmConsulta->execute();
+
+            if($stmConsulta->rowCount() > 0) {
+                respostaJsonErro('Senha atual incorreta!');
+            }
+
+            $sql= 'UPDATE tb_usuario 
+                      SET senha = SHA1(:senha)
+                    WHERE cod_usuario =  :cod_usuario';
+
+
+            $conn = $this->bd->getConnection();
+            $stm = $conn->prepare($sql);
+            $stm->bindParam(':cod_usuario', $cod_usuario);
+            $stm->bindParam(':senha', $senha);
+
+            $stm->execute();
+
+            if($stm->rowCount() > 0) {
+                respostaJsonSucesso("Alteração realizada com sucesso!");
+            } else {
+                respostaJsonErro("Nenhum registro alterado.");
+            }
+            response($stm->fetchAll(PDO::FETCH_ASSOC));
+
+        }catch (PDOException $e){
+            respostaJsonExcecao($e);
+        }finally {
+            $this->bd->close();
+        }
+    }
 }
