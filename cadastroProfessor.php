@@ -68,7 +68,7 @@ require_once ("controleAcesso.php");
 									<div class="ln_solid"></div>
 									<div class="form-group">
 										<div class="col-md-6 col-md-offset-3">
-											<button id="cancelar" type="button" class="btn btn-primary">Cancelar</button>
+											<button id="btnCancelar" name="btnCancelar" type="button" class="btn btn-primary">Cancelar</button>
 											<button id="salvar" name="salvar" type="submit" class="btn btn-success">Salvar</button>
 										</div>
 									</div>
@@ -155,6 +155,11 @@ require_once ("controleAcesso.php");
 		e.preventDefault();
 	});
 
+	$("#btnCancelar").click(function (e) {
+        window.location = "administrarAtividades.php";
+        e.preventDefault();
+    });
+	
 	function retirarAcento(objResp) {
 		var varString = new String(objResp.value);
 		var stringAcentos = new String('üÜ1234567890\\!@#$%¨&*()-_+={[}]:;.,?|<>/´\"~^\`\'°');
