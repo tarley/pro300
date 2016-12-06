@@ -41,7 +41,7 @@ require_once("controleAcesso.php");
                                             <div class="form-group" method="get">
                                                 <div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
                                                     <label class="control-label">Token*: </label>
-                                                    <input type="text" name="token" class="form-control" id="token">
+                                                    <input type="text" name="token" class="form-control" id="token" maxlength="56">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -168,6 +168,7 @@ require_once("controleAcesso.php");
 
     $("#cancelar").click(function (e) {
         window.location = "administrarAtividades.php";
+        e.preventDefault();
     });
 
 </script>
