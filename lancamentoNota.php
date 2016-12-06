@@ -44,17 +44,14 @@
 										<th>Nota P300</th>
 										<th>Lider</th>
 										<th>Grupo</th>
-										<th></th>
 									</tr>
 									</thead>
 									<tbody id="filho">
-
 									</tbody>
 								</table>
-
 								<input type="submit" class="btn btn-success" name="confirmar" id="confirmar" value="confirmar">
 								<span>Quantidade mínima de pessoas por grupo</span>
-								<input type="text" name="qtd-pessoas-por-grupo" id="qtd-pessoas-por-grupo" value="4">
+								<input type="text" name="qtd-pessoas-por-grupo" id="qtd-pessoas-por-grupo" value="">
 								<input type="submit" class="btn btn-success" name="gerar_grupos" id="gerar_grupos" value="Gerar grupos">
 								</form>
 							</div>
@@ -67,8 +64,8 @@
 	<div>
 		<div>
 			<div class="panel panel-default">
-				<div class="panel-heading">
-					Grupo
+				<div class="panel-heading" id="return-user">
+
 				</div>
 				<div class="panel-body">
 
@@ -88,6 +85,9 @@
 	<div id="notif-group" class="tabbed_notifications"></div>
 </div>
 <?php include_once ("includes/script.php"); ?>
+<script type="text/javascript">
+    var codAtividade = <?php echo $_GET['codAtividade']?>;
+</script>
 <script src="js/lancamentoNota.js"></script>
 </body>
 </html>
