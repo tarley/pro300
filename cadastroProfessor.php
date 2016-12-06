@@ -38,7 +38,7 @@ require_once ("controleAcesso.php");
 									<div class="item form-group">
 										<div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
 											<label>Nome*:</label>
-											<input id="nome" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nome" required="required" type="text" oninput="javascript:retirarAcento(this);">
+											<input id="nome" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Nome" required="required" type="text"  maxlength="80" oninput="javascript:retirarAcento(this);">
 										</div>
 									</div>
 									<div class="form-group">
