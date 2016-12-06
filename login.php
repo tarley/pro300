@@ -53,7 +53,7 @@
 							<input type="text" class="form-control" placeholder="RA*" id="ra" minlength="8" maxlength="8" onkeyup="mascara( this, soDigitos );" />
 						</div>
 						<div>
-							<input type="text" class="form-control" placeholder="Nome*" id="nome" oninput="javascript:retirarAcento(this);" />
+							<input type="text" class="form-control" placeholder="Nome*" id="nome" maxlength="80" oninput="javascript:retirarAcento(this);" />
 						</div>
 						<div>
 							<input type="text" class="form-control" placeholder="Celular" id="telefone" onkeyup="mascara( this, mtel );" maxlength="15" />
