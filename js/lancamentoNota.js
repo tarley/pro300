@@ -9,9 +9,9 @@ $(document).ready(function(){
     var lista = pai.find("#filho"); //receptor
     var itens="";
 
-    $.getJSON('classes/Grupo.class.php?&acao=listar&cod_professor=1',function(data){
+    $.getJSON('classes/Grupo.class.php?&acao=listar&cod_atividade=' + codAtividade,function(data){
         if(data== 0){
-            itens+="Num tem trem a ser listado";
+            itens+=" ";
             //alert(data);
         }else{
             $.each(data,function(k,v){
@@ -22,11 +22,12 @@ $(document).ready(function(){
                 itens += "<td><input type='text' size='2' id='notap300"+k+"' value ='"+v.p300+"' class='form-control' placeholder=''></td>";
                 itens += "<input type='hidden' value ='"+v.cod_aluno+"'size='2' id='cod_aluno"+k+"'>";
                 itens += "<input type='hidden' value ='"+v.cod_atividade+"'size='2' id='cod_atividade"+k+"'>";
-                itens += "<td><input type='text' disabled value =''size='2' id='eh_lider"+k+"' class='form-control'></td>";
-                itens += "<td><input type='text' disabled value =''size='2' id='grupo"+k+"' class='form-control'></td>";
+                itens += "<td><input type='text' disabled value ='' size='2' id='eh_lider"+k+"' class='form-control'></td>";
+                itens += "<td><input type='text' disabled value ='' size='2' id='grupo"+k+"' class='form-control'></td>";
 
 				if (v.lider == 1)
-					itens += "<td class='text-center' width='10%'><a id='btnGerarNota' class='btn btn-primary btn-xs' data-inscricao='" + v.cod_inscricao + "'>Gerar Nota Final</a></td>";
+					itens += "<td class='text-center' width='10%'><a id='btnGerarNota'" +
+                        " class='btn btn-primary btn-xs' data-inscricao='" + v.cod_inscricao + "'>Gerar Nota Final</a></td>";
 				else
 					itens += "<td></td>";
 
@@ -166,12 +167,3 @@ function atualizarInscricao(linha) {
     })
 }
 
-$(document).on('click','#btnGerarNota', function(){
-
-	var cod_inscricao = $(this).attr("data-inscricao");
-
-	$.post("classes/Grupo.class.php?acao=gerarNotaLider", { cod_inscricao: cod_inscricao })
-		.done(function(result){
-				alert(result.msg);
-		});
-})
