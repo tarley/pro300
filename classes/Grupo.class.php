@@ -8,8 +8,7 @@ require_once "util/Util.php";
  * Date: 11/10/2016
  * Time: 21:43
  */
-$acao      = isset($_GET['acao']) ? $_GET['acao'] : 'listar';
-$cod_professor = isset($_GET['cod_professor']) ? $_GET['cod_professor']:'sem_professor';
+$acao      = isset($_GET['acao']) ? $_GET['acao'] : '';
 
 $grupo = new Grupo();
 
@@ -69,26 +68,35 @@ class Grupo
         $cod_aluno      = $_POST['cod_aluno'];
         $notap1         = $_POST['notap1'];
         $notap300       = $_POST['notap300'];
+        $lider          = $_POST['lider'];
+        $grupo          = $_POST['grupo'];
 
         try {
             $conn = $this->bd->getConnection();// faz a conexão
-            $queryEditarNota = "update tb_inscricao set p1   = :notap1,
-                                                        p300 = :notap300
+            $queryEditarNota = "update tb_inscricao set p1    = :notap1,
+                                                        p300  = :notap300,
+                                                        lider = :lider,
+                                                        grupo = :grupo
                                                         
                                  where cod_atividade         = :cod_atividade
                                    and cod_aluno             = :cod_aluno";
             $stm = $conn->prepare($queryEditarNota);
             $stm->bindParam(':cod_atividade',  $cod_atividade);
-            $stm->bindParam(':cod_aluno'    ,  $cod_aluno);
-            $stm->bindParam(':notap1'       ,  $notap1);
-            $stm->bindParam(':notap300'      ,  $notap300);
+            $stm->bindParam(':cod_aluno'    ,  $cod_aluno    );
+            $stm->bindParam(':notap1'       ,  $notap1       );
+            $stm->bindParam(':notap300'     ,  $notap300     );
+            $stm->bindParam(':lider'        ,  $lider        );
+            $stm->bindParam(':grupo'        ,  $grupo        );
             $stm->execute();
 
             if($stm->rowCount() > 0) {
-                respostaJsonSucesso("Alteração realizada com sucesso!");
+               respostaJsonSucesso("Alteração realizada com sucesso!");
+
             } else {
-                ///echo $nota ;echo $cod_atividade; echo $cod_aluno;
-                respostaJsonErro("Houve um erro!");
+
+                //respostaJsonErro("Houve um erro!");
+
+                echo"houve um erro";
             }
         }catch (PDOException $e){
             respostaJsonExcecao($e);
@@ -100,6 +108,11 @@ class Grupo
      * Retorna uma lista de todos os grupos de uma atividade
      */
     function getListaByAtividade(){
+
+        if(!isset($_GET['cod_atividade']))
+            respostaJsonErro("Código da atividade não definido.");
+
+        $codAtividade = $_GET['cod_atividade'];
 
         $sql = "select  i.cod_inscricao,
                         ifnull(i.p1,'') p1,
@@ -114,13 +127,11 @@ class Grupo
                                          on (i.cod_aluno = u.cod_usuario)
                                       inner join tb_atividade a
                                          on (i.cod_atividade = a.cod_atividade)
-                 where a.cod_professor = 1";
-
-
+                 where i.cod_atividade = :codAtividade";
         try{
             $conn = $this->bd->getConnection();
             $stm = $conn->prepare($sql);
-            $stm->bindParam(':cod_professor', $cod_professor);  //quando se receber algum parametro usado no sql
+            $stm->bindParam(':codAtividade', $codAtividade);  //quando se receber algum parametro usado no sql
             $stm->execute();
 
             echo json_encode($stm->fetchAll(PDO::FETCH_OBJ));
