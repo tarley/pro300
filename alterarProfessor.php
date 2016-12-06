@@ -41,7 +41,7 @@ require_once("controleAcesso.php");
                                         <div class="form-group">
                                             <div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12">
                                                 <label>Nome*:</label>
-                                                <input type="text" name="nome" id="nome" class="form-control"
+                                                <input type="text" name="nome" id="nome" class="form-control" maxlength="80"
                                                        oninput="javascript:retirarAcento(this);">
                                             </div>
                                         </div>
@@ -191,11 +191,3 @@ $("#btnEnviar").click(function (e) {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
