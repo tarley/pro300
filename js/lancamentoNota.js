@@ -80,7 +80,7 @@ $(document).on('click','#gerar_grupos', function(){
     //validacao da quantidade de grupos
     if (!qtdPessoasPorGrupo || qtdPessoasPorGrupo < 1 || qtdAlunos < qtdPessoasPorGrupo) {
         limpar(linhas);
-        alert('Quantidade mínima de pessoas por grpo inválida.');
+        alert('Quantidade mínima de pessoas por grupo inválida.');
         return;
     }
 
