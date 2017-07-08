@@ -1,1 +1,0 @@
-ALTER TABLE tb_atividade ADD teste int NOT NULL DEFAULT 1;
