@@ -1,0 +1,33 @@
+<div class="container" ng-controller="AtividadeController">
+    <div class="row">
+        <div clas="col s12">
+            <h5>{{usuario.id == undefined ? 'Nova atividade 300' : 'Alterar atividade 300'}}</h5>
+            <!--p>A bunch of text</p-->
+            <form name="myForm">
+                <input type="hidden" ng-model="atividade.id" />
+                <div input-field>
+                    <input id="input-nome" type="text" name="nome" ng-model="atividade.nome" length="100" required class="validate"/>
+                    <label for="input-nome" data-error="wrong">Nome</label>
+                </div>
+                <div input-field>
+                    <textarea ng-model="atividade.descricao" class="materialize-textarea" maxlength="500" required></textarea>
+                    <label>Descrição</label>
+                </div>
+                <div input-field>
+                    <label for="dt-inicio">Data de inicio</label>
+                    <input input-date type="text" name="dt-inicio" id="dt-inicio" ng-model="atividade.dataInicio" container="" format="dd/mm/yyyy" months-full="{{ month }}" months-short="{{ monthShort }}" weekdays-full="{{ weekdaysFull }}" weekdays-short="{{ weekdaysShort }}" weekdays-letter="{{ weekdaysLetter }}"
+                        disable="disable" min="{{ minDate }}" max="{{ maxDate }}" today="today" first-day="1" clear="clear" close="close" select-years="15" on-start="onStart()" on-render="onRender()" on-open="onOpen()" on-close="onClose()" on-set="onSet()"
+                        on-stop="onStop()" required/>
+                </div>
+                <div input-field>
+                    <label for="dt-fim">Data fim</label>
+                    <input input-date type="text" name="dt-fim" id="dt-fim" ng-model="atividade.dataFim" container="" format="dd/mm/yyyy" months-full="{{ month }}" months-short="{{ monthShort }}" weekdays-full="{{ weekdaysFull }}" weekdays-short="{{ weekdaysShort }}" weekdays-letter="{{ weekdaysLetter }}"
+                        disable="disable" min="{{ minDate }}" max="{{ maxDate }}" today="today" first-day="1" clear="clear" close="close" select-years="15" on-start="onStart()" on-render="onRender()" on-open="onOpen()" on-close="onClose()" on-set="onSet()"
+                        on-stop="onStop()" required/>
+                </div>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+                <a class=" modal-action modal-close waves-effect waves-green btn-flat" ng-click="salvar()">Salvar</a>
+            </form>
+        </div>
+    </div>
+</div>
