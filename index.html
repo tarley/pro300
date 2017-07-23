@@ -2,62 +2,46 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-
-    <!-- Materialize CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+    <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/css/app.css">
+    
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="/vendor/materialize/css/materialize.min.css">
+
+    <!-- CSS da aplicação -->
+    <link type="text/css" rel="stylesheet" href="/app/assets/css/app.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
 </head>
 
 <body ng-app="pro300App">
-    <!--header>
-    <a href="#!" class="brand-logo">
-        <img src="/app/img/logo_mini.jpg"></img>
-    </a>
-</header-->
-
-    <!-- Dropdown Structure 
-    <ul id="dropdown1" class="dropdown-content">
-        <li><a href="sass.html">Alterar dados pessoais</a></li>
-        <li><a href="sass.html">Editar Professor</a></li>
-        <li><a href="sass.html">Editar Atividade</a></li>
-        <li><a href="sass.html">Editar Parâmetros</a></li>
-        <li><a href="sass.html">Avaliação</a></li>
-        <li class="divider"></li>
-        <li><a href="sass.html">Fundadores</a></li>
-    </ul>
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">Logo</a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="sass.html">Alterar dados pessoais<i class="material-icons right">perm_identity</i></a></li>
-                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Opções<i class="material-icons right">view_list</i></a></li>
-            </ul>
-        </div>
-    </nav>
-    -->
-    <nav class="nav-extended">
+    <nav ng-controller="UsuarioController">
         <div class="nav-wrapper">
             <a href="#!" class="brand-logo">
                 <i class="material-icons">done</i> Projeto {{100 * 3}}
             </a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="sass.html"><i class="material-icons left">perm_identity</i>Alterar dados pessoais</a></li>
-                <li><a href="sass.html"><i class="material-icons left">mode_edit</i>Editar Professor</a></li>
-                <li><a href="sass.html"><i class="material-icons left">mode_edit</i>Editar Atividade</a></li>
-                <li><a href="sass.html"><i class="material-icons left">mode_edit</i>Editar Parâmetros</a></li>
-                <li><a href="sass.html"><i class="material-icons left">assignment</i>Avaliação</a></li>
-                <li><a href="sass.html"><i class="material-icons left">person_pin</i>Fundadores</a></li>
+                <li><a ng-click="logout()"><i class="material-icons right">power_settings_new</i>Sair</a></li>
             </ul>
         </div>
     </nav>
-
-    <main ng-view>
-
+    
+    <main>
+    <div class="section no-pad-bot">
+        <div class="row">
+            <div ng-controller="UsuarioController" ng-show="itensMenu.length > 0" ng-init="initMenu()" class="col s3">
+                <div class="collection">
+                    <a ng-repeat="item in itensMenu" href="{{item.url}}" class="collection-item">{{item.descricao}}</a>
+                </div>
+            </div>
+            <div class="col s9" ng-view>
+                
+            </div>
+        </div>
+    </div>
     </main>
-
-
+   
     <footer class="page-footer">
         <div class="container">
             <div class="row">
@@ -65,50 +49,44 @@
                     <h5 class="white-text">Sistemas de Informação - Newton Paiva</h5>
                     <p class="grey-text text-lighten-4">Sistema desenvolvido pelos alunos do curso de Sistemas de Informação.</p>
                 </div>
-                <!--div class="col l3 s12">
-                    <h5 class="white-text">Settings</h5>
-                    <ul>
-                        <li><a class="white-text" href="#!">Link 1</a></li>
-                        <li><a class="white-text" href="#!">Link 2</a></li>
-                        <li><a class="white-text" href="#!">Link 3</a></li>
-                        <li><a class="white-text" href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <div class="col l3 s12">
-                    <h5 class="white-text">Connect</h5>
-                    <ul>
-                        <li><a class="white-text" href="#!">Link 1</a></li>
-                        <li><a class="white-text" href="#!">Link 2</a></li>
-                        <li><a class="white-text" href="#!">Link 3</a></li>
-                        <li><a class="white-text" href="#!">Link 4</a></li>
-                    </ul>
-                </div-->
             </div>
         </div>
-        <!--div class="footer-copyright">
-            <div class="container">
-                Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-            </div>
-        </div-->
     </footer>
 
-    <!-- JavaScript for: jQuery, angular, materialize, and angular-materialize. All of which are needed. -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.2/angular-materialize.min.js"></script>
+    <!-- JQuery Validate -->
+    <script type="text/javascript" src="/vendor/jquery-validate/jquery.validate.min.js"></script>
 
+    <!-- Formatter -->
+    <script type="text/javascript" src="/vendor/formatter/jquery.formatter.min.js"></script>
+    <script type="text/javascript" src="/vendor/formatter/formatter.min.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="/vendor/materialize/js/materialize.min.js"></script>
+
+    <!-- AngularJS -->
+    <script type="text/javascript" src="/vendor/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/vendor/angular-route/angular-route.min.js"></script>
 
     <!-- Moment -->
-    <script type="text/javascript" src="/js/moment/moment.min.js"></script>
+    <script type="text/javascript" src="/vendor/moment/moment.min.js"></script>
 
     <!-- Your app -->
-    <script type="text/javascript" src="/js/service/ConfigInputDataService.js"></script>
-    <script type="text/javascript" src="/js/controller/AtividadeController.js"></script>
-    <script type="text/javascript" src="/js/app.js"></script>
-</body>
+    <script type="text/javascript" src="/app/services/DialogService.js"></script>
+    <script type="text/javascript" src="/app/services/SelectService.js"></script>
+    <script type="text/javascript" src="/app/services/DataService.js"></script>
+    <script type="text/javascript" src="/app/services/AuthService.js"></script>
+    
+    <script type="text/javascript" src="/app/services/AtividadeService.js"></script>
 
+    <script type="text/javascript" src="/app/controllers/LoginController.js"></script>
+    <script type="text/javascript" src="/app/controllers/AtividadeController.js"></script>
+    <script type="text/javascript" src="/app/controllers/UsuarioController.js"></script>
+
+    <script type="text/javascript" src="/app/routes.js"></script>
+
+    <script type="text/javascript" src="/app/config.js"></script>
+</body>
 </html>
