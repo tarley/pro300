@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="/css/materialize/materialize.min.css">
+
+    <!-- CSS da aplicação -->
+    <link type="text/css" rel="stylesheet" href="/css/app.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+</head>
+
+<body ng-app="pro300App">
+    <!--header>
+    <a href="#!" class="brand-logo">
+        <img src="/app/img/logo_mini.jpg"></img>
+    </a>
+</header-->
+
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content" ng-controller="MenuController">
+        <li ng-repeat="item in itensMenu"><a href="{{item.url}}">{{item.descricao}}</a></li>
+        
+        <!--
+        <li><a href="sass.html">Alterar dados pessoais</a></li>
+        <li><a href="sass.html">Editar Professor</a></li>
+        <li><a href="sass.html">Editar Atividade</a></li>
+        <li><a href="sass.html">Editar Parâmetros</a></li>
+        <li><a href="sass.html">Avaliação</a></li>
+        <li class="divider"></li>
+        <li><a href="sass.html">Fundadores</a></li>
+        -->
+    </ul>
+    <nav ng-controller="MenuController">
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">
+                <i class="material-icons">done</i> Projeto {{100 * 3}}
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Opções do sistema<i class="material-icons right">view_list</i></a></li>
+                <li><a ng-click="logout()"><i class="material-icons right">power_settings_new</i>Sair</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!--
+    <nav class="nav-extended" ng-controller="MenuController">
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">
+                <i class="material-icons">done</i> Projeto {{100 * 3}}
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="sass.html"><i class="material-icons left">perm_identity</i>Alterar dados pessoais</a></li>
+                <li><a href="sass.html"><i class="material-icons left">mode_edit</i>Editar Professor</a></li>
+                <li><a href="sass.html"><i class="material-icons left">mode_edit</i>Editar Atividade</a></li>
+                <li><a href="sass.html"><i class="material-icons left">mode_edit</i>Editar Parâmetros</a></li>
+                <li><a href="sass.html"><i class="material-icons left">assignment</i>Avaliação</a></li>
+                <li><a href="sass.html"><i class="material-icons left">person_pin</i>Fundadores</a></li>
+                <li><a ng-click="logout()"><i class="material-icons left">power_settings_new</i>Sair</a></li>
+            </ul>
+        </div>
+    </nav>
+    -->
+    <main ng-view>
+
+    </main>
+
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Sistemas de Informação - Newton Paiva</h5>
+                    <p class="grey-text text-lighten-4">Sistema desenvolvido pelos alunos do curso de Sistemas de Informação.</p>
+                </div>
+                <!--div class="col l3 s12">
+                    <h5 class="white-text">Settings</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!">Link 1</a></li>
+                        <li><a class="white-text" href="#!">Link 2</a></li>
+                        <li><a class="white-text" href="#!">Link 3</a></li>
+                        <li><a class="white-text" href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Connect</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!">Link 1</a></li>
+                        <li><a class="white-text" href="#!">Link 2</a></li>
+                        <li><a class="white-text" href="#!">Link 3</a></li>
+                        <li><a class="white-text" href="#!">Link 4</a></li>
+                    </ul>
+                </div-->
+            </div>
+        </div>
+        <!--div class="footer-copyright">
+            <div class="container">
+                Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            </div>
+        </div-->
+    </footer>
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="/js/jquery/jquery.min.js"></script>
+    
+    <!-- JQuery Validate -->
+    <script type="text/javascript" src="/js/jquery-validate/jquery.validate.min.js"></script>
+    
+    <!-- Formatter -->
+    <script type="text/javascript" src="/js/formatter/jquery.formatter.min.js"></script>
+    <script type="text/javascript" src="/js/formatter/formatter.min.js"></script>
+    
+    <!-- Compiled and minified JavaScript -->
+    <script src="/js/materialize/materialize.min.js"></script>
+
+    <!-- AngularJS -->
+    <script type="text/javascript" src="/js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/js/angular-route/angular-route.min.js"></script>
+
+    <!-- Moment -->
+    <script type="text/javascript" src="/js/moment/moment.min.js"></script>
+
+    <!-- Your app -->
+    <script type="text/javascript" src="/js/service/DataService.js"></script>
+    <script type="text/javascript" src="/js/service/AuthService.js"></script>
+    
+    <script type="text/javascript" src="/js/controller/MenuController.js"></script>
+    <script type="text/javascript" src="/js/controller/LoginController.js"></script>
+    <script type="text/javascript" src="/js/controller/AtividadeController.js"></script>
+    <script type="text/javascript" src="/js/controller/UsuarioController.js"></script>
+    
+    <script type="text/javascript" src="/js/route.js"></script>
+    
+    <script type="text/javascript" src="/js/app.js"></script>
+</body>
+
+</html>

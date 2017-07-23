@@ -1,0 +1,44 @@
+<div ng-controller="AtividadeController" ng-init="initListagem()">
+    <div class="row">
+        <div clas="col s12">
+            <a class="btn-floating btn-large waves-effect waves-light red" ng-click="novaAtividade()">
+                <i class="material-icons">add</i>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <table class="striped">
+                <thead>
+                    <tr>
+                        <th>Cod.</th>
+                        <th>Nome</th>
+                        <th>Curso</th>
+                        <th>Dt. Registro</th>
+                        <th>Dt. Inicio</th>
+                        <th>Dt. Termino</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-hide="lista">
+                        <td colspan="6">Não existem atividades 300 cadastradas para o seu usuário.</td>
+                    </tr>
+                    <tr ng-show="lista" ng-repeat="a in lista">
+                        <td>{{a.id}}</td>
+                        <td>{{a.nome}}</td>
+                        <td>{{a.curso}}</td>
+                        <td>{{a.dt_registro}}</td>
+                        <td>{{a.dt_inicio}}</td>
+                        <td>{{a.dt_termino}}</td>
+                        <td>
+                            <a ng-click="editar(a.id)" class="btn-floating red">
+                                <i class="material-icons left">edit</i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

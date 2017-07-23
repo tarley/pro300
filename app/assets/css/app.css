@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.erro {
+    color: #F44336;
+    opacity: 1;
+    font-size: .8rem;
+    display: block;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    transition: .2s opacity ease-out, .2s color ease-out;
+    line-height: 1.5;
+    font-family: "Roboto", sans-serif;
+    /*font-weight: bold;*/
+    font-weight: normal;
+}
+
+#div-select-curso {
+    margin: 10px 0px 40px 0px;
+}
