@@ -24,7 +24,6 @@ function AtividadeController($scope, $http, $location, DataService,
 
     $scope.initCadastro = function() {
         $scope.atividade = AtividadeService.getAtividade();
-        $scope.classLabels = $scope.getClassLabels();    
         
         AtividadeService.configCadastro();
         

@@ -6,26 +6,26 @@
             <form id="formAtividade" ng-submit="salvar()">
                 <input type="hidden" ng-model="atividade.id"></input>
                 <div id="div-select-curso" class="input-field">
-                    <select id="select-curso" name="curso" ng-model="atividade.curso_id" required>
-                        <option value disabled selected>Escolha um curso</option>
-                        <option ng-repeat="c in cursos" value="{{c.id}}">{{c.nome}}</option>
+                    <select id="select-curso" name="curso" ng-model="atividade.curso_id">
+                        <option value disabled {{isEditMode() ? '' : 'selected'}}>Escolha um curso</option>
+                        <option ng-repeat="c in cursos" value="{{c.id}}" {{atividade.curso_id == c.id ? 'selected' : ''}}>{{c.nome}}</option>
                     </select>
                     <label id="select-curso">Curso (Obrigatório)</label>
                 </div>
                 <div class="input-field">
                     <input id="input-nome" type="text" name="nome" ng-model="atividade.nome" data-length="100"/>
-                    <label for="input-nome" ng-class="classLabels">Nome (Obrigatório)</label>
+                    <label for="input-nome" ng-class="getClassLabels()">Nome (Obrigatório)</label>
                 </div>
                 <div class="input-field">
                     <textarea id="text-descricao" name="descricao" ng-model="atividade.descricao" class="materialize-textarea" data-length="500"></textarea>
-                    <label for="text-descicao" ng-class="classLabels">Descrição (Obrigatório)</label>
+                    <label for="text-descicao" ng-class="getClassLabels()">Descrição (Obrigatório)</label>
                 </div>
                 <div class="input-field">
-                    <label for="dt-inicio" ng-class="classLabels">Data de inicio (Obrigatório)</label>
+                    <label for="dt-inicio" ng-class="getClassLabels()">Data de inicio (Obrigatório)</label>
                     <input id="dt-inicio" type="text" name="dtInicio" ng-model="atividade.dt_inicio" class="datepicker picker__input" />
                 </div>
                 <div class="input-field">
-                    <label for="dt-termino" ng-class="classLabels">Data de termino (Obrigatório)</label>
+                    <label for="dt-termino" ng-class="getClassLabels()">Data de termino (Obrigatório)</label>
                     <input type="text" name="dtTermino" id="dt-termino" ng-model="atividade.dt_termino" class="datepicker" />
                 </div>
                 <div class="row">
