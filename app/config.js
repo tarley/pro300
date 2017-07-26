@@ -1,18 +1,17 @@
 var app = angular.module('pro300App', ["ngRoute"]);
 
-app.config(RouteConfig);
-
 app.service('DialogService', DialogService);
 app.service('SelectService', SelectService);
 app.service('DataService', DataService);
 app.service('AuthService', AuthService);
-
+app.service('CursoService', CursoService);
 app.service('AtividadeService', AtividadeService);
 
 app.controller('AtividadeController', AtividadeController);
 app.controller('LoginController', LoginController);
 app.controller('UsuarioController', UsuarioController);
 
+app.config(RouteConfig);
 app.run(OnRouteChangeStart);
 
 /*

@@ -19,12 +19,13 @@
                    DATE_FORMAT(a.dt_inicio, '%d/%m/%Y') AS dt_inicio,
                    DATE_FORMAT(a.dt_termino, '%d/%m/%Y') AS dt_termino,
                    a.curso_id,
-                   c.nome as curso
+                   c.nome AS curso
               FROM atividade a
             INNER JOIN curso c ON c.id = a.curso_id
-             WHERE a.id = :id");
+             WHERE professor_id = :professor_id
+               AND dt_encerramento IS NULL ");
                
-        $stmt->bindParam(":id", $_GET['id']);
+        $stmt->bindParam(":professor_id", getUsuarioId());
         $stmt->execute();
         
         respostaListaJson($stmt->fetchAll(PDO::FETCH_ASSOC));

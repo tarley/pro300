@@ -1,4 +1,4 @@
-<div ng-controller="AtividadeController" ng-init="initListagem()">
+<div ng-init="initListagem()">
     <div class="row">
         <div clas="col s12">
             <a class="btn-floating btn-large waves-effect waves-light red" ng-click="novaAtividade()">
@@ -21,10 +21,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-hide="lista">
-                        <td colspan="6">Não existem atividades 300 cadastradas para o seu usuário.</td>
+                    <tr ng-hide="lista.length > 0">
+                        <td colspan="7">Não existem atividades 300 cadastradas para o seu usuário.</td>
                     </tr>
-                    <tr ng-show="lista" ng-repeat="a in lista">
+                    <tr ng-show="lista.length > 0" ng-repeat="a in lista">
                         <td>{{a.id}}</td>
                         <td>{{a.nome}}</td>
                         <td>{{a.curso}}</td>

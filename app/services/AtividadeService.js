@@ -16,6 +16,10 @@ function AtividadeService(DataService, SelectService) {
             DataService.configDatePicker();
             SelectService.configField('#select-curso');
         },
+        configInscricao: function() {
+            this.configValidacoesInscricao();
+            SelectService.configField('#select-curso');
+        },
         configContadores: function() {
             $(document).ready(function() {
                 $('#input-nome, #text-descricao').characterCounter();
@@ -48,7 +52,6 @@ function AtividadeService(DataService, SelectService) {
                             beforeTo: "#dt-inicio"
                         }
                     },
-                    //For custom messages
                     messages: {
                         curso: "Selecione o curso da atividade",
                         nome: {
@@ -64,6 +67,32 @@ function AtividadeService(DataService, SelectService) {
                             required: "Informe a data de termino da atividade.",
                             beforeTo: "Data de termino não pode ser menor ou igual a data de inicio."
                         }
+                    },
+                    errorElement: 'div',
+                    errorPlacement: function(error, element) {
+                        error.insertAfter(element);
+                        $(error).addClass('erro');
+                    },
+                    errorClass: 'invalid',
+                    validClass: 'valid',
+                    highlight: function(element, errorClass, validClass) {
+                        $(element).addClass('invalid').removeClass('');
+                    },
+                    unhighlight: function(element, errorClass, validClass) {
+                        $(element).removeClass(errorClass).addClass(validClass);
+                    }
+                });
+            });
+        },
+        configValidacoesInscricao: function() {
+            $(document).ready(function() {
+                $("#formInscricao").validate({
+                    debug: true,
+                    rules: {
+                        curso: "required"
+                    },
+                    messages: {
+                        curso: "Selecione o curso da atividade"
                     },
                     errorElement: 'div',
                     errorPlacement: function(error, element) {

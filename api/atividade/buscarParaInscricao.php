@@ -4,7 +4,7 @@
     require_once '../util/JsonUtil.php';
     require_once '../util/SegurancaUtil.php';
 
-    acessoRestrito(array($ADMINISTRADOR, $COORDENADOR, $PROFESSOR));
+    acessoRestrito(array($ALUNO));
 
     try {
         $conn = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USERNAME, $DB_PASSWORD);
@@ -19,12 +19,18 @@
                    DATE_FORMAT(a.dt_inicio, '%d/%m/%Y') AS dt_inicio,
                    DATE_FORMAT(a.dt_termino, '%d/%m/%Y') AS dt_termino,
                    a.curso_id,
-                   c.nome as curso
+                   c.nome AS curso
               FROM atividade a
             INNER JOIN curso c ON c.id = a.curso_id
-             WHERE a.id = :id");
+             WHERE a.curso_id = :curso_id
+               AND dt_encerramento IS NULL
+               AND NOT EXISTS (SELECT 1 
+                                 FROM inscricao i
+                                WHERE i.atividade_id = a.id
+                                  AND i.aluno_id = :aluno_id)");
                
-        $stmt->bindParam(":id", $_GET['id']);
+        $stmt->bindParam(":curso_id", $_GET['curso_id']);
+        $stmt->bindParam(":aluno_id", getUsuarioId());
         $stmt->execute();
         
         respostaListaJson($stmt->fetchAll(PDO::FETCH_ASSOC));
