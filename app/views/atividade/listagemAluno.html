@@ -1,4 +1,4 @@
-<div ng-init="initListagem()">
+<div ng-init="init()">
     <div class="row">
         <div clas="col s12">
             <a class="waves-effect waves-light btn" ng-click="novaInscricao()">
@@ -32,9 +32,9 @@
                         <td>{{a.dt_inicio}}</td>
                         <td>{{a.dt_termino}}</td>
                         <td>
-                            <a ng-click="editar(a.id)" class="btn-floating red">
+                            <!--a ng-click="editar(a.id)" class="btn-floating red">
                                 <i class="material-icons left">edit</i>
-                            </a>
+                            </a-->
                         </td>
                     </tr>
                 </tbody>

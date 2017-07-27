@@ -18,8 +18,7 @@ function AuthService($http, $rootScope, $location, $window, DialogService) {
             }).then(function(response) {
                 if (response.data.sucesso) {
                     DialogService.showMessage("Bem vindo ao projeto 300!")
-
-                    $rootScope.usuario = response.data.lista;
+                    setUsuario(response.data.lista);
 
                     atualizarMenu();
                     $location.path('/');
@@ -35,7 +34,7 @@ function AuthService($http, $rootScope, $location, $window, DialogService) {
                 method: 'GET',
                 url: '/api/usuario/logout.php'
             }).then(function(response) {
-                $rootScope.usuario = null;
+                logout();
                 limparMenu();
 
                 $location.path('/login');
@@ -51,16 +50,32 @@ function AuthService($http, $rootScope, $location, $window, DialogService) {
         }
     };
 
-    function getUsuario() {
-        return $rootScope.usuario;
-    }
+    var usuario = null;
 
+    function getUsuario() {
+        //return $rootScope.usuario;
+        return usuario;
+    }
+    
+    function setUsuario(value) {
+        usuario = value;
+    }
+    
+    function logout() {
+        setUsuario(null);
+    }
+    
     function isAutenticado() {
-        return getUsuario() != undefined && getUsuario() != null;
+        //return getUsuario() != undefined && getUsuario() != null;
+        return getUsuario() != null;
     }
 
     function isPerfilAluno() {
         return isAutenticado() && getUsuario().perfil == 'Aluno';
+    }
+
+    function setItensMenu(value) {
+        $rootScope.itensMenu = value;
     }
 
     function atualizarMenu() {
@@ -72,7 +87,7 @@ function AuthService($http, $rootScope, $location, $window, DialogService) {
                 url: '/api/usuario/getMenu.php'
             }).then(function(response) {
                 if (response.data.sucesso) {
-                    $rootScope.itensMenu = response.data.lista;
+                    setItensMenu(response.data.lista);
                 }
             }, function(response) {
                 DialogService.showError(response);
@@ -81,6 +96,6 @@ function AuthService($http, $rootScope, $location, $window, DialogService) {
     }
 
     function limparMenu() {
-        $rootScope.itensMenu = {};
+        setItensMenu({});
     }
 }

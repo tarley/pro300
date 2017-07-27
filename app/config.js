@@ -7,7 +7,10 @@ app.service('AuthService', AuthService);
 app.service('CursoService', CursoService);
 app.service('AtividadeService', AtividadeService);
 
-app.controller('AtividadeController', AtividadeController);
+app.controller('CadastroAtividadeController', CadastroAtividadeController);
+app.controller('ListagemAtividadeController', ListagemAtividadeController);
+app.controller('InscricaoController', InscricaoController);
+app.controller('InscricoesController', InscricoesController);
 app.controller('LoginController', LoginController);
 app.controller('UsuarioController', UsuarioController);
 

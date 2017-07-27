@@ -1,4 +1,4 @@
-<div ng-init="initCadastro()">
+<div ng-init="init()">
     <div class="row">
         <div clas="col s12">
             <h5>{{isEditMode() ? 'Alterar atividade 300' : 'Nova atividade 300'}}</h5>
@@ -28,7 +28,7 @@
                     <label for="dt-termino" ng-class="getClassLabels()">Data de termino (Obrigatório)</label>
                     <input type="text" name="dtTermino" id="dt-termino" ng-model="atividade.dt_termino" class="datepicker" />
                 </div>
-                <div class="row">
+                <div id="div-botoes" class="row">
                     <button class="btn waves-effect waves-light" type="reset">Limpar</button>
                     <button class="btn waves-effect waves-light" type="submit">Salvar</button>
                     <button class="btn waves-effect waves-light" type="button" ng-click="voltar()">Voltar</button>

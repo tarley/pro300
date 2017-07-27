@@ -43,6 +43,8 @@
         if($senha != $usuario['senha'])
             respostaJson('Senha inválida.', null, false);
         
+        unset($usuario['senha']);
+        
         setUsuario($usuario);
         
         respostaJson('Autenticação realizada com sucesso.', $usuario);

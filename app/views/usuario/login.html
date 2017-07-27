@@ -6,23 +6,25 @@
             <form id="formLogin" ng-submit="autenticar()">
                 <div class="input-field">
                     <i class="material-icons prefix">perm_identity</i>
-                    <input id="input-usuario" type="email" name="email" ng-model="login.email"/>
+                    <input id="input-usuario" type="email" name="email" ng-model="login.email" />
                     <label for="input-usuario">e-mail (Obrigatório)</label>
                 </div>
                 <div class="input-field">
                     <i class="material-icons prefix">visibility</i>
-                    <input id="input-password" type="password"  name="senha" ng-model="login.senha"/>
+                    <input id="input-password" type="password" name="senha" ng-model="login.senha" />
                     <label for="input-password">Senha (Obrigatório)</label>
                 </div>
-                <button class="btn waves-effect waves-light" type="reset">
-                    Limpar<i class="material-icons right">clear_all</i>
-                </button>
-                <button class="btn waves-effect waves-light" type="submit">
-                    Enviar<i class="material-icons right">send</i>
-                </button>
-                <a class="btn waves-effect waves-light" href="#!/cadastrarAluno">
-                    Criar uma conta de aluno<i class="material-icons right">perm_identity</i>
-                </a>
+                <div id="div-botoes" class="row">
+                    <button class="btn waves-effect waves-light" type="reset">
+                        Limpar<i class="material-icons right">clear_all</i>
+                    </button>
+                    <button class="btn waves-effect waves-light" type="submit">
+                        Enviar<i class="material-icons right">send</i>
+                    </button>
+                    <a class="btn waves-effect waves-light" href="#!/cadastrarAluno">
+                        Criar uma conta de aluno<i class="material-icons right">perm_identity</i>
+                    </a>
+                </div>
             </form>
         </div>
     </div>

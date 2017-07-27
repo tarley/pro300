@@ -1,3 +1,4 @@
+
 function AtividadeController($scope, $http, $location, AuthService, DataService,
     SelectService, DialogService, CursoService, AtividadeService) {
 
@@ -148,5 +149,14 @@ function AtividadeController($scope, $http, $location, AuthService, DataService,
         }, function(response) {
             DialogService.showError(response);
         });
+    }
+    
+    
+    $scope.initInscricoes = function() {
+        
+    }
+    
+    $scope.atualizarInscricoes = function() {
+        
     }
 }

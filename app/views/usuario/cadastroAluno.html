@@ -6,38 +6,40 @@
             <form id="formUsuario" ng-submit="salvar()">
                 <input type="hidden" ng-model="usuario.id" />
                 <div class="input-field">
-                    <input id="input-ra" type="number" name="ra" ng-model="usuario.ra" data-length="20"/>
+                    <input id="input-ra" type="number" name="ra" ng-model="usuario.ra" data-length="20" />
                     <label for="input-ra">RA (Obrigatório)</label>
                 </div>
                 <div class="input-field">
-                    <input id="input-nome" type="text" name="nome" ng-model="usuario.nome" data-length="255"/>
+                    <input id="input-nome" type="text" name="nome" ng-model="usuario.nome" data-length="255" />
                     <label for="input-nome">Nome (Obrigatório)</label>
                 </div>
                 <div class="input-field">
-                    <input id="input-telefone" type="tel" name="telefone" ng-model="usuario.telefone"/>
+                    <input id="input-telefone" type="tel" name="telefone" ng-model="usuario.telefone" />
                     <label for="input-telefone">Telefone (Opcional)</label>
                 </div>
                 <div class="input-field">
-                    <input id="input-email" type="email" name="email" ng-model="usuario.email" data-length="50"/>
+                    <input id="input-email" type="email" name="email" ng-model="usuario.email" data-length="50" />
                     <label for="input-email">e-mail (Obrigatório)</label>
                 </div>
                 <div class="input-field">
-                    <input id="input-senha" type="password" name="senha" ng-model="usuario.senha" data-length="20"/>
+                    <input id="input-senha" type="password" name="senha" ng-model="usuario.senha" data-length="20" />
                     <label for="input-senha">Senha (Obrigatório)</label>
                 </div>
                 <div class="input-field">
-                    <input id="input-confirmacaoSenha" type="password" name="confirmacaoSenha" ng-model="usuario.confirmacaoSenha" data-length="20"/>
+                    <input id="input-confirmacaoSenha" type="password" name="confirmacaoSenha" ng-model="usuario.confirmacaoSenha" data-length="20" />
                     <label for="input-confirmacaoSenha">Confirmação da senha (Obrigatório)</label>
                 </div>
-                <button class="btn waves-effect waves-light" type="reset">
-                    Limpar<i class="material-icons right">clear_all</i>
-                </button>
-                <button class="btn waves-effect waves-light" type="submit">
-                    Enviar<i class="material-icons right">send</i>
-                </button>
-                <button class="btn waves-effect waves-light" type="button" ng-click="voltar()">
-                    Voltar
-                </button>
+                <div id="div-botoes" class="row">
+                    <button class="btn waves-effect waves-light" type="reset">
+                        Limpar<i class="material-icons right">clear_all</i>
+                    </button>
+                    <button class="btn waves-effect waves-light" type="submit">
+                        Enviar<i class="material-icons right">send</i>
+                    </button>
+                    <button class="btn waves-effect waves-light" type="button" ng-click="voltar()">
+                        Voltar
+                    </button>
+                </div>
             </form>
         </div>
     </div>

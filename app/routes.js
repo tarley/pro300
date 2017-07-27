@@ -2,11 +2,11 @@ function RouteConfig($routeProvider) {
     $routeProvider
         .when("/", {
             templateUrl: "/app/views/atividade/listagemProfessor.html",
-            controller: "AtividadeController"
+            controller: "ListagemAtividadeController"
         })
         .when("/listagemAluno", {
             templateUrl: "/app/views/atividade/listagemAluno.html",
-            controller: "AtividadeController"
+            controller: "ListagemAtividadeController"
         })
         .when("/login", {
             templateUrl: "/app/views/usuario/login.html",
@@ -20,15 +20,15 @@ function RouteConfig($routeProvider) {
         })
         .when("/cadastrarAtividade", {
             templateUrl: "/app/views/atividade/cadastro.html",
-            controller: "AtividadeController"
+            controller: "CadastroAtividadeController"
         })
         .when("/inscricao", {
             templateUrl: "/app/views/atividade/inscricao.html",
-            controller: "AtividadeController"
+            controller: "InscricaoController"
         })
         .when("/inscricoes", {
             templateUrl: "/app/views/atividade/inscricoes.html",
-            controller: "AtividadeController"
+            controller: "InscricoesController"
             
         })
         .otherwise({

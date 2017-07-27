@@ -1,60 +1,45 @@
-<div ng-init="initInscricao()">
-    <div class="row">
-        <div clas="col s12">
-            <h5>Nova Inscrição</h5>
-            <p></p>
-            <form id="formInscricao" ng-submit="filtrarAtividadesParaInscricao()">
-                <div id="div-select-curso" class="input-field">
-                    <select id="select-curso" name="curso" ng-model="atividade.curso_id">
-                        <option value disabled selected>Escolha um curso</option>
-                        <option ng-repeat="c in cursos" value="{{c.id}}"}>{{c.nome}}</option>
-                    </select>
-                    <label id="select-curso">Curso</label>
-                </div>
-                <div class="row">
-                    <button class="btn waves-effect waves-light" type="reset">Limpar</button>
-                    <button class="btn waves-effect waves-light" type="submit">Pesquisar</button>
-                    <button class="btn waves-effect waves-light" type="button" ng-click="voltar()">Voltar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s12">
-            <table class="striped">
-                <thead>
-                    <tr>
-                        <th>Cod.</th>
-                        <th>Nome</th>
-                        <th>Dt. Registro</th>
+<div ng-init="initInscricoes()">
+    <form id="formInscricoes" ng-submit="atualizarInscricoes()">
+        <div class="row">
+            <div class="col s12">
+                <h5>Inscrições realizadas para a atividade {{atividade.nome}}</h5>
+                <p></p>
+                <table class="striped">
+                    <thead>
+                        <tr>
+                            <th>RA</th>
+                            <th>Aluno</th>
+                            <!--th>Dt. Registro</th>
                         <th>Dt. Inicio</th>
-                        <th>Dt. Termino</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-hide="lista.length > 0">
-                        <td colspan="6">Não existem atividades 300 para esse curso.</td>
-                    </tr>
-                    <tr ng-show="lista.length > 0" ng-repeat="a in lista">
-                        <td>{{a.id}}</td>
-                        <td>{{a.nome}}</td>
-                        <td>{{a.dt_registro}}</td>
+                        <th>Dt. Termino</th-->
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-hide="lista.length > 0">
+                            <td colspan="6">Não existem inscrições para essa atividade.</td>
+                        </tr>
+                        <tr ng-show="lista.length > 0" ng-repeat="i in lista">
+                            <td>{{i.ra}}</td>
+                            <td>{{i.aluno}}</td>
+                            <!--td>{{.dt_registro}}</td>
                         <td>{{a.dt_inicio}}</td>
-                        <td>{{a.dt_termino}}</td>
-                        <td>
-                            <button class="btn waves-effect waves-light" type="button" ng-click="inscrever(a.id, a.nome)">
+                        <td>{{a.dt_termino}}</td-->
+                            <td>
+                                <!--button class="btn waves-effect waves-light" type="button" ng-click="inscrever(a.id, a.nome)">
                                 <i class="material-icons left">check</i>
                                 Inscrever
-                            </button>
-                            <!--a ng-click="fazerInscricao(a.id, a.nome)" class="btn-floating red">
-                                <i class="material-icons left">check</i>
-                                Fazer inscrição
-                            </a-->
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                            </button-->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+        <div id="div-botoes" class="row">
+            <!--button class="btn waves-effect waves-light" type="reset">Limpar</button-->
+            <button class="btn waves-effect waves-light" type="submit">Salvar</button>
+            <button class="btn waves-effect waves-light" type="button" ng-click="voltar()">Voltar</button>
+        </div>
+    </form>
 </div>

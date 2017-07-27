@@ -4,7 +4,7 @@
 <head>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
+
     <!--Import materialize.css-->
     <link rel="stylesheet" href="/vendor/materialize/css/materialize.min.css">
 
@@ -26,22 +26,22 @@
             </ul>
         </div>
     </nav>
-    
+
     <main>
-    <div class="section no-pad-bot">
-        <div class="row">
-            <div ng-controller="UsuarioController" ng-show="itensMenu.length > 0" ng-init="initMenu()" class="col s3">
-                <div class="collection">
-                    <a ng-repeat="item in itensMenu" href="{{item.url}}" class="collection-item">{{item.descricao}}</a>
+        <div class="section no-pad-bot">
+            <div class="row">
+                <div ng-controller="UsuarioController" ng-show="itensMenu.length > 0" ng-init="initMenu()" class="col s3">
+                    <div class="collection">
+                        <a ng-repeat="item in itensMenu" href="{{item.url}}" class="collection-item">{{item.descricao}}</a>
+                    </div>
+                </div>
+                <div class="col s9" ng-view>
+
                 </div>
             </div>
-            <div class="col s9" ng-view>
-                
-            </div>
         </div>
-    </div>
     </main>
-   
+
     <footer class="page-footer">
         <div class="container">
             <div class="row">
@@ -82,11 +82,15 @@
     <script type="text/javascript" src="/app/services/AtividadeService.js"></script>
 
     <script type="text/javascript" src="/app/controllers/LoginController.js"></script>
-    <script type="text/javascript" src="/app/controllers/AtividadeController.js"></script>
     <script type="text/javascript" src="/app/controllers/UsuarioController.js"></script>
+    <script type="text/javascript" src="/app/controllers/ListagemAtividadeController.js"></script>
+    <script type="text/javascript" src="/app/controllers/CadastroAtividadeController.js"></script>
+    <script type="text/javascript" src="/app/controllers/InscricaoController.js"></script>
+    <script type="text/javascript" src="/app/controllers/InscricoesController.js"></script>
 
     <script type="text/javascript" src="/app/routes.js"></script>
 
     <script type="text/javascript" src="/app/config.js"></script>
 </body>
+
 </html>
