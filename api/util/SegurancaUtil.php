@@ -26,7 +26,7 @@
     }
     
     function logout() {
-        x1session_destroy();
+        session_destroy();
     }
     
     function getUsuario() {
