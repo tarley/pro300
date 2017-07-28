@@ -4,7 +4,7 @@
     require_once '../util/JsonUtil.php';
     require_once '../util/SegurancaUtil.php';
 
-    acessoRestrito();
+    acessoRestrito(array($ADMINISTRADOR, $COORDENADOR, $PROFESSOR, $ALUNO));
 
     $lista = array();
     

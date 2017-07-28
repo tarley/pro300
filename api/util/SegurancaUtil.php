@@ -25,6 +25,10 @@
         $_SESSION[USUARIO] = $usuario;
     }
     
+    function logout() {
+        x1session_destroy();
+    }
+    
     function getUsuario() {
         return $_SESSION[USUARIO];
     }

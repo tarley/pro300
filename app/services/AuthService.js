@@ -1,93 +1,39 @@
 function AuthService($http, $rootScope, $location, $window, DialogService) {
 
-    return {
-        getUsuario: function() {
-            return getUsuario();
-        },
-        isAutenticado: function() {
-            return isAutenticado();
-        },
-        isPerfilAluno: function() {
-            return isPerfilAluno();
-        },
-        autenticar: function(data) {
-            $http({
-                method: 'POST',
-                url: '/api/usuario/autenticar.php',
-                data: data
-            }).then(function(response) {
-                if (response.data.sucesso) {
-                    DialogService.showMessage("Bem vindo ao projeto 300!")
-                    setUsuario(response.data.lista);
+    this.usuario = null;
 
-                    atualizarMenu();
-                    $location.path('/');
-                }
-                else
-                    DialogService.showResponse(response);
-            }, function(response) {
-                DialogService.showError(response);
-            });
-        },
-        logout: function() {
-            $http({
-                method: 'GET',
-                url: '/api/usuario/logout.php'
-            }).then(function(response) {
-                logout();
-                limparMenu();
-
-                $location.path('/login');
-            }, function(response) {
-                DialogService.showError(response);
-            });
-        },
-        atualizarMenu: function() {
-            atualizarMenu();
-        },
-        limparMenu: function() {
-            limparMenu();
-        }
-    };
-
-    var usuario = null;
-
-    function getUsuario() {
+    this.getUsuario = function() {
         //return $rootScope.usuario;
-        return usuario;
+        return this.usuario;
     }
-    
-    function setUsuario(value) {
-        usuario = value;
+
+    this.setUsuario = function(value) {
+        this.usuario = value;
     }
-    
-    function logout() {
-        setUsuario(null);
-    }
-    
-    function isAutenticado() {
+
+    this.isAutenticado = function() {
         //return getUsuario() != undefined && getUsuario() != null;
-        return getUsuario() != null;
+        return this.getUsuario() != null;
     }
 
-    function isPerfilAluno() {
-        return isAutenticado() && getUsuario().perfil == 'Aluno';
+    this.isPerfilAluno = function() {
+        return this.isAutenticado() && this.getUsuario().perfil == 'Aluno';
     }
 
-    function setItensMenu(value) {
+    this.setItensMenu = function(value) {
         $rootScope.itensMenu = value;
     }
 
-    function atualizarMenu() {
-        limparMenu();
-
-        if (isAutenticado()) {
+    this.atualizarMenu = function() {
+        this.limparMenu();
+        var self = this;
+        if (this.isAutenticado()) {
             $http({
                 method: 'GET',
                 url: '/api/usuario/getMenu.php'
             }).then(function(response) {
                 if (response.data.sucesso) {
-                    setItensMenu(response.data.lista);
+                    self.setItensMenu(response.data.lista);
                 }
             }, function(response) {
                 DialogService.showError(response);
@@ -95,7 +41,45 @@ function AuthService($http, $rootScope, $location, $window, DialogService) {
         }
     }
 
-    function limparMenu() {
-        setItensMenu({});
+    this.limparMenu = function() {
+        this.setItensMenu({});
+    }
+
+    this.autenticar = function(data) {
+        var self = this;
+        
+        $http({
+            method: 'POST',
+            url: '/api/usuario/autenticar.php',
+            data: data
+        }).then(function(response) {
+            if (response.data.sucesso) {
+                DialogService.showMessage("Bem vindo ao projeto 300!")
+                self.setUsuario(response.data.lista);
+
+                self.atualizarMenu();
+                $location.path('/');
+            }
+            else
+                DialogService.showResponse(response);
+        }, function(response) {
+            DialogService.showError(response);
+        });
+    }
+    
+    this.logout = function() {
+        var self = this;
+        
+        $http({
+            method: 'GET',
+            url: '/api/usuario/logout.php'
+        }).then(function(response) {
+            self.setUsuario(null);
+            self.limparMenu();
+
+            $location.path('/login');
+        }, function(response) {
+            DialogService.showError(response);
+        });
     }
 }
