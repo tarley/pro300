@@ -1,13 +1,12 @@
-function InscricaoController($scope, $http, $location, AuthService, DataService,
-    SelectService, DialogService, CursoService, AtividadeService) {
+function InscricaoController($scope, $http, $location, SelectService,
+    DialogService, ValidationService, CursoService) {
 
-    $scope.initInscricao = function() {
-        SelectService.configField('#select-curso');
-        configValidacoes();
+    $scope.init = function() {
+        validate();
 
         CursoService.buscarTodos(function(response) {
             $scope.cursos = response.data.lista;
-            SelectService.configField('#select-curso');
+            SelectService.configField();
         });
     }
 
@@ -37,7 +36,7 @@ function InscricaoController($scope, $http, $location, AuthService, DataService,
     $scope.inscrever = function(ativiadeId, nome) {
         $http({
             method: 'GET',
-            url: '/api/atividade/inscrever.php?ativiadeId=' + ativiadeId
+            url: '/api/inscricao/inscrever.php?ativiadeId=' + ativiadeId
         }).then(function(response) {
             if (response.data.sucesso) {
                 DialogService.showMessage("Inscricao para a atividade {0} realizada com sucesso!", [nome]);
@@ -55,30 +54,14 @@ function InscricaoController($scope, $http, $location, AuthService, DataService,
         $location.path('/');
     }
 
-    function configValidacoesInscricao() {
-        $(document).ready(function() {
-            $("#formInscricao").validate({
-                debug: true,
-                rules: {
-                    curso: "required"
-                },
-                messages: {
-                    curso: "Selecione o curso da atividade"
-                },
-                errorElement: 'div',
-                errorPlacement: function(error, element) {
-                    error.insertAfter(element);
-                    $(error).addClass('erro');
-                },
-                errorClass: 'invalid',
-                validClass: 'valid',
-                highlight: function(element, errorClass, validClass) {
-                    $(element).addClass('invalid').removeClass('');
-                },
-                unhighlight: function(element, errorClass, validClass) {
-                    $(element).removeClass(errorClass).addClass(validClass);
-                }
-            });
+    function validate() {
+        ValidationService.configureValidation('formInscricao', {
+            rules: {
+                curso: "required"
+            },
+            messages: {
+                curso: "Selecione o curso da atividade"
+            },
         });
     }
 }

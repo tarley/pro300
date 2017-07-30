@@ -6,7 +6,11 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!--Import materialize.css-->
-    <link rel="stylesheet" href="/vendor/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="/plugins/materialize/css/materialize.min.css">
+
+    <!-- DataTable-->
+    <link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="/plugins/dataTables/media/css/jquery.dataTables.css">
 
     <!-- CSS da aplicação -->
     <link type="text/css" rel="stylesheet" href="/app/assets/css/app.css">
@@ -16,28 +20,50 @@
 </head>
 
 <body ng-app="pro300App">
-    <nav ng-controller="UsuarioController">
-        <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">
-                <i class="material-icons">done</i> Projeto {{100 * 3}}
+
+    <ul id="slide-out" class="side-nav" ng-controller="MenuController" ng-init="init()">
+        <li>
+            <div class="user-view">
+                <!--<div class="background">-->
+                <!--    <img src="/app/assets/img/logo-newton.png">-->
+                <!--</div>-->
+                <!--<a href="#!user"><img class="circle" src="/app/assets/img/logo-newton.png"></a>-->
+                <a href="#!user"><img src="/app/assets/img/logo-newton.png"></a>
+                <a href="#!name"><span class="name">{{usuario.nome}}</span></a>
+                <a href="#!email"><span class="email">{{usuario.email}}</span></a>
+                <!--<a href="#!perfil"><span>{{usuario.perfil}}</span></a>-->
+            </div>
+        </li>
+        <li ng-repeat="item in itensMenu"><a href="{{item.url}}"><i class="material-icons">chevron_right</i>{{item.descricao}}</a></li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li><a class="subheader">Mais opções</a></li>
+        <li>
+            <a class="waves-effect" href="#!/Fundadores">
+                <i class="material-icons left">sentiment_very_satisfied</i>Fundadores do sistema
             </a>
-            <ul class="right hide-on-med-and-down">
-                <li><a ng-click="logout()"><i class="material-icons right">power_settings_new</i>Sair</a></li>
-            </ul>
+        </li>
+        <li>
+            <a class="waves-effect" ng-click="logout()">
+                <i class="material-icons left">close</i>Sair do sistema
+            </a>
+        </li>
+    </ul>
+
+    <nav>
+        <div class="nav-wrapper">
+            <a id="button-menu" class="btn-floating btn-large waves-effect waves-light red" data-activates="slide-out">
+                <i class="material-icons">menu</i>
+            </a>
+            <label class="brand-logo" style="margin: 0 0 0 10px">Projeto 300</label>
         </div>
     </nav>
 
     <main>
-        <div class="section no-pad-bot">
-            <div class="row">
-                <div ng-controller="UsuarioController" ng-show="itensMenu.length > 0" ng-init="initMenu()" class="col s3">
-                    <div class="collection">
-                        <a ng-repeat="item in itensMenu" href="{{item.url}}" class="collection-item">{{item.descricao}}</a>
-                    </div>
-                </div>
-                <div class="col s9" ng-view>
-
-                </div>
+        <div class="section">
+            <div class="container">
+                <ng-view></ng-view>
             </div>
         </div>
     </main>
@@ -53,44 +79,51 @@
         </div>
     </footer>
 
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
+    <!--jQuery -->
+    <script type="text/javascript" src="/plugins/jquery/jquery.js"></script>
+
+    <!--DataTables-->
+    <script type="text/javascript" src="/plugins/dataTables/media/js/jquery.dataTables.js"></script>
 
     <!-- JQuery Validate -->
-    <script type="text/javascript" src="/vendor/jquery-validate/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/plugins/jquery-validate/jquery.validate.min.js"></script>
 
     <!-- Formatter -->
-    <script type="text/javascript" src="/vendor/formatter/jquery.formatter.min.js"></script>
-    <script type="text/javascript" src="/vendor/formatter/formatter.min.js"></script>
+    <script type="text/javascript" src="/plugins/formatter/jquery.formatter.min.js"></script>
+    <script type="text/javascript" src="/plugins/formatter/formatter.min.js"></script>
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="/vendor/materialize/js/materialize.min.js"></script>
+    <!-- Materialize -->
+    <script src="/plugins/materialize/js/materialize.min.js"></script>
 
     <!-- AngularJS -->
-    <script type="text/javascript" src="/vendor/angular/angular.min.js"></script>
-    <script type="text/javascript" src="/vendor/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="/plugins/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/plugins/angular-route/angular-route.min.js"></script>
 
     <!-- Moment -->
-    <script type="text/javascript" src="/vendor/moment/moment.min.js"></script>
+    <script type="text/javascript" src="/plugins/moment/moment.min.js"></script>
 
-    <!-- Your app -->
+    <!-- Serviços da aplicação -->
     <script type="text/javascript" src="/app/services/DialogService.js"></script>
     <script type="text/javascript" src="/app/services/SelectService.js"></script>
+    <script type="text/javascript" src="/app/services/TableService.js"></script>
+    <script type="text/javascript" src="/app/services/ValidationService.js"></script>
     <script type="text/javascript" src="/app/services/DataService.js"></script>
     <script type="text/javascript" src="/app/services/AuthService.js"></script>
     <script type="text/javascript" src="/app/services/CursoService.js"></script>
     <script type="text/javascript" src="/app/services/AtividadeService.js"></script>
+    <script type="text/javascript" src="/app/services/InscricaoService.js"></script>
 
+    <!--Controllers da aplicação-->
     <script type="text/javascript" src="/app/controllers/LoginController.js"></script>
+    <script type="text/javascript" src="/app/controllers/MenuController.js"></script>
     <script type="text/javascript" src="/app/controllers/UsuarioController.js"></script>
     <script type="text/javascript" src="/app/controllers/ListagemAtividadeController.js"></script>
     <script type="text/javascript" src="/app/controllers/CadastroAtividadeController.js"></script>
     <script type="text/javascript" src="/app/controllers/InscricaoController.js"></script>
     <script type="text/javascript" src="/app/controllers/InscricoesController.js"></script>
 
+    <!--Configurações da aplicação-->
     <script type="text/javascript" src="/app/routes.js"></script>
-
     <script type="text/javascript" src="/app/config.js"></script>
 </body>
-
 </html>

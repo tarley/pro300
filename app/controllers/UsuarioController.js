@@ -1,125 +1,101 @@
-function UsuarioController($scope, $rootScope, $http, $location, AuthService) {
+function UsuarioController($scope, $rootScope, $http, $location,
+    DialogService, ValidationService, AuthService) {
 
-    $scope.initCadastroAluno = function() {
-        $scope.usuario = {};
-
-        $(document).ready(function() {
-            $('#input-ra, #input-nome, #input-telefone, ' +
-                    '#input-email, #input-senha, #input-confirmacaoSenha')
-                .characterCounter();
-
-            $("#formUsuario").validate({
-                debug: true,
-                rules: {
-                    ra: {
-                        required: true,
-                        maxlength: 20,
-                        number: true
-                    },
-                    nome: {
-                        required: true,
-                        maxlength: 255
-                    },
-                    telefone: {
-                        number: true
-                    },
-                    email: {
-                        required: true,
-                        email: true,
-                        maxlength: 50
-                    },
-                    senha: {
-                        required: true,
-                        minlength: 5,
-                        maxlength: 20
-                    },
-                    confirmacaoSenha: {
-                        required: true,
-                        equalTo: "#input-senha"
-                    }
+    $scope.init = function() {
+        configCharacterCounter();
+        ValidationService.configValidation('#formUsuario', {
+            rules: {
+                ra: {
+                    required: true,
+                    maxlength: 20,
+                    number: true
                 },
-                //For custom messages
-                messages: {
-                    ra: {
-                        required: "Informe sua RA.",
-                        maxlength: "RA não deve conter mais de 20 digitos.",
-                        number: "Número de RA inválido."
-                    },
-                    nome: {
-                        required: "Informe seu nome completo.",
-                        maxlength: "Nome não deve conter mais de 255 caracteres."
-                    },
-                    telefone: {
-                        number: "Número de telefone inválido"
-                    },
-                    email: {
-                        required: "Informe seu e-mail. Ele será utilizado no seu proximo acesso.",
-                        email: "Informe um e-mail válido.",
-                        maxlength: "e-mail não deve conter mais de 50 caracteres."
-                    },
-                    senha: {
-                        required: "Informe uma senha para o seu usuário.",
-                        minlength: "Senha deve conter mais de 4 caracteres.",
-                        maxlength: "Senha não deve conter mais de 20 caracteres."
-                    },
-                    confirmacaoSenha: {
-                        required: "Favor confirmar a senha digitada anteriormente.",
-                        equalsTo: "Senha diferente da confirmação."
-                    }
+                nome: {
+                    required: true,
+                    maxlength: 255
                 },
-                errorElement: 'div',
-                errorPlacement: function(error, element) {
-                    error.insertAfter(element);
-                    $(error).addClass('erro');
+                telefone: {
+                    number: true
                 },
-                errorClass: 'invalid',
-                validClass: 'valid',
-                highlight: function(element, errorClass, validClass) {
-                    $(element).addClass('invalid').removeClass('');
+                email: {
+                    required: true,
+                    email: true,
+                    maxlength: 50
                 },
-                unhighlight: function(element, errorClass, validClass) {
-                    $(element).removeClass(errorClass).addClass(validClass);
+                senha: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 20
+                },
+                confirmacaoSenha: {
+                    required: true,
+                    equalTo: "#input-senha"
                 }
-            });
+            },
+            messages: {
+                ra: {
+                    required: "Informe sua RA.",
+                    maxlength: "RA não deve conter mais de 20 digitos.",
+                    number: "Número de RA inválido."
+                },
+                nome: {
+                    required: "Informe seu nome completo.",
+                    maxlength: "Nome não deve conter mais de 255 caracteres."
+                },
+                telefone: {
+                    number: "Número de telefone inválido"
+                },
+                email: {
+                    required: "Informe seu e-mail. Ele será utilizado no seu proximo acesso.",
+                    email: "Informe um e-mail válido.",
+                    maxlength: "e-mail não deve conter mais de 50 caracteres."
+                },
+                senha: {
+                    required: "Informe uma senha para o seu usuário.",
+                    minlength: "Senha deve conter mais de 4 caracteres.",
+                    maxlength: "Senha não deve conter mais de 20 caracteres."
+                },
+                confirmacaoSenha: {
+                    required: "Favor confirmar a senha digitada anteriormente.",
+                    equalsTo: "Senha diferente da confirmação."
+                }
+            }
         });
-    }
 
-    $scope.initMenu = function() {
-        AuthService.atualizarMenu();
+        $scope.usuario = {};
     }
 
     $scope.salvar = function() {
         var form = $("#formUsuario");
-        console.log("Valid: " + form.valid());
-
+        
         if (form.valid()) {
             $http({
                 method: 'POST',
                 url: '/api/usuario/inserirAluno.php',
                 data: $scope.usuario
             }).then(function(response) {
-                Materialize.toast(response.data.mensagem, 4000);
+                DialogService.showResponse(response);
                 if (response.data.sucesso) {
                     AuthService.autenticar($scope.usuario);
                 }
-            }, error);
+            }, function(response) {
+                DialogService.showError(response);
+            });
         }
     };
 
     $scope.voltar = function() {
-        if ($scope.usuario.id) {
+        if ($scope.usuario.id)
             $location.path("/");
-        }
-        else {
+        else
             $location.path("/login");
-        }
     }
 
-    $scope.logout = function() {
-        AuthService.logout();
-    };
-
-    function error(response) {
-        Materialize.toast("UsuarioController: " + response.status + " - " + response.statusText, 4000);
+    function configCharacterCounter() {
+        $(document).ready(function() {
+            $('#input-ra, #input-nome, #input-telefone, ' +
+                    '#input-email, #input-senha, #input-confirmacaoSenha')
+                .characterCounter();
+        });
     }
 }

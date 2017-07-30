@@ -2,16 +2,21 @@ var app = angular.module('pro300App', ["ngRoute"]);
 
 app.service('DialogService', DialogService);
 app.service('SelectService', SelectService);
+app.service('TableService', TableService);
+app.service('ValidationService', ValidationService)
 app.service('DataService', DataService);
 app.service('AuthService', AuthService);
 app.service('CursoService', CursoService);
 app.service('AtividadeService', AtividadeService);
+app.service('InscricaoService', InscricaoService);
+
 
 app.controller('CadastroAtividadeController', CadastroAtividadeController);
 app.controller('ListagemAtividadeController', ListagemAtividadeController);
 app.controller('InscricaoController', InscricaoController);
 app.controller('InscricoesController', InscricoesController);
 app.controller('LoginController', LoginController);
+app.controller('MenuController', MenuController);
 app.controller('UsuarioController', UsuarioController);
 
 app.config(RouteConfig);

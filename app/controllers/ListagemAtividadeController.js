@@ -4,14 +4,14 @@ function ListagemAtividadeController($scope, $http, $location, AuthService,
     $scope.init = function() {
         $scope.lista = {};
 
-        var acao = 'buscarAtivosParaProfessor.php';
+        var acao = 'atividade/buscarPorProfessor.php';
 
         if (AuthService.isPerfilAluno())
-            acao = 'buscarInscricoesDoAluno.php';
+            acao = 'inscricao/buscarPorAluno.php';
 
         $http({
             method: 'GET',
-            url: '/api/atividade/' + acao
+            url: '/api/' + acao
         }).then(function(response) {
             if (response.data.sucesso)
                 $scope.lista = response.data.lista;

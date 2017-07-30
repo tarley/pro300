@@ -1,50 +1,30 @@
-function LoginController($scope, $http, AuthService) {
+function LoginController($scope, $http, ValidationService, AuthService) {
 
-    AuthService.limparMenu();
-
-    $(document).ready(function() {
-        $("#formLogin").validate({
-            debug: true,
+    $scope.init = function() {
+        AuthService.limparMenu();
+        ValidationService.configValidation('formLogin', {
             rules: {
                 email: {
                     required: true,
                     email: true
                 },
-                senha: {
-                    required: true
-                }
+                senha: "required"
             },
             messages: {
                 email: {
                     required: "Informe o e-mail da sua conta.",
                     email: "e-mail inválido."
                 },
-                senha: {
-                    required: "Informe a senha da sua conta."
-                }
-            },
-            errorElement: 'div',
-            errorPlacement: function(error, element) {
-                error.insertAfter(element);
-                $(error).addClass('erro');
-            },
-            errorClass: 'invalid',
-            validClass: 'valid',
-            highlight: function(element, errorClass, validClass) {
-                $(element).addClass('invalid').removeClass('');
-            },
-            unhighlight: function(element, errorClass, validClass) {
-                $(element).removeClass(errorClass).addClass(validClass);
+                senha: "Informe a senha da sua conta."
             }
         });
-    });
+    }
 
     $scope.autenticar = function() {
         var form = $("#formLogin");
-        console.log("Valid: " + form.valid());
         
         if(form.valid()) {
-            AuthService.autenticar($scope.login);
+            AuthService.autenticar($scope.usuario);
         }
     }
 }

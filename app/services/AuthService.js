@@ -1,18 +1,14 @@
 function AuthService($http, $rootScope, $location, $window, DialogService) {
 
-    this.usuario = null;
-
     this.getUsuario = function() {
-        //return $rootScope.usuario;
-        return this.usuario;
+        return $rootScope.usuario;
     }
 
     this.setUsuario = function(value) {
-        this.usuario = value;
+        $rootScope.usuario = value;
     }
 
     this.isAutenticado = function() {
-        //return getUsuario() != undefined && getUsuario() != null;
         return this.getUsuario() != null;
     }
 
@@ -45,13 +41,13 @@ function AuthService($http, $rootScope, $location, $window, DialogService) {
         this.setItensMenu({});
     }
 
-    this.autenticar = function(data) {
+    this.autenticar = function(usuario) {
         var self = this;
         
         $http({
             method: 'POST',
             url: '/api/usuario/autenticar.php',
-            data: data
+            data: usuario
         }).then(function(response) {
             if (response.data.sucesso) {
                 DialogService.showMessage("Bem vindo ao projeto 300!")
