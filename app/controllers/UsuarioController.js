@@ -3,7 +3,7 @@ function UsuarioController($scope, $rootScope, $http, $location,
 
     $scope.init = function() {
         configCharacterCounter();
-        ValidationUtils.configValidation('#formUsuario', {
+        ValidationUtils.configValidation('formUsuario', {
             rules: {
                 ra: {
                     required: true,

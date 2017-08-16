@@ -30,7 +30,10 @@
                                   AND i.aluno_id = :aluno_id)");
                
         $stmt->bindParam(":curso_id", $_GET['curso_id']);
-        $stmt->bindParam(":aluno_id", getUsuarioId());
+        
+        $usuarioId = getUsuarioId();
+        $stmt->bindParam(":aluno_id", $usuarioId);
+        
         $stmt->execute();
         
         respostaListaJson($stmt->fetchAll(PDO::FETCH_ASSOC));

@@ -18,7 +18,10 @@
               VALUES (:email, :senha, :ra, :nome, :perfil_id)
         ");
         $stmt->bindParam(':email', $request['email']);
-        $stmt->bindParam(':senha', sha1($request['senha']));
+        
+        $senha = sha1($request['senha']);
+        $stmt->bindParam(':senha', $senha);
+        
         $stmt->bindParam(':ra', $request['ra']);
         $stmt->bindParam(':nome', $request['nome']);
         $stmt->bindParam(':perfil_id', $ALUNO);

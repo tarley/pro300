@@ -54,10 +54,18 @@
                 
             $stmt->bindParam(":nome", $request['nome']);
             $stmt->bindParam(":descricao", $request['descricao']);
-            $stmt->bindParam(":dt_registro", $dtRegistro->format('Y-m-d'));
-            $stmt->bindParam(":dt_inicio", $dtInicio->format('Y-m-d'));
-            $stmt->bindParam(":dt_termino", $dtTermino->format('Y-m-d'));
-            $stmt->bindParam(":professor_id", getUsuarioId());
+            
+            $dataRegistro = $dtRegistro->format('Y-m-d'); 
+            $stmt->bindParam(":dt_registro", $dataRegistro);
+            
+            $dataInicio = $dtInicio->format('Y-m-d');
+            $stmt->bindParam(":dt_inicio", $dataInicio);
+            
+            $dataTermino = $dtTermino->format('Y-m-d');
+            $stmt->bindParam(":dt_termino", $dataTermino);
+            
+            $usuarioId = getUsuarioId();
+            $stmt->bindParam(":professor_id", $usuarioId);
             $stmt->bindParam(":curso_id", $request['curso_id']);
             $stmt->execute();
         
@@ -75,8 +83,13 @@
                 
             $stmt->bindParam(":nome", $request['nome']);
             $stmt->bindParam(":descricao", $request['descricao']);
-            $stmt->bindParam(":dt_inicio", $dtInicio->format('Y-m-d'));
-            $stmt->bindParam(":dt_termino", $dtTermino->format('Y-m-d'));
+            
+            $dataInicio = $dtInicio->format('Y-m-d');
+            $stmt->bindParam(":dt_inicio", $dataInicio);
+            
+            $dataTermino = $dtTermino->format('Y-m-d');
+            $stmt->bindParam(":dt_termino", $dataTermino);
+            
             $stmt->bindParam(":curso_id", $request['curso_id']);
             $stmt->bindParam(":id", $request['id']);
             $stmt->execute();

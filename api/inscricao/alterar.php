@@ -30,11 +30,12 @@
                      WHERE id = :id
                     ");
             
-            if(empty($inscricao['grupo']))                    
-                $stmt->bindParam(":grupo", null);
-            else
-                $stmt->bindParam(":grupo", strtoupper($inscricao['grupo']));
-                
+            $grupo = null;
+            
+            if(!empty($inscricao['grupo']))                    
+                $grupo = strtoupper($inscricao['grupo']);
+            
+            $stmt->bindParam(":grupo", $grupo);
             $stmt->bindParam(":lider", $inscricao['lider']);
             $stmt->bindParam(":nota1", $inscricao['nota1']);
             $stmt->bindParam(":nota300", $inscricao['nota300']);

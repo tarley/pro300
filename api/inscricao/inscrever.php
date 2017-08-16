@@ -26,8 +26,12 @@
                     :atividade_id
                 )");
                 
-        $stmt->bindParam(":dt_inscricao", $dtInscricao->format('Y-m-d'));
-        $stmt->bindParam(":aluno_id", getUsuarioId());
+        $dataInscricao = $dtInscricao->format('Y-m-d');
+        $stmt->bindParam(":dt_inscricao", $dataInscricao);
+        
+        $usuarioId = getUsuarioId();
+        $stmt->bindParam(":aluno_id", $usuarioId);
+        
         $stmt->bindParam(":atividade_id", $_GET['atividadeId']);
         $stmt->execute();
     

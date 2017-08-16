@@ -29,7 +29,10 @@
               AND a.professor_id = :professor_id ");
                
         $stmt->bindParam(":atividade_id", $_GET["atividade_id"]);
-        $stmt->bindParam(":professor_id", getUsuarioId());
+        
+        $usuarioId = getUsuarioId();
+        $stmt->bindParam(":professor_id", $usuarioId);
+        
         $stmt->execute();
         
         respostaListaJson($stmt->fetchAll(PDO::FETCH_ASSOC), $log);

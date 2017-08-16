@@ -24,8 +24,9 @@
             INNER JOIN curso c ON c.id = a.curso_id
              WHERE professor_id = :professor_id
                AND dt_encerramento IS NULL ");
-               
-        $stmt->bindParam(":professor_id", getUsuarioId());
+        
+        $usuarioId = getUsuarioId();
+        $stmt->bindParam(":professor_id", $usuarioId);
         $stmt->execute();
         
         respostaListaJson($stmt->fetchAll(PDO::FETCH_ASSOC));
