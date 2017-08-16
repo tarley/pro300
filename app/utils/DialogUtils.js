@@ -1,4 +1,4 @@
-function DialogService() {
+function DialogUtils() {
 
     this.displayLength = 4000;
 
@@ -19,7 +19,9 @@ function DialogService() {
     this.showError = function(response) {
         if (response.status == '401')
             console.log("Usuário não possui permissão para acessar o recurso.");
-        else
+        else if(response.status)
             this.showMessage("{0} - {1}", [response.status, response.statusText]);
+        else
+            console.log(response.message);
     }
 }

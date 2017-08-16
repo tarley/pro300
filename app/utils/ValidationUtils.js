@@ -1,4 +1,4 @@
-function ValidationService() {
+function ValidationUtils() {
 
     this.configValidation = function(formID, obj) {
         $(document).ready(function() {

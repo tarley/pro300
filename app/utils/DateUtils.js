@@ -1,4 +1,4 @@
-function DataService() {
+function DateUtils() {
 
     this.configDatePicker = function() {
         var currentTime = new Date();

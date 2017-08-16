@@ -1,12 +1,17 @@
 var app = angular.module('pro300App', ["ngRoute"]);
 
-app.service('DialogService', DialogService);
-app.service('SelectService', SelectService);
-app.service('TableService', TableService);
-app.service('ValidationService', ValidationService)
-app.service('DataService', DataService);
+app.service('StringUtils', StringUtils);
+app.service('DialogUtils', DialogUtils);
+app.service('SelectUtils', SelectUtils);
+app.service('TableUtils', TableUtils);
+app.service('ValidationUtils', ValidationUtils)
+app.service('DateUtils', DateUtils);
+
+
 app.service('AuthService', AuthService);
+app.service('UsuarioService', UsuarioService);
 app.service('CursoService', CursoService);
+app.service('GrupoService', GrupoService);
 app.service('AtividadeService', AtividadeService);
 app.service('InscricaoService', InscricaoService);
 
@@ -21,6 +26,25 @@ app.controller('UsuarioController', UsuarioController);
 
 app.config(RouteConfig);
 app.run(OnRouteChangeStart);
+app.run(function($rootScope) {
+  $rootScope.typeOf = function(value) {
+    return typeof value;
+  };
+})
+
+.directive('stringToNumber', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, element, attrs, ngModel) {
+      ngModel.$parsers.push(function(value) {
+        return '' + value;
+      });
+      ngModel.$formatters.push(function(value) {
+        return parseFloat(value);
+      });
+    }
+  };
+});
 
 /*
 function AuthInterceptor($location, AuthService, $q) {

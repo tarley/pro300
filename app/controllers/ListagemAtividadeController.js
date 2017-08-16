@@ -1,25 +1,17 @@
-function ListagemAtividadeController($scope, $http, $location, AuthService,
-    DialogService, AtividadeService) {
+function ListagemAtividadeController($scope, $http, $location, DialogUtils,
+    AuthService, AtividadeService, InscricaoService) {
 
     $scope.init = function() {
         $scope.lista = {};
 
-        var acao = 'atividade/buscarPorProfessor.php';
+        var acao = function(response) {
+            $scope.lista = response.data.lista;
+        }
 
         if (AuthService.isPerfilAluno())
-            acao = 'inscricao/buscarPorAluno.php';
-
-        $http({
-            method: 'GET',
-            url: '/api/' + acao
-        }).then(function(response) {
-            if (response.data.sucesso)
-                $scope.lista = response.data.lista;
-            else
-                DialogService.showResponse(response);
-        }, function(response) {
-            DialogService.showError(response);
-        });
+            InscricaoService.buscarPorAluno(acao);
+        else
+            AtividadeService.buscarPorProfessor(acao);
     }
 
     $scope.novaAtividade = function() {

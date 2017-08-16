@@ -71,10 +71,12 @@
     <footer class="page-footer">
         <div class="container">
             <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Sistemas de Informação - Newton Paiva</h5>
-                    <p class="grey-text text-lighten-4">Sistema desenvolvido pelos alunos do curso de Sistemas de Informação.</p>
-                </div>
+                <a class="white-text text-lighten-3" href="https://www.newtonpaiva.br/graduacao/sistemas-de-informacao">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Sistemas de Informação - Newton Paiva</h5>
+                        <p class="grey-text text-lighten-4">Sistema desenvolvido pelos alunos do curso de Sistemas de Informação.</p>
+                    </div>
+                </a>
             </div>
         </div>
     </footer>
@@ -103,13 +105,17 @@
     <script type="text/javascript" src="/plugins/moment/moment.min.js"></script>
 
     <!-- Serviços da aplicação -->
-    <script type="text/javascript" src="/app/services/DialogService.js"></script>
-    <script type="text/javascript" src="/app/services/SelectService.js"></script>
-    <script type="text/javascript" src="/app/services/TableService.js"></script>
-    <script type="text/javascript" src="/app/services/ValidationService.js"></script>
-    <script type="text/javascript" src="/app/services/DataService.js"></script>
+    <script type="text/javascript" src="/app/utils/StringUtils.js"></script>
+    <script type="text/javascript" src="/app/utils/DialogUtils.js"></script>
+    <script type="text/javascript" src="/app/utils/SelectUtils.js"></script>
+    <script type="text/javascript" src="/app/utils/TableUtils.js"></script>
+    <script type="text/javascript" src="/app/utils/ValidationUtils.js"></script>
+    <script type="text/javascript" src="/app/utils/DateUtils.js"></script>
+
     <script type="text/javascript" src="/app/services/AuthService.js"></script>
+    <script type="text/javascript" src="/app/services/UsuarioService.js"></script>
     <script type="text/javascript" src="/app/services/CursoService.js"></script>
+    <script type="text/javascript" src="/app/services/GrupoService.js"></script>
     <script type="text/javascript" src="/app/services/AtividadeService.js"></script>
     <script type="text/javascript" src="/app/services/InscricaoService.js"></script>
 
@@ -126,4 +132,5 @@
     <script type="text/javascript" src="/app/routes.js"></script>
     <script type="text/javascript" src="/app/config.js"></script>
 </body>
+
 </html>

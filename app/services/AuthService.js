@@ -1,4 +1,4 @@
-function AuthService($http, $rootScope, $location, $window, DialogService) {
+function AuthService($http, $rootScope, $location, $window, DialogUtils) {
 
     this.getUsuario = function() {
         return $rootScope.usuario;
@@ -32,7 +32,7 @@ function AuthService($http, $rootScope, $location, $window, DialogService) {
                     self.setItensMenu(response.data.lista);
                 }
             }, function(response) {
-                DialogService.showError(response);
+                DialogUtils.showError(response);
             });
         }
     }
@@ -50,16 +50,16 @@ function AuthService($http, $rootScope, $location, $window, DialogService) {
             data: usuario
         }).then(function(response) {
             if (response.data.sucesso) {
-                DialogService.showMessage("Bem vindo ao projeto 300!")
+                DialogUtils.showMessage("Bem vindo ao projeto 300!")
                 self.setUsuario(response.data.lista);
 
                 self.atualizarMenu();
                 $location.path('/');
             }
             else
-                DialogService.showResponse(response);
+                DialogUtils.showResponse(response);
         }, function(response) {
-            DialogService.showError(response);
+            DialogUtils.showError(response);
         });
     }
     
@@ -75,7 +75,7 @@ function AuthService($http, $rootScope, $location, $window, DialogService) {
 
             $location.path('/login');
         }, function(response) {
-            DialogService.showError(response);
+            DialogUtils.showError(response);
         });
     }
 }

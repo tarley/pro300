@@ -1,9 +1,9 @@
 function UsuarioController($scope, $rootScope, $http, $location,
-    DialogService, ValidationService, AuthService) {
+    DialogUtils, ValidationUtils, AuthService, UsuarioService) {
 
     $scope.init = function() {
         configCharacterCounter();
-        ValidationService.configValidation('#formUsuario', {
+        ValidationUtils.configValidation('#formUsuario', {
             rules: {
                 ra: {
                     required: true,
@@ -67,19 +67,10 @@ function UsuarioController($scope, $rootScope, $http, $location,
 
     $scope.salvar = function() {
         var form = $("#formUsuario");
-        
+
         if (form.valid()) {
-            $http({
-                method: 'POST',
-                url: '/api/usuario/inserirAluno.php',
-                data: $scope.usuario
-            }).then(function(response) {
-                DialogService.showResponse(response);
-                if (response.data.sucesso) {
-                    AuthService.autenticar($scope.usuario);
-                }
-            }, function(response) {
-                DialogService.showError(response);
+            UsuarioService.inserirAluno($scope.usuario, function(response) {
+                AuthService.autenticar($scope.usuario);
             });
         }
     };

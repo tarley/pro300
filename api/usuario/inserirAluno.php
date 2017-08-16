@@ -14,14 +14,13 @@
         $conn->exec("set names utf8");
         
         $stmt = $conn->prepare("
-            INSERT INTO usuario(email, senha, ra, nome, telefone, perfil_id) 
-              VALUES (:email, :senha, :ra, :nome, :telefone, :perfil_id)
+            INSERT INTO usuario(email, senha, ra, nome, perfil_id) 
+              VALUES (:email, :senha, :ra, :nome, :perfil_id)
         ");
         $stmt->bindParam(':email', $request['email']);
         $stmt->bindParam(':senha', sha1($request['senha']));
         $stmt->bindParam(':ra', $request['ra']);
         $stmt->bindParam(':nome', $request['nome']);
-        $stmt->bindParam(':telefone', $request['telefone']);
         $stmt->bindParam(':perfil_id', $ALUNO);
         
         if($stmt->execute()) {

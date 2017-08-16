@@ -21,8 +21,7 @@
                     u.email, 
                     u.senha, 
                     u.ra, 
-                    u.nome, 
-                    u.telefone, 
+                    u.nome,
                     u.perfil_id,
                     p.perfil
              FROM  usuario u

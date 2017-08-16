@@ -30,3 +30,12 @@ main {
 #div-botoes {
     margin: 40px 0px 0px 0px;
 }
+
+#grupo {
+    width:25px;
+    text-transform: uppercase;
+}
+
+#p1, #p300, #pFinal {
+    width: 50px;
+}

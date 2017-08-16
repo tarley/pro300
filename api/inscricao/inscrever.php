@@ -28,7 +28,7 @@
                 
         $stmt->bindParam(":dt_inscricao", $dtInscricao->format('Y-m-d'));
         $stmt->bindParam(":aluno_id", getUsuarioId());
-        $stmt->bindParam(":atividade_id", $_GET['ativiadeId']);
+        $stmt->bindParam(":atividade_id", $_GET['atividadeId']);
         $stmt->execute();
     
         respostaJson("Atividade cadastrada com sucesso");

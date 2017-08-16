@@ -15,6 +15,11 @@
         
         $stmt = $conn->prepare("
             SELECT i.id,
+                   i.nota1,
+                   i.nota300,
+                   i.nota_final,
+                   i.grupo,
+                   i.lider,
                    u.ra,
                    u.nome AS aluno
               FROM inscricao i
@@ -30,6 +35,6 @@
         respostaListaJson($stmt->fetchAll(PDO::FETCH_ASSOC), $log);
     } catch(PDOException $e) {
         $log->Error($e);
-        respostaErroJson($e);
+        respostaErroJson($e, $log);
     }
 ?>

@@ -1,4 +1,4 @@
-function CursoService($http, DialogService) {
+function CursoService($http, DialogUtils) {
 
     this.buscarTodos = function(callback) {
         $http({
@@ -9,9 +9,9 @@ function CursoService($http, DialogService) {
                 callback(response);
             }
             else
-                DialogService.showResponse(response);
+                DialogUtils.showResponse(response);
         }, function(response) {
-            DialogService.showError(response);
+            DialogUtils.showError(response);
         });
     }
 

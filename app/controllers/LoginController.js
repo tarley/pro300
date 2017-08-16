@@ -1,8 +1,8 @@
-function LoginController($scope, $http, ValidationService, AuthService) {
+function LoginController($scope, $http, ValidationUtils, AuthService) {
 
     $scope.init = function() {
         AuthService.limparMenu();
-        ValidationService.configValidation('formLogin', {
+        ValidationUtils.configValidation('formLogin', {
             rules: {
                 email: {
                     required: true,

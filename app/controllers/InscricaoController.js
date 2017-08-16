@@ -1,12 +1,13 @@
-function InscricaoController($scope, $http, $location, SelectService,
-    DialogService, ValidationService, CursoService) {
+function InscricaoController($scope, $http, $location,
+    SelectUtils, DialogUtils, ValidationUtils,
+    CursoService, AtividadeService, InscricaoService) {
 
     $scope.init = function() {
         validate();
 
         CursoService.buscarTodos(function(response) {
             $scope.cursos = response.data.lista;
-            SelectService.configField();
+            SelectUtils.configField();
         });
     }
 
@@ -18,35 +19,15 @@ function InscricaoController($scope, $http, $location, SelectService,
 
         $scope.lista = {};
 
-        $http({
-            method: 'GET',
-            url: '/api/atividade/buscarParaInscricao.php?curso_id=' + $scope.atividade.curso_id,
-        }).then(function(response) {
-            if (response.data.sucesso) {
-                $scope.lista = response.data.lista;
-            }
-            else {
-                DialogService.showResponse(response);
-            }
-        }, function(response) {
-            DialogService.showError(response);
+        AtividadeService.buscarParaInscricao($scope.atividade.curso_id, function(listaAtividades) {
+            $scope.lista = listaAtividades;
         });
     }
 
-    $scope.inscrever = function(ativiadeId, nome) {
-        $http({
-            method: 'GET',
-            url: '/api/inscricao/inscrever.php?ativiadeId=' + ativiadeId
-        }).then(function(response) {
-            if (response.data.sucesso) {
-                DialogService.showMessage("Inscricao para a atividade {0} realizada com sucesso!", [nome]);
-                $location.path('/');
-            }
-            else {
-                DialogService.showResponse(response);
-            }
-        }, function(response) {
-            DialogService.showError(response);
+    $scope.inscrever = function(atividadeId, nome) {
+        InscricaoService.inscrever(atividadeId, function(response) {
+            DialogUtils.showMessage("Inscricao para a atividade {0} realizada com sucesso!", [nome]);
+            $location.path('/');
         });
     }
 
@@ -55,7 +36,7 @@ function InscricaoController($scope, $http, $location, SelectService,
     }
 
     function validate() {
-        ValidationService.configureValidation('formInscricao', {
+        ValidationUtils.configValidation('formInscricao', {
             rules: {
                 curso: "required"
             },

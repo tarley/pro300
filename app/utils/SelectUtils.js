@@ -1,4 +1,4 @@
-function SelectService() {
+function SelectUtils() {
     this.configField = function() {
         $(document).ready(function() {
             $('select').material_select();

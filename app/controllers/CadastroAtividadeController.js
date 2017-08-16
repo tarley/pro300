@@ -1,5 +1,6 @@
-function CadastroAtividadeController($scope, $http, $location, AuthService, DataService,
-    SelectService, DialogService, ValidationService, CursoService, AtividadeService) {
+function CadastroAtividadeController($scope, $http, $location, 
+    DateUtils, SelectUtils, DialogUtils, ValidationUtils,
+    AuthService, CursoService, AtividadeService) {
 
     $scope.init = function() {
         $scope.atividade = AtividadeService.getAtividade();
@@ -7,11 +8,11 @@ function CadastroAtividadeController($scope, $http, $location, AuthService, Data
         configCharacterCounter();
         configValidation();
 
-        DataService.configDatePicker();
+        DateUtils.configDatePicker();
 
         CursoService.buscarTodos(function(response) {
             $scope.cursos = response.data.lista;
-            SelectService.configField();
+            SelectUtils.configField();
         });
     }
 
@@ -21,17 +22,9 @@ function CadastroAtividadeController($scope, $http, $location, AuthService, Data
         if (!form.valid())
             return;
 
-        $http({
-            method: 'POST',
-            url: '/api/atividade/inserirOuAlterar.php',
-            data: $scope.atividade
-        }).then(function(response) {
-            DialogService.showResponse(response);
-
-            if (response.data.sucesso)
-                $location.path('/');
-        }, function(response) {
-            DialogService.showError(response);
+        AtividadeService.inserirOuAlterar($scope.atividade, function(response) {
+            DialogUtils.showResponse(response);
+            $location.path('/');
         });
     }
 
@@ -54,7 +47,7 @@ function CadastroAtividadeController($scope, $http, $location, AuthService, Data
     }
 
     function configValidation() {
-        ValidationService.configValidation('formAtividade', {
+        ValidationUtils.configValidation('formAtividade', {
             rules: {
                 curso: "required",
                 nome: {
@@ -93,7 +86,7 @@ function CadastroAtividadeController($scope, $http, $location, AuthService, Data
             jQuery.validator.addMethod("beforeTo", function(valueTermino, elementTermino) {
                 var valueInicio = $('#dt-inicio').val();
 
-                return DataService.isBefore(valueInicio, valueTermino);
+                return DateUtils.isBefore(valueInicio, valueTermino);
             });
         });
     }

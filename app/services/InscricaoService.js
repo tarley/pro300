@@ -1,4 +1,4 @@
-function InscricaoService($http, DialogService) {
+function InscricaoService($http, DialogUtils) {
 
     this.buscarPorAtividade = function(id, callback) {
         $http({
@@ -8,9 +8,37 @@ function InscricaoService($http, DialogService) {
             if (response.data.sucesso)
                 callback(response)
             else
-                DialogService.showResponse(response);
+                DialogUtils.showResponse(response);
         }, function(response) {
-            DialogService.showError(response);
+            DialogUtils.showError(response);
+        });
+    }
+
+    this.buscarPorAluno = function(callback) {
+        $http({
+            method: 'GET',
+            url: '/api/inscricao/buscarPorAluno.php'
+        }).then(function(response) {
+            if (response.data.sucesso)
+                callback(response);
+            else
+                DialogUtils.showResponse(response);
+        }, function(response) {
+            DialogUtils.showError(response);
+        });
+    }
+
+    this.inscrever = function(atividadeId, callback) {
+        $http({
+            method: 'GET',
+            url: '/api/inscricao/inscrever.php?atividadeId=' + atividadeId
+        }).then(function(response) {
+            if (response.data.sucesso)
+                callback(response);
+            else
+                DialogUtils.showResponse(response);
+        }, function(response) {
+            DialogUtils.showError(response);
         });
     }
 
@@ -20,12 +48,27 @@ function InscricaoService($http, DialogService) {
             url: '/api/inscricao/excluir.php',
             data: {id: id}
         }).then(function(response) {
-            DialogService.showResponse(response);
+            DialogUtils.showResponse(response);
 
             if (response.data.sucesso)
                 callback();
         }, function(response) {
-            DialogService.showError(response);
+            DialogUtils.showError(response);
+        });
+    }
+    
+    this.salvar = function(inscricoes, callback) {
+        $http({
+            method: 'POST',
+            url: '/api/inscricao/alterar.php',
+            data: inscricoes
+        }).then(function(response) {
+            if(response.data.sucesso) {
+                callback(response);
+            } else
+                DialogUtils.showResponse(response);
+        }, function(response) {
+            DialogUtils.showError(response);
         });
     }
 }
