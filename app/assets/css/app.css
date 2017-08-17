@@ -39,3 +39,7 @@ main {
 #p1, #p300, #pFinal {
     width: 50px;
 }
+
+.container-listagem {
+    width: 90%;
+}
