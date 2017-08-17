@@ -34,7 +34,12 @@
                 <!--<a href="#!perfil"><span>{{usuario.perfil}}</span></a>-->
             </div>
         </li>
-        <li ng-repeat="item in itensMenu"><a href="{{item.url}}"><i class="material-icons">chevron_right</i>{{item.descricao}}</a></li>
+        <li ng-repeat="item in itensMenu">
+            <a href="{{item.url}}">
+                <span class="new badge">4</span>
+                <i class="material-icons">chevron_right</i>{{item.descricao}}
+            </a>
+        </li>
         <li>
             <div class="divider"></div>
         </li>

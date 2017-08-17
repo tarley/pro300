@@ -4,6 +4,8 @@
     require_once '../util/JsonUtil.php';
     require_once '../util/SegurancaUtil.php';
 
+    $log->Debug("API: atividade/buscarPorId");
+
     acessoRestrito(array($ADMINISTRADOR, $COORDENADOR, $PROFESSOR));
 
     try {
@@ -28,7 +30,7 @@
         $stmt->execute();
         
         respostaListaJson($stmt->fetchAll(PDO::FETCH_ASSOC));
-    } catch(PDOException $e) {
+    } catch(Exception $e) {
         $log->Error($e);
         respostaErroJson($e);
     }

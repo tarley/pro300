@@ -30,7 +30,8 @@ function AuthService($http, $rootScope, $location, $window, DialogUtils) {
             }).then(function(response) {
                 if (response.data.sucesso) {
                     self.setItensMenu(response.data.lista);
-                }
+                } else
+                    DialogUtils.showResponse(response);
             }, function(response) {
                 DialogUtils.showError(response);
             });
