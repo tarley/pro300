@@ -19,15 +19,25 @@ function DateUtils() {
         });
     }
     
-    this.format = function(data, valorPadrao = '-', formato = 'DD/MM/YYYY') {
+    this.format = function(data, valorPadrao, formato) {
+        
+        if(valorPadrao == undefined || valorPadrao == null)
+            valorPadrao = '-';
+            
+        if(formato == undefined || formato == null)
+            formato = 'DD/MM/YYYY'
+            
         if (data == undefined || data == "" || data == '0000-00-00 00:00:00')
             return valorPadrao;
 
         return moment(data).format(formato);
     }
     
-    this.isBefore = function(valor1, valor2, formato = 'DD/MM/YYYY') {
-
+    this.isBefore = function(valor1, valor2, formato) {
+        
+        if(formato == undefined || formato == null)
+            formato = 'DD/MM/YYYY'
+        
         if (valor1 == null || valor1.trim().length == 0)
             return true;
 

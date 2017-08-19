@@ -2,7 +2,10 @@ function DialogUtils() {
 
     this.displayLength = 4000;
 
-    this.showMessage = function(message, params = []) {
+    this.showMessage = function(message, params) {
+        if(params == undefined || params == null)
+            params = [];
+        
         var template = jQuery.validator.format(message);
         Materialize.toast(template(params), this.displayLength);
     }
