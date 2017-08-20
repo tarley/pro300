@@ -1,6 +1,6 @@
 function InscricoesController($scope, $http, $location, 
-    DialogUtils, TableUtils, SelectUtils,
-    AtividadeService, InscricaoService, GrupoService) {
+    DialogUtils, TableUtils, SelectUtils, StringUtils,
+    AtividadeService, InscricaoService, GrupoService, AvaliacaoService) {
 
     $scope.init = function() {
         $scope.atividade = AtividadeService.getAtividade();
@@ -21,27 +21,6 @@ function InscricoesController($scope, $http, $location,
         var numeroMinimoAlunosPorGrupo = prompt("Qual o número minimo de alunos por grupo?");
         if(numeroMinimoAlunosPorGrupo)
             GrupoService.gerarGrupos(numeroMinimoAlunosPorGrupo, $scope.lista);
-
-        // $('#modal1').modal('open', {
-        //     ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-        //         alert("Ready");
-        //         console.log(modal, trigger);
-        //     },
-        //     complete: function() {
-        //         alert('Closed');
-        //     } // Callback for Modal close
-        // });
-
-        // $('#modal1').modal({
-        //     dismissible: true, // Modal can be dismissed by clicking outside of the modal
-        //     opacity: .5, // Opacity of modal background
-        //     inDuration: 300, // Transition in duration
-        //     outDuration: 200, // Transition out duration
-        //     startingTop: '4%', // Starting top style attribute
-        //     endingTop: '10%', // Ending top style attribute
-
-        // });
-
     }
 
     $scope.salvar = function() {
@@ -51,8 +30,25 @@ function InscricoesController($scope, $http, $location,
         });
     }
 
+    $scope.iniciarAvaliacaoColegas = function() {
+        AvaliacaoService.iniciarAvaliacaoColegas($scope.atividade.id, function(response) {
+            DialogUtils.showMessage("Foi iniciada a avaliação da ajuda dos colegas do grupo. Informe os alunos que eles devem acessar o sistema para responder as avaliações pendêntes.");
+            
+            AtividadeService.buscarAtividadePorId($scope.atividade.id, function(atividade) {
+                AtividadeService.setAtividade(atividade);
+                $scope.atividade = atividade;
+            });
+            
+            buscarInscricoes();
+        });
+    }
+
     $scope.voltar = function() {
         $location.path('/');
+    }
+
+    $scope.avaliacaoDosColegasIniciada = function() {
+        return StringUtils.isNotNullOrEmpty($scope.atividade.dt_inicio_avaliacao);
     }
 
     function buscarInscricoes() {

@@ -1,5 +1,5 @@
 function ListagemAtividadeController($scope, $http, $location, DialogUtils,
-    AuthService, AtividadeService, InscricaoService) {
+    AuthService, AtividadeService) {
 
     $scope.init = function() {
         $scope.lista = {};
@@ -9,7 +9,7 @@ function ListagemAtividadeController($scope, $http, $location, DialogUtils,
         }
 
         if (AuthService.isPerfilAluno())
-            InscricaoService.buscarPorAluno(acao);
+            AtividadeService.buscarPorAluno(acao);
         else
             AtividadeService.buscarPorProfessor(acao);
     }

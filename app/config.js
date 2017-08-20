@@ -13,7 +13,9 @@ app.service('UsuarioService', UsuarioService);
 app.service('CursoService', CursoService);
 app.service('GrupoService', GrupoService);
 app.service('AtividadeService', AtividadeService);
+app.service('AvaliacaoService', AvaliacaoService);
 app.service('InscricaoService', InscricaoService);
+
 
 
 app.controller('CadastroAtividadeController', CadastroAtividadeController);

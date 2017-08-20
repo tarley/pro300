@@ -1,25 +1,23 @@
 <?php
-    require_once '../log/logentries.php';
     
-function respostaJson($mensagem = null, $lista = null, $sucesso = true, $log = null) {
+function respostaJson($mensagem = null, $lista = null, $sucesso = true) {
     header("Access-Control-Allow-Origin: *");
     header("Content-Type: application/json; charset=UTF-8");
     
     $response = json_encode(array("sucesso" => $sucesso, "mensagem" => $mensagem, "lista" => $lista));
     
-    if($log != null)
-        $log->Debug(print_r($response, true));
+    Log::Debug(print_r($response, true));
     
     echo $response;
     exit;
 }
 
-function respostaListaJson($lista, $log = null) {
-    respostaJson(null, $lista, true, $log);
+function respostaListaJson($lista) {
+    respostaJson(null, $lista, true);
 }
 
-function respostaErroJson($exception, $log = null) {
-    respostaJson($exception->getMessage(), null, false, $log);
+function respostaErroJson($exception) {
+    respostaJson($exception->getMessage(), null, false);
 }
 
 ?>

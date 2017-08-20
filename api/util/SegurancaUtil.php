@@ -8,25 +8,21 @@
     /* CHAVE PARA O USUARIO NA SESSAO */
     define('USUARIO', 'usuario');
 
-    session_start();
-
     function autenticacaoInvalida() {
         return empty($_SESSION[USUARIO]);
     }
     
-    function acessoRestrito($perfisPermitidos = array(1, 2, 3, 4), $log = null) {
+    function acessoRestrito($perfisPermitidos = array(1, 2, 3, 4)) {
         
         if(autenticacaoInvalida()) {
-            if($log != null)
-                $log->Debug("Acesso negado ao recurso, usuário não autenticado.");
+            LOG::Debug("Acesso negado ao recurso, usuário não autenticado.");
                 
             http_response_code(401);
             exit;
         }
         
         if(!in_array(getPerfilId(), $perfisPermitidos)) {
-            if($log != null)
-                $log->Debug("Usuário não possui permissão de acesso ao recurso. {print_r(getUsuario(), true}");
+            LOG::Debug("Usuário não possui permissão de acesso ao recurso. {print_r(getUsuario(), true}");
                 
             http_response_code(401);
             exit;

@@ -9,9 +9,7 @@
 
 	// put your Logentries Log Token inside the double quotes in the $LOGENTRIES_TOKEN constant below.
   	
-  	//$LOGENTRIES_TOKEN = "8e47531e-76b6-439f-8758-21b26efd4ca9";
-	
-	$LOGENTRIES_TOKEN = "15adbbcc-0343-44ea-aba5-411b83f6e437";
+  	// $LOGENTRIES_TOKEN = "";
 
 
 /*  

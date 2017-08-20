@@ -1,5 +1,5 @@
 <?php
-    require_once 'api/util/SegurancaUtil.php';
+    require_once '../../Config.php';
     
     logout();
 ?>

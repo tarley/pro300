@@ -1,8 +1,5 @@
 <?php
-    require_once '../log/logentries.php';
-    require_once '../util/Config.php';
-    require_once '../util/JsonUtil.php';
-    require_once '../util/SegurancaUtil.php';
+    require_once '../../Config.php';
 
     $log->Debug("API: inscricao/alterar");
 

@@ -45,6 +45,20 @@ function AtividadeService($http, DialogUtils) {
         });
     }
 
+    this.buscarPorAluno = function(callback) {
+        $http({
+            method: 'GET',
+            url: '/api/atividade/buscarPorAluno.php'
+        }).then(function(response) {
+            if (response.data.sucesso)
+                callback(response);
+            else
+                DialogUtils.showResponse(response);
+        }, function(response) {
+            DialogUtils.showError(response);
+        });
+    }
+
     this.buscarParaInscricao = function(cursoId, callback) {
         $http({
             method: 'GET',

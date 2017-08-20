@@ -14,20 +14,6 @@ function InscricaoService($http, DialogUtils) {
         });
     }
 
-    this.buscarPorAluno = function(callback) {
-        $http({
-            method: 'GET',
-            url: '/api/inscricao/buscarPorAluno.php'
-        }).then(function(response) {
-            if (response.data.sucesso)
-                callback(response);
-            else
-                DialogUtils.showResponse(response);
-        }, function(response) {
-            DialogUtils.showError(response);
-        });
-    }
-
     this.inscrever = function(atividadeId, callback) {
         $http({
             method: 'GET',

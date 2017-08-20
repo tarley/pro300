@@ -21,16 +21,16 @@
                         <tr ng-show="lista.length > 0" ng-repeat="i in lista">
                             <td>{{i.ra}}</td>
                             <td>{{i.aluno}}</td>
-                            <td><input id="grupo" type="text" ng-model="i.grupo" maxlength="1" /></td>
+                            <td><input id="grupo" type="text" ng-model="i.grupo" maxlength="1" ng-readonly="avaliacaoDosColegasIniciada()" /></td>
                             <td>
-                                <input id="lider-{{i.id}}" type="checkbox" ng-model="i.lider" ng-checked="i.lider == 1"/>
+                                <input id="lider-{{i.id}}" type="checkbox" ng-model="i.lider" ng-checked="i.lider == 1" ng-disabled="avaliacaoDosColegasIniciada()"/>
                                 <label for="lider-{{i.id}}"></label>
                             </td>
-                            <td><input id="p1" type="number" string-to-number ng-model="i.nota1" min="0" max="100" /></td>
-                            <td><input id="p300" type="number" string-to-number ng-model="i.nota300" min="0" max="100" /></td>
+                            <td><input id="p1" type="number" string-to-number ng-model="i.nota1" min="0" max="100" ng-readonly="avaliacaoDosColegasIniciada()" /></td>
+                            <td><input id="p300" type="number" string-to-number ng-model="i.nota300" min="0" max="100" ng-readonly="avaliacaoDosColegasIniciada()"/></td>
                             <td><input id="pFinal" type="number" string-to-number ng-model="i.nota_final" min="0" max="100" /></td>
                             <td>
-                                <a ng-click="excluir(i.id)" class="btn-floating red">
+                                <a ng-click="excluir(i.id)" class="btn-floating red" ng-hide="avaliacaoDosColegasIniciada()">
                                     <i class="material-icons left">close</i>
                                 </a>
                                 <!--button class="btn waves-effect waves-light" type="button" ng-click="inscrever(a.id, a.nome)">
@@ -45,18 +45,10 @@
         </div>
         <div id="div-botoes" class="row">
             <!--<button class="btn waves-effect waves-light" type="reset">Limpar</button>-->
-            <button class="btn waves-effect waves-light" type="button" ng-click="gerarGrupos()">Gerar grupos</button>
+            <button class="btn waves-effect waves-light" type="button" ng-click="gerarGrupos()" ng-hide="avaliacaoDosColegasIniciada()">Gerar grupos</button>
             <button class="btn waves-effect waves-light" type="submit">Salvar</button>
+            <button class="btn waves-effect waves-light" type="button" ng-click="iniciarAvaliacaoColegas()" ng-hide="avaliacaoDosColegasIniciada()">Iniciar avaliação dos colegas</button>
             <button class="btn waves-effect waves-light" type="button" ng-click="voltar()">Voltar</button>
         </div>
     </form>
-</div>
-<div id="modal1" class="modal">
-    <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
 </div>

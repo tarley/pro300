@@ -1,42 +1,14 @@
 <?php
-    require_once '../log/logentries.php';
-    require_once '../util/Config.php';
-    require_once '../util/JsonUtil.php';
-    require_once '../util/SegurancaUtil.php';
+    require_once '../../Config.php';
 
     $log->debug("API: inscricao/buscarPorAtividade");
-
+    
     acessoRestrito(array($ADMINISTRADOR, $COORDENADOR, $PROFESSOR), $log);
 
     try {
-        $conn = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USERNAME, $DB_PASSWORD);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conn->exec("set names utf8");
-        
-        $stmt = $conn->prepare("
-            SELECT i.id,
-                   i.nota1,
-                   i.nota300,
-                   i.nota_final,
-                   i.grupo,
-                   i.lider,
-                   u.ra,
-                   u.nome AS aluno
-              FROM inscricao i
-            INNER JOIN usuario u ON u.id = i.aluno_id
-            INNER JOIN atividade a ON a.id = i.atividade_id
-            WHERE i.atividade_id = :atividade_id
-              AND a.professor_id = :professor_id ");
-               
-        $stmt->bindParam(":atividade_id", $_GET["atividade_id"]);
-        
-        $usuarioId = getUsuarioId();
-        $stmt->bindParam(":professor_id", $usuarioId);
-        
-        $stmt->execute();
-        
-        respostaListaJson($stmt->fetchAll(PDO::FETCH_ASSOC), $log);
-    } catch(PDOException $e) {
+        $lista = Inscricao::buscarPorAtividade($_GET["atividade_id"]);
+        respostaListaJson($lista, $log);
+    } catch(Exception $e) {
         $log->Error($e);
         respostaErroJson($e, $log);
     }

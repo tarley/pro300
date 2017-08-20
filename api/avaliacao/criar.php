@@ -1,14 +1,14 @@
 <?php
     require_once '../../Config.php';
 
-    LOG::Debug("API: atividade/buscarPorId");
+    LOG::Debug("API: avaliacao/criar");
 
     acessoRestrito(array($ADMINISTRADOR, $COORDENADOR, $PROFESSOR));
 
     try {
-        $lista = Atividade::buscarPorId($_GET['id']);
+        Avaliacao::criar($_GET['atividadeId']);
         
-        respostaListaJson($lista);
+        respostaJson("Avaliações criadas com sucesso!", null, true, $log);
     } catch(Exception $e) {
         LOG::Error($e);
         respostaErroJson($e);
