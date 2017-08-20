@@ -70,11 +70,22 @@ function GrupoService(StringUtils, DialogUtils) {
         });
 
         var GRUPOS = "ABCDEFGHIJKLMNOPQRSTUVXWYZ";
-        var grupoLiderado = numeroDeGrupos - 1;
-
-        listaInscricoes.forEach(function(inscricao, index) {
-            inscricao.lider = (index < numeroDeGrupos);
-            inscricao.grupo = GRUPOS[(inscricao.lider ? index : grupoLiderado--) % numeroDeGrupos];
-        });
+        var i;
+        
+        /* Definir os lideres */
+        for(i = 0; i < numeroDeGrupos; i ++) {
+            listaInscricoes[i].lider = true;
+            listaInscricoes[i].grupo = GRUPOS[i];
+        }
+        
+        /* Definir os grupos dos ajudados */
+        for(var j = i; j < listaInscricoes.length; j++) {
+            listaInscricoes[j].lider = false;
+            
+            if(--i < 0) 
+                i = numeroDeGrupos - 1;
+            
+            listaInscricoes[j].grupo = GRUPOS[i];
+        }
     }
 }
