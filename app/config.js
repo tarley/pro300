@@ -25,6 +25,7 @@ app.controller('InscricoesController', InscricoesController);
 app.controller('LoginController', LoginController);
 app.controller('MenuController', MenuController);
 app.controller('UsuarioController', UsuarioController);
+app.controller('AvaliacaoController', AvaliacaoController);
 
 app.config(RouteConfig);
 app.run(OnRouteChangeStart);

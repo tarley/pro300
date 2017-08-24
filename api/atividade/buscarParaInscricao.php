@@ -6,7 +6,7 @@
 
     try {
         $lista = Atividade::buscarParaInscricao($_GET['curso_id'], getUsuarioId());
-        respostaListaJson($stmt->fetchAll(PDO::FETCH_ASSOC), $log);
+        respostaListaJson($lista, $log);
     } catch(PDOException $e) {
         Log::Error($e);
         respostaErroJson($e);

@@ -36,4 +36,13 @@ function ListagemAtividadeController($scope, $http, $location, DialogUtils,
             $location.path('/inscricoes');
         });
     }
+    
+    $scope.avaliarLider = function(atividadeId, totalAvaliacoesPendentes) {
+        if(totalAvaliacoesPendentes > 0) {
+            AtividadeService.buscarAtividadePorId(atividadeId, function(atividade) {
+                AtividadeService.setAtividade(atividade);
+                $location.path('/avaliarLider');
+            });
+        }
+    }
 }

@@ -26,6 +26,7 @@
                     <tr>
                         <th>Cod.</th>
                         <th>Nome</th>
+                        <th>Professor</th>
                         <th>Dt. Registro</th>
                         <th>Dt. Inicio</th>
                         <th>Dt. Termino</th>
@@ -34,11 +35,12 @@
                 </thead>
                 <tbody>
                     <tr ng-hide="lista.length > 0">
-                        <td colspan="6">Não existem atividades 300 para esse curso.</td>
+                        <td colspan="7">Não existem atividades 300 para esse curso.</td>
                     </tr>
                     <tr ng-show="lista.length > 0" ng-repeat="a in lista">
                         <td>{{a.id}}</td>
                         <td>{{a.nome}}</td>
+                        <td>{{a.professor}}</td>
                         <td>{{a.dt_registro}}</td>
                         <td>{{a.dt_inicio}}</td>
                         <td>{{a.dt_termino}}</td>

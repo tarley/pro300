@@ -12,11 +12,14 @@
                        DATE_FORMAT(a.dt_termino, '%d/%m/%Y') AS dt_termino,
                        DATE_FORMAT(a.dt_inicio_avaliacao, '%d/%m/%Y %H:%i:%s') AS dt_inicio_avaliacao,
                        a.curso_id,
-                       c.nome AS curso
+                       c.nome AS curso,
+                       p.nome as professor
                   FROM atividade a
                 INNER JOIN curso c ON c.id = a.curso_id
+                INNER JOIN usuario p ON p.id = a.professor_id
                  WHERE a.curso_id = :curso_id
-                   AND dt_encerramento IS NULL
+                   AND a.dt_inicio_avaliacao IS NULL
+                   AND a.dt_encerramento IS NULL
                    AND NOT EXISTS (SELECT 1 
                                      FROM inscricao i
                                     WHERE i.atividade_id = a.id
@@ -90,7 +93,13 @@
                        DATE_FORMAT(a.dt_inicio_avaliacao, '%d/%m/%Y %H:%i:%s') AS dt_inicio_avaliacao,
                        a.curso_id,
                        c.nome AS curso,
-                       i.id AS inscricao_id
+                       i.id AS inscricao_id,
+                       i.nota1,
+                       i.nota300,
+                       i.nota_final,
+                       i.acrescimo,
+                       i.grupo,
+                       i.lider
                   FROM atividade a
                 INNER JOIN inscricao i ON i.atividade_id = a.id
                 INNER JOIN curso c ON c.id = a.curso_id

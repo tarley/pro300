@@ -1,12 +1,12 @@
 <?php
     require_once '../../Config.php';
 
-    LOG::Debug("API: atividade/buscarPorId");
+    LOG::Debug("API: avaliacao/buscarPendentes");
 
-    acessoRestrito();
+    acessoRestrito(array($ALUNO));
 
     try {
-        $lista = Atividade::buscarPorId($_GET['id']);
+        $lista = Avaliacao::getAvaliacoesPendentes($_GET['atividadeId']);
         
         respostaListaJson($lista);
     } catch(Exception $e) {

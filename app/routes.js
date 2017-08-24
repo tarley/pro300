@@ -31,6 +31,10 @@ function RouteConfig($routeProvider) {
             controller: "InscricoesController"
             
         })
+        .when("/avaliarLider", {
+            templateUrl: "/app/views/avaliacao/avaliarLider.html",
+            controller: "AvaliacaoController"
+        })
         .otherwise({
             redirectTo: "/login"
         });

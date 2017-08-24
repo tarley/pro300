@@ -1,0 +1,37 @@
+<div class="container" ng-init="init()">
+    <div class="row">
+        <div clas="col s12">
+            <h5>Avaliação do(s) lider(es)</h5>
+            <p>
+                Avalie de 1 a 5 o(s) lider(es) levando em consideração, o apoio prestado, a cooperação com todos, a compreensão das dificuldades dos colegas, educação, respeito aos colegas, responsabilidade, imparcialidade, iniciativa e proatividade
+            </p>
+            <form id="formAvaliacao" ng-submit="enviarAvaliacoes()">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>RA</th>
+                            <th>Aluno</th>
+                            <th>Nota</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="a in lista">
+                            <td>{{a.ra}}</td>
+                            <td>{{a.aluno}}</td>
+                            <td>
+                                <p class="range-field">
+                                    <input type="range" id="input-nota" min="0" max="5" ng-model="a.nota"/>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="div-botoes" class="row">
+                    <button class="btn waves-effect waves-light" type="reset">Limpar</button>
+                    <button class="btn waves-effect waves-light" type="submit">Enviar Avaliação(ões)</button>
+                    <button class="btn waves-effect waves-light" type="button" ng-click="voltar()">Voltar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
