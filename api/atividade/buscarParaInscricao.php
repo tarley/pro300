@@ -8,7 +8,6 @@
         $lista = Atividade::buscarParaInscricao($_GET['curso_id'], getUsuarioId());
         respostaListaJson($lista, $log);
     } catch(PDOException $e) {
-        Log::Error($e);
         respostaErroJson($e);
     }
 ?>

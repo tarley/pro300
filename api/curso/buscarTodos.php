@@ -1,27 +1,14 @@
 <?php
     require_once '../../Config.php';
 
+    Log::Debug("API: curso/buscarTodos");
+
     acessoRestrito();
 
     try {
-        $conn = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USERNAME, $DB_PASSWORD);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conn->exec("set names utf8");
-        
-        $stmt = $conn->prepare("
-            SELECT id,
-                   nome,
-                   ativo
-              FROM curso 
-             WHERE ativo = :ativo");
-             
-        $ativo = 1;
-        $stmt->bindParam(":ativo", $ativo);
-        $stmt->execute();
-
-        respostaListaJson($stmt->fetchAll(PDO::FETCH_ASSOC));
+        $lista = Curso::getAll();
+        respostaListaJson($lista);
     } catch(Exception $e) {
-        $log->Error($e);
         respostaErroJson($e);
     }
 ?>

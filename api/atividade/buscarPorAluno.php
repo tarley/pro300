@@ -9,7 +9,6 @@
         $lista = Atividade::buscarPorAluno(getUsuarioId());
         respostaListaJson($lista);
     } catch(PDOException $e) {
-        Log::Error($e);
         respostaErroJson($e);
     }
 ?>

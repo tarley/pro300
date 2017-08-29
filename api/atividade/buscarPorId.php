@@ -10,7 +10,6 @@
         
         respostaListaJson($lista);
     } catch(Exception $e) {
-        LOG::Error($e);
         respostaErroJson($e);
     }
 ?>

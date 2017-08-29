@@ -1,5 +1,5 @@
 function ListagemAtividadeController($scope, $http, $location, DialogUtils,
-    AuthService, AtividadeService) {
+    AuthService, AtividadeService, InscricaoService) {
 
     $scope.init = function() {
         $scope.lista = {};
@@ -36,13 +36,26 @@ function ListagemAtividadeController($scope, $http, $location, DialogUtils,
             $location.path('/inscricoes');
         });
     }
-    
+
     $scope.avaliarLider = function(atividadeId, totalAvaliacoesPendentes) {
-        if(totalAvaliacoesPendentes > 0) {
+        if (totalAvaliacoesPendentes > 0) {
             AtividadeService.buscarAtividadePorId(atividadeId, function(atividade) {
                 AtividadeService.setAtividade(atividade);
                 $location.path('/avaliarLider');
             });
         }
+    }
+
+    $scope.exibirInformacoesGrupo = function(atividadeId, grupo) {
+        $scope.grupo = grupo;
+        $scope.listaGrupo = {};
+        
+        InscricaoService.buscarInscricoesMeuGrupo(atividadeId, function(response) {
+            $scope.listaGrupo = response.data.lista;
+        });
+        
+        $(document).ready(function() {
+            $('#modal1').modal('open');
+        });
     }
 }

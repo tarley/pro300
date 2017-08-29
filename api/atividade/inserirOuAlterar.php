@@ -29,7 +29,6 @@
             respostaJson("Atividade alterada com sucesso");
         }
     } catch(Exception $e) {
-        LOG::Error($e);
         respostaErroJson($e);
     }
 ?>

@@ -16,7 +16,7 @@ function AvaliacaoController($scope, $location,
     $scope.voltar = function() {
         $location.path("/");
     }
-    
+
     function buscarAvaliacoesPendentes() {
         $scope.lista = {};
 

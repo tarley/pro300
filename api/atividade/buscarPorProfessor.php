@@ -11,7 +11,6 @@
         
         respostaListaJson($lista);
     } catch(PDOException $e) {
-        LOG::Error($e);
         respostaErroJson($e);
     }
 ?>

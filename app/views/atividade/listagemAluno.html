@@ -32,7 +32,11 @@
                         <td>{{a.nome}}</td>
                         <td>{{a.curso}}</td>
                         <td>{{a.dt_registro}}</td>
-                        <td>{{a.grupo}}</td>
+                        <td>
+                            <a ng-click="exibirInformacoesGrupo(a.id, a.grupo)">
+                                <span class="new badge" data-badge-caption="">{{a.grupo}}</span>
+                            </a>
+                        </td>
                         <td>{{a.lider == 1 ? 'Sim' : 'Não'}}</td>
                         <td>{{a.nota1}}</td>
                         <td>{{a.nota300}}</td>
@@ -49,5 +53,34 @@
                 </tbody>
             </table>
         </div>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>Grupo {{grupo}}</h4>
+        <p>Abaixo estão os alunos que fazem parte do seu grupo.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>RA</th>
+                    <th>Nome</th>
+                    <th>e-mail</th>
+                    <th>Lider?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="g in listaGrupo">
+                    <td>{{g.ra}}</td>
+                    <td>{{g.nome}}</td>
+                    <td>{{g.email}}</td>
+                    <td>{{g.lider == 1 ? 'Sim': 'Não'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
     </div>
 </div>

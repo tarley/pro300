@@ -57,4 +57,18 @@ function InscricaoService($http, DialogUtils) {
             DialogUtils.showError(response);
         });
     }
+    
+    this.buscarInscricoesMeuGrupo = function(atividadeId, callback) {
+        $http({
+            method: 'GET',
+            url: '/api/inscricao/buscarPorMeuGrupo.php?atividade_id=' + atividadeId,
+        }).then(function(response) {
+            if (response.data.sucesso)
+                callback(response)
+            else
+                DialogUtils.showResponse(response);
+        }, function(response) {
+            DialogUtils.showError(response);
+        });
+    }
 }

@@ -17,7 +17,6 @@
         
         respostaJson("Todas as avaliações foram alteradas com sucesso!", null, true);
     } catch(Exception $e) {
-        LOG::Error($e);
         respostaErroJson($e);
     }
 ?>

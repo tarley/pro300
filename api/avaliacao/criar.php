@@ -10,7 +10,6 @@
         
         respostaJson("Avaliações criadas com sucesso!", null, true);
     } catch(Exception $e) {
-        LOG::Error($e);
         respostaErroJson($e);
     }
 ?>
