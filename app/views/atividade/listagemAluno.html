@@ -62,6 +62,7 @@
                     <th>RA</th>
                     <th>Nome</th>
                     <th>e-mail</th>
+                    <th>Telefone</th>
                     <th>Lider?</th>
                 </tr>
             </thead>
@@ -70,6 +71,7 @@
                     <td>{{g.ra}}</td>
                     <td>{{g.nome}}</td>
                     <td>{{g.email}}</td>
+                    <td>{{formatarTelefone(g.telefone)}}</td>
                     <td>{{g.lider == 1 ? 'Sim': 'Não'}}</td>
                 </tr>
             </tbody>

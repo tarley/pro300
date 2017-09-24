@@ -1,9 +1,12 @@
 <?php
     require_once '../../Config.php';
 
+    $log->Debug("API: usuario/inserirAluno");
+
     $postdata = file_get_contents('php://input');
     $request = json_decode($postdata, true);
-    $log->debug(print_r($request, true));
+    
+    $log->Debug(print_r($request, true));
     
     try {
         $conn = new PDO("mysql:host={$DB_HOST};dbname={$DB_NAME}", $DB_USERNAME, $DB_PASSWORD);
@@ -11,10 +14,11 @@
         $conn->exec("set names utf8");
         
         $stmt = $conn->prepare("
-            INSERT INTO usuario(email, senha, ra, nome, perfil_id) 
-              VALUES (:email, :senha, :ra, :nome, :perfil_id)
+            INSERT INTO usuario(email, telefone, senha, ra, nome, perfil_id) 
+              VALUES (:email, :telefone, :senha, :ra, :nome, :perfil_id)
         ");
         $stmt->bindParam(':email', $request['email']);
+        $stmt->bindParam(':telefone', $request['telefone']);
         
         $senha = sha1($request['senha']);
         $stmt->bindParam(':senha', $senha);
@@ -23,23 +27,17 @@
         $stmt->bindParam(':nome', $request['nome']);
         $stmt->bindParam(':perfil_id', $ALUNO);
         
-        if($stmt->execute()) {
-            $log->debug('Conta criada com sucesso.');
+        if($stmt->execute())
             respostaJson('Conta de aluno criada com sucesso', null, true);
-        } else {
-            $log->debug('Falha na criação da conta');
+        else
             respostaJson('Falha na criação da conta.', null, false);
-        }
+        
     } catch(PDOException $e) {
-        if($e->getCode() == '23000') {
-            $log->debug('Conta já cadastrada no sistema.');
+        if($e->getCode() == '23000')
             respostaJson('Conta já cadastrada no sistema', null, false);
-        } else {
-            $log->debug($e->getMessage());
+        else
             respostaErroJson($e);
-        }
     } catch(Exception $e) {
-        $log->debug($e->getMessage());
         respostaErroJson($e);  
     }
 ?>

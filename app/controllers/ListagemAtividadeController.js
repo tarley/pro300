@@ -1,4 +1,5 @@
-function ListagemAtividadeController($scope, $http, $location, DialogUtils,
+function ListagemAtividadeController($scope, $http, $location, 
+    DialogUtils, StringUtils,
     AuthService, AtividadeService, InscricaoService) {
 
     $scope.init = function() {
@@ -57,5 +58,9 @@ function ListagemAtividadeController($scope, $http, $location, DialogUtils,
         $(document).ready(function() {
             $('#modal1').modal('open');
         });
+    }
+    
+    $scope.formatarTelefone = function(value) {
+        return StringUtils.formatarTelefone(value);
     }
 }

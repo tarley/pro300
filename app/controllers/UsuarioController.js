@@ -3,6 +3,7 @@ function UsuarioController($scope, $rootScope, $http, $location,
 
     $scope.init = function() {
         configCharacterCounter();
+        //configFormatTelefone();
         ValidationUtils.configValidation('formUsuario', {
             rules: {
                 ra: {
@@ -14,13 +15,13 @@ function UsuarioController($scope, $rootScope, $http, $location,
                     required: true,
                     maxlength: 255
                 },
-                telefone: {
-                    number: true
-                },
                 email: {
                     required: true,
                     email: true,
                     maxlength: 50
+                },
+                telefone: {
+                    required: true
                 },
                 senha: {
                     required: true,
@@ -43,7 +44,7 @@ function UsuarioController($scope, $rootScope, $http, $location,
                     maxlength: "Nome não deve conter mais de 255 caracteres."
                 },
                 telefone: {
-                    number: "Número de telefone inválido"
+                    required: "Informe seu telefone."
                 },
                 email: {
                     required: "Informe seu e-mail. Ele será utilizado no seu proximo acesso.",
@@ -89,4 +90,29 @@ function UsuarioController($scope, $rootScope, $http, $location,
                 .characterCounter();
         });
     }
+
+    function configFormatTelefone() {
+        $(document).ready(function() {
+            $("#input-telefone").formatter({
+                'pattern': '({{99}}) {{99999}}-{{9999}}'
+            });
+        });
+        
+        /*$(document).ready(function() {
+            $("#input-telefone").keydown(function() {
+                var tamanho = $(this).val().trim().length;
+
+                if (tamanho < 15)
+                    formatter(this, '({{99}}) {{9999}}-{{9999}}');
+                else
+                    formatter(this, '({{99}}) {{99999}}-{{9999}}');
+            });
+        });*/
+    }
+
+    /*function formatter(campo, mascara) {
+        $(document).ready(function() {
+            $(campo).formatter().resetPattern(mascara);
+        });
+    }*/
 }

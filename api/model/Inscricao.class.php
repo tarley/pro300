@@ -80,6 +80,7 @@
                        u.ra,
                        u.email,
                        u.nome,
+                       u.telefone,
                        i.lider
                   FROM inscricao i
             INNER JOIN usuario u ON u.id = i.aluno_id

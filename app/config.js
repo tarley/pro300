@@ -1,4 +1,4 @@
-var app = angular.module('pro300App', ["ngRoute"]);
+var app = angular.module('pro300App', ["ngRoute", "ui.mask"]);
 
 app.service('StringUtils', StringUtils);
 app.service('DialogUtils', DialogUtils);
