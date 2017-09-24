@@ -6,7 +6,8 @@
     acessoRestrito(array($ALUNO));
 
     try {
-        $lista = Avaliacao::getAvaliacoesPendentes($_GET['atividadeId']);
+        $alunoId = getUsuarioId();
+        $lista = Avaliacao::getAvaliacoesPendentes($alunoId, $_GET['atividadeId']);
         
         respostaListaJson($lista);
     } catch(Exception $e) {

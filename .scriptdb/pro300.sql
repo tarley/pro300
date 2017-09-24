@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `pro300`.`usuario` (
   `senha` VARCHAR(100) NOT NULL,
   `ra` VARCHAR(20) NULL,
   `nome` VARCHAR(255) NOT NULL,
+  `telefone` VARCHAR(20) NULL,
   `perfil_id` INT NOT NULL,
   UNIQUE INDEX `usuario_i01` (`email` ASC),
   PRIMARY KEY (`id`),
@@ -111,11 +112,9 @@ CREATE TABLE IF NOT EXISTS `pro300`.`inscricao` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nota1` DECIMAL NULL,
   `nota300` DECIMAL NULL,
-  `nota_final` DECIMAL NULL,
-  `acrescimo` DECIMAL NULL,
   `grupo` CHAR NULL,
   `dt_inscricao` DATETIME NULL,
-  `lider` BIT NULL,
+  `lider` TINYINT NULL,
   `aluno_id` INT NOT NULL,
   `atividade_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -201,8 +200,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `pro300`;
-INSERT INTO `pro300`.`usuario` (`id`, `email`, `senha`, `ra`, `nome`, `perfil_id`) VALUES (1, 'admin@newtonpaiva.br', sha1('123'), 'null', 'Administrador', 1);
-INSERT INTO `pro300`.`usuario` (`id`, `email`, `senha`, `ra`, `nome`, `perfil_id`) VALUES (2, 'allan.ferreira@newtonpaiva.br', sha1('123'), NULL, 'Allan Ferreira', 2);
+INSERT INTO `pro300`.`usuario` (`id`, `email`, `senha`, `ra`, `nome`, `telefone`, `perfil_id`) VALUES (1, 'admin@newtonpaiva.br', sha1('123'), 'null', 'Administrador', NULL, 1);
+INSERT INTO `pro300`.`usuario` (`id`, `email`, `senha`, `ra`, `nome`, `telefone`, `perfil_id`) VALUES (2, 'allan.ferreira@newtonpaiva.br', sha1('123'), NULL, 'Allan Ferreira', NULL, 2);
 
 COMMIT;
 

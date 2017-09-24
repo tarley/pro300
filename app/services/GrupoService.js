@@ -1,13 +1,13 @@
-function GrupoService(StringUtils, DialogUtils) {
+function GrupoService(StringUtils, DialogUtils, ListaUtils) {
 
     this.existemGruposGerados = function(listaInscricoes) {
-        if (isNullOrEmpty(listaInscricoes))
+        if (ListaUtils.isNullOrEmpty(listaInscricoes))
             return false;
 
         for (var i = 0; i < listaInscricoes.length; i++) {
             var inscricao = listaInscricoes[i];
 
-            if (inscricao.grupo != null && inscricao.grupo.trim().length > 0)
+            if (inscricao.grupo != null && StringUtils.isNotNullOrEmpty(inscricao.grupo))
                 return true;
         }
 
@@ -21,7 +21,7 @@ function GrupoService(StringUtils, DialogUtils) {
             return;
         }
 
-        if (isNullOrEmpty(listaInscricoes)) {
+        if (ListaUtils.isNullOrEmpty(listaInscricoes)) {
             DialogUtils.showMessage("Lista de inscrições vazia ou nula.");
             return;
         }
@@ -46,12 +46,8 @@ function GrupoService(StringUtils, DialogUtils) {
         definirLideresEGrupos(numeroDeGrupos, listaInscricoes);
     }
 
-    function isNullOrEmpty(listaInscricoes) {
-        return listaInscricoes == undefined || listaInscricoes == null || listaInscricoes.length == 0;
-    }
-
     function inscricoesSemNota1(listaInscricoes) {
-        if (isNullOrEmpty(listaInscricoes))
+        if (ListaUtils.isNullOrEmpty(listaInscricoes))
             return true;
 
         for (var i = 0; i < listaInscricoes.length; i++) {

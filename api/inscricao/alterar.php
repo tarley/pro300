@@ -22,8 +22,7 @@
                        SET grupo = :grupo,
                            lider = :lider,
                            nota1 = :nota1,
-                           nota300 =:nota300,
-                           nota_final = :nota_final
+                           nota300 =:nota300
                      WHERE id = :id
                     ");
             
@@ -31,12 +30,11 @@
             
             if(!empty($inscricao['grupo']))                    
                 $grupo = strtoupper($inscricao['grupo']);
-            
+
             $stmt->bindParam(":grupo", $grupo);
             $stmt->bindParam(":lider", $inscricao['lider']);
             $stmt->bindParam(":nota1", $inscricao['nota1']);
             $stmt->bindParam(":nota300", $inscricao['nota300']);
-            $stmt->bindParam(":nota_final", $inscricao['nota_final']);
             $stmt->bindParam(":id", $inscricao['id']);
             $stmt->execute();
         }

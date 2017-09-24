@@ -8,7 +8,6 @@
                 SELECT i.id,
                        i.nota1,
                        i.nota300,
-                       i.nota_final,
                        i.grupo,
                        i.lider,
                        u.ra,
@@ -32,7 +31,6 @@
                 SELECT i.id,
                        i.nota1,
                        i.nota300,
-                       i.nota_final,
                        i.grupo,
                        i.lider,
                        u.ra,
@@ -57,9 +55,10 @@
                 SELECT i.id,
                        i.nota1,
                        i.nota300,
-                       i.nota_final,
                        i.grupo,
                        i.lider,
+                       i.aluno_id,
+                       i.atividade_id,
                        u.ra,
                        u.nome AS aluno
                   FROM inscricao i

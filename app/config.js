@@ -6,6 +6,7 @@ app.service('SelectUtils', SelectUtils);
 app.service('TableUtils', TableUtils);
 app.service('ValidationUtils', ValidationUtils)
 app.service('DateUtils', DateUtils);
+app.service('ListaUtils', ListaUtils);
 
 
 app.service('AuthService', AuthService);
@@ -15,6 +16,7 @@ app.service('GrupoService', GrupoService);
 app.service('AtividadeService', AtividadeService);
 app.service('AvaliacaoService', AvaliacaoService);
 app.service('InscricaoService', InscricaoService);
+app.service('CalcularNotaService', CalcularNotaService);
 
 
 

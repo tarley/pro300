@@ -1,6 +1,7 @@
 function InscricoesController($scope, $http, $location, 
     DialogUtils, TableUtils, SelectUtils, StringUtils,
-    AtividadeService, InscricaoService, GrupoService, AvaliacaoService) {
+    AtividadeService, InscricaoService, GrupoService, AvaliacaoService, 
+    CalcularNotaService) {
 
     $scope.init = function() {
         $scope.atividade = AtividadeService.getAtividade();
@@ -20,7 +21,7 @@ function InscricoesController($scope, $http, $location,
         
         var numeroMinimoAlunosPorGrupo = prompt("Qual o número minimo de alunos por grupo?");
         if(numeroMinimoAlunosPorGrupo)
-            GrupoService.gerarGrupos(numeroMinimoAlunosPorGrupo, $scope.lista);
+            GrupoService.gerarGrupos(numeroMinimoAlunosPorGrupo, listaInscricoes);
     }
 
     $scope.salvar = function() {
@@ -41,6 +42,16 @@ function InscricoesController($scope, $http, $location,
             
             buscarInscricoes();
         });
+    }
+    
+    $scope.calcularNotasLideres = function() {
+        var listaInscricoes = $scope.lista;
+
+        if (CalcularNotaService.existemNotasLancadas(listaInscricoes) &&
+            !confirm('Os lideres já possuem nota. Deseja realizar um novo calculo de nota?'))
+            return;
+        
+        CalcularNotaService.calcularNotasLideres(listaInscricoes);
     }
 
     $scope.voltar = function() {

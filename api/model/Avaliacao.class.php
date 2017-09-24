@@ -1,6 +1,6 @@
 <?php
     class Avaliacao {
-        public static function getTotalAvaliacoesPendentes($atividadeId) {
+        public static function getTotalAvaliacoesPendentes($alunoId, $atividadeId) {
             $conn = DB::getConnection();
             
             $stmt = $conn->prepare(" 
@@ -11,16 +11,15 @@
                    AND i.atividade_id = :atividade_id
                    AND a.nota IS NULL
             ");
-            
-            $usuario_id = getUsuarioId();
-            $stmt->bindParam(":aluno_id", $usuario_id);
+
+            $stmt->bindParam(":aluno_id", $alunoId);
             $stmt->bindParam(":atividade_id", $atividadeId);
             $stmt->execute();
             
             return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
         }
         
-        public static function getAvaliacoesPendentes($atividadeId) {
+        public static function getAvaliacoesPendentes($alunoId, $atividadeId) {
             $conn = DB::getConnection();
             
             $stmt = $conn->prepare(" 
@@ -37,14 +36,28 @@
                    AND a.nota IS NULL
             ");
             
-            $usuario_id = getUsuarioId();
-            $stmt->bindParam(":aluno_id", $usuario_id);
+            $stmt->bindParam(":aluno_id", $alunoId);
             $stmt->bindParam(":atividade_id", $atividadeId);
             $stmt->execute();
             
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         
+        public static function getNotasAvaliado($idInscricaoAlunoAvaliado) {
+            $conn = DB::getConnection();
+            
+            $stmt = $conn->prepare(" 
+                SELECT a.id,
+                       a.nota
+                  FROM avaliacao a
+                 WHERE a.avaliado_id = :avaliado_id
+            ");
+            
+            $stmt->bindParam(":avaliado_id", $idInscricaoAlunoAvaliado);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
         
         public static function criar($atividadeId) {
             try {

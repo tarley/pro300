@@ -13,7 +13,7 @@ function MenuController($scope, $rootScope, $http, $location, AuthService) {
          $(document).ready(function() {
             $('#button-menu').sideNav({
                 menuWidth: 300,
-                edge: 'right',
+                edge: 'left',
                 closeOnClick: true,
                 draggable: true,
                 onOpen: function(el) { },

@@ -6,7 +6,17 @@
     acessoRestrito(array($ALUNO));
 
     try {
-        $lista = Atividade::buscarPorAluno(getUsuarioId());
+        $alunoId = getUsuarioId();
+        $lista = Atividade::buscarPorAluno($alunoId);
+        
+        foreach($lista as $key => $value) {
+            $id = $value['id'];
+            $totalAvaliacoesPendentes = Avaliacao::getTotalAvaliacoesPendentes($alunoId, $id);
+            Log::Debug("Atividade $id possui $totalAvaliacoesPendentes pendências.");
+            
+            $lista[$key]["totalAvaliacoesPendentes"] = $totalAvaliacoesPendentes;
+        }
+        
         respostaListaJson($lista);
     } catch(PDOException $e) {
         respostaErroJson($e);

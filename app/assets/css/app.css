@@ -43,3 +43,9 @@ main {
 .container-listagem {
     width: 90%;
 }
+
+/*ul.side-nav.leftside-navigation*/ 
+#slide-out{
+    top: 64px;
+    overflow: hidden;
+}

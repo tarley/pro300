@@ -96,8 +96,6 @@
                        i.id AS inscricao_id,
                        i.nota1,
                        i.nota300,
-                       i.nota_final,
-                       i.acrescimo,
                        i.grupo,
                        i.lider
                   FROM atividade a
@@ -109,17 +107,7 @@
             $stmt->bindParam(":aluno_id", $alunoId);
             $stmt->execute();
             
-            $lista = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
-            foreach($lista as $key => $value) {
-                $id = $value['id'];
-                $totalAvaliacoesPendentes = Avaliacao::getTotalAvaliacoesPendentes($id);
-                Log::Debug("Atividade $id possui $totalAvaliacoesPendentes pendências.");
-                
-                $lista[$key]["totalAvaliacoesPendentes"] = $totalAvaliacoesPendentes;
-            }
-            
-            return $lista;
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         
         public static function inserir($nome, $descricao, $dataInicio, $dataTermino, $cursoId) {

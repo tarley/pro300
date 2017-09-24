@@ -19,7 +19,6 @@
                         <th>Lider</th>
                         <th>P. 1</th>
                         <th>P. 300</th>
-                        <th>P. Final</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -40,14 +39,10 @@
                         <td>{{a.lider == 1 ? 'Sim' : 'Não'}}</td>
                         <td>{{a.nota1}}</td>
                         <td>{{a.nota300}}</td>
-                        <td>{{a.nota_final}}</td>
                         <td>
                             <a ng-click="avaliarLider(a.id, a.totalAvaliacoesPendentes)">
                                 <span class="new badge" data-badge-caption="Avaliação(ões) pendênte(s)">{{a.totalAvaliacoesPendentes}}</span>
                             </a>
-                            <!--a ng-click="editar(a.id)" class="btn-floating red">
-                                <i class="material-icons left">edit</i>
-                            </a-->
                         </td>
                     </tr>
                 </tbody>
