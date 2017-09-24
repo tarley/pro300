@@ -1,6 +1,6 @@
 function DialogUtils() {
 
-    this.displayLength = 4000;
+    this.displayLength = 10000;
 
     this.showMessage = function(message, params) {
         if(params == undefined || params == null)

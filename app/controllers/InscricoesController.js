@@ -20,8 +20,10 @@ function InscricoesController($scope, $http, $location,
             return;
         
         var numeroMinimoAlunosPorGrupo = prompt("Qual o número minimo de alunos por grupo?");
-        if(numeroMinimoAlunosPorGrupo)
+        if(numeroMinimoAlunosPorGrupo) {
             GrupoService.gerarGrupos(numeroMinimoAlunosPorGrupo, listaInscricoes);
+            DialogUtils.showMessage('Grupos gerados com sucesso. Lembre-se de salvar para manter as alterações.');
+        }
     }
 
     $scope.salvar = function() {
@@ -52,6 +54,7 @@ function InscricoesController($scope, $http, $location,
             return;
         
         CalcularNotaService.calcularNotasLideres(listaInscricoes);
+        DialogUtils.showMessage('Calculo de Notas dos lideres concluido com sucesso. Lembre-se de salvar para manter as alterações.');
     }
 
     $scope.voltar = function() {
