@@ -203,12 +203,12 @@ USE `pro300`;
 INSERT INTO `pro300`.`usuario` (`id`, `email`, `senha`, `ra`, `nome`, `telefone`, `perfil_id`) VALUES (1, 'admin@newtonpaiva.br', sha1('123'), 'null', 'Administrador', NULL, 1);
 INSERT INTO `pro300`.`usuario` (`id`, `email`, `senha`, `ra`, `nome`, `telefone`, `perfil_id`) VALUES (2, 'allan.ferreira@newtonpaiva.br', sha1('123'), NULL, 'Allan Ferreira', NULL, 2);
 
-INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('reginaldo.alves@newtonpaiva.br', sha1('Np@2017'), 'REGINALDO HEIDDER DE JESUS ALVES', 3)
-INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('vinicius.marinho@newtonpaiva.br', sha1('Np@2017'), 'VINICIUS MARINHO', 3)
-INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('rosiene.castro@newtonpaiva.br', sha1('Np@2017'), 'ROSIENE DE FÁTIMA CORREA RUIZ CASTRO', 3)
-INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('janine.prof@newtonpaiva.br', sha1('Np@2017'), 'JANINE VELLOSO DO AMARAL', 3)
-INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('emerson.souza@newtonpaiva.br', sha1('Np@2017'), 'EMERSON DAVID DE OLIVEIRA SOUZA', 3)
-INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('telmapimenta.prof@newtonpaiva.br', sha1('Np@2017'), 'TELMA CRISTINA PIMENTA DE FREITAS', 3)
+INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('reginaldo.alves@newtonpaiva.br', sha1('Np@2017'), 'REGINALDO HEIDDER DE JESUS ALVES', 3);
+INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('vinicius.marinho@newtonpaiva.br', sha1('Np@2017'), 'VINICIUS MARINHO', 3);
+INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('rosiene.castro@newtonpaiva.br', sha1('Np@2017'), 'ROSIENE DE FÁTIMA CORREA RUIZ CASTRO', 3);
+INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('janine.prof@newtonpaiva.br', sha1('Np@2017'), 'JANINE VELLOSO DO AMARAL', 3);
+INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('emerson.souza@newtonpaiva.br', sha1('Np@2017'), 'EMERSON DAVID DE OLIVEIRA SOUZA', 3);
+INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('telmapimenta.prof@newtonpaiva.br', sha1('Np@2017'), 'TELMA CRISTINA PIMENTA DE FREITAS', 3);
 
 COMMIT;
 

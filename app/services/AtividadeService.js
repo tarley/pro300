@@ -89,4 +89,15 @@ function AtividadeService($http, DialogUtils) {
             DialogUtils.showError(response);
         });
     }
+    
+    this.excluir = function(atividadeId) {
+        $http({
+            method: 'GET',
+            url: '/api/atividade/excluir.php?atividade_id=' + atividadeId
+        }).then(function(response) {
+            DialogUtils.showResponse(response);
+        }, function(response) {
+            DialogUtils.showError(response);
+        });
+    }
 }

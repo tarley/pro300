@@ -26,6 +26,11 @@ function ListagemAtividadeController($scope, $http, $location,
             $location.path('/cadastrarAtividade');
         });
     }
+    
+    $scope.excluir = function(atividadeId) {
+        AtividadeService.excluir(atividadeId);
+        $location.path('/');
+    }
 
     $scope.novaInscricao = function() {
         $location.path('/inscricao');
