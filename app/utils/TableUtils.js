@@ -2,20 +2,27 @@ function TableUtils() {
 
     this.configDataTable = function(tableID, obj) {
 
-        obj.language = this.getLanguage();
+        //obj.language = this.getLanguage();
 
         $(document).ready(function() {
             var table = $('#' + tableID);
 
-            if ($.fn.dataTable.isDataTable(table))
-                table.DataTable();
-            else
-                table.DataTable(obj);
+            table.DataTable({
+                "paging": false,
+                "ordering": false,
+                "info": false,
+                "search": "Pesquisar:",
+                "emptyTable":     "teste",
+                "zeroRecords": "Ops! Nenhum registro encontrado.",
+            });
         });
     }
 
     this.getLanguage = function() {
         return {
+            paging: false,
+            ordering: false,
+            info: false,
             search: "Pesquisar por",
             lengthMenu: "Número _MENU_ de registros por pagina",
             zeroRecords: "Ops! Nenhum registro encontrado.",
@@ -27,7 +34,7 @@ function TableUtils() {
                 previous: "Anterior",
                 next: "Próximo",
                 last: "Último"
-            },
+            }
         };
     }
 
