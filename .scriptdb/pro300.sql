@@ -110,8 +110,8 @@ DROP TABLE IF EXISTS `pro300`.`inscricao` ;
 
 CREATE TABLE IF NOT EXISTS `pro300`.`inscricao` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `nota1` DECIMAL(3,2) NULL,
-  `nota300` DECIMAL(3,2) NULL,
+  `nota1` DECIMAL(5,2) NULL,
+  `nota300` DECIMAL(5,2) NULL,
   `grupo` CHAR NULL,
   `dt_inscricao` DATETIME NULL,
   `lider` TINYINT NULL,
@@ -178,6 +178,27 @@ CREATE TABLE IF NOT EXISTS `pro300`.`parametro_prova` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `pro300`.`inscricao_historico`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `pro300`.`inscricao_historico` ;
+
+CREATE TABLE IF NOT EXISTS `pro300`.`inscricao_historico` (
+  `data` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nota1` DECIMAL(5,2) NULL,
+  `nota300` DECIMAL(5,2) NULL,
+  `grupo` CHAR NULL,
+  `dt_inscricao` DATETIME NULL,
+  `lider` TINYINT NULL,
+  `aluno_id` INT NOT NULL,
+  `atividade_id` INT NOT NULL,
+  PRIMARY KEY (`data`, `id`),
+  INDEX `inscricao_historico_i01` (`aluno_id` ASC),
+  INDEX `inscricao_historico_i02` (`atividade_id` ASC))
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
@@ -202,13 +223,6 @@ START TRANSACTION;
 USE `pro300`;
 INSERT INTO `pro300`.`usuario` (`id`, `email`, `senha`, `ra`, `nome`, `telefone`, `perfil_id`) VALUES (1, 'admin@newtonpaiva.br', sha1('123'), 'null', 'Administrador', NULL, 1);
 INSERT INTO `pro300`.`usuario` (`id`, `email`, `senha`, `ra`, `nome`, `telefone`, `perfil_id`) VALUES (2, 'allan.ferreira@newtonpaiva.br', sha1('123'), NULL, 'Allan Ferreira', NULL, 2);
-
-INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('reginaldo.alves@newtonpaiva.br', sha1('Np@2017'), 'REGINALDO HEIDDER DE JESUS ALVES', 3);
-INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('vinicius.marinho@newtonpaiva.br', sha1('Np@2017'), 'VINICIUS MARINHO', 3);
-INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('rosiene.castro@newtonpaiva.br', sha1('Np@2017'), 'ROSIENE DE FÁTIMA CORREA RUIZ CASTRO', 3);
-INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('janine.prof@newtonpaiva.br', sha1('Np@2017'), 'JANINE VELLOSO DO AMARAL', 3);
-INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('emerson.souza@newtonpaiva.br', sha1('Np@2017'), 'EMERSON DAVID DE OLIVEIRA SOUZA', 3);
-INSERT INTO usuario(email, senha, nome, perfil_id) VALUES ('telmapimenta.prof@newtonpaiva.br', sha1('Np@2017'), 'TELMA CRISTINA PIMENTA DE FREITAS', 3);
 
 COMMIT;
 
