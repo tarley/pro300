@@ -185,7 +185,7 @@ DROP TABLE IF EXISTS `pro300`.`inscricao_historico` ;
 
 CREATE TABLE IF NOT EXISTS `pro300`.`inscricao_historico` (
   `data` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL,
   `nota1` DECIMAL(5,2) NULL,
   `nota300` DECIMAL(5,2) NULL,
   `grupo` CHAR NULL,
