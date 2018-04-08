@@ -170,6 +170,23 @@
             $stmt->execute();
         }
         
+        public static function excluir($id) {
+            $conn = DB::getConnection();
+            
+            $stmt = $conn->prepare("
+                UPDATE atividade
+                   SET dt_encerramento = :dt_encerramento
+                 WHERE id = :id
+                ");
+            
+            $dtEncerramento = new DateTime();
+            $dtEncerramento = $dtEncerramento->format('Y-m-d H:i:s'); 
+            
+            $stmt->bindParam(":dt_encerramento", $dtEncerramento);
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+        }
+        
         public static function registrarInicioAvaliacao($id, $conn) {
             
             if(empty($conn)) {

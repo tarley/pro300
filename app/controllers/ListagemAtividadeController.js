@@ -28,8 +28,10 @@ function ListagemAtividadeController($scope, $http, $location,
     }
     
     $scope.excluir = function(atividadeId) {
-        AtividadeService.excluir(atividadeId);
-        $location.path('/');
+        AtividadeService.excluir(atividadeId, function(response) {
+            $scope.init();
+            DialogUtils.showResponse(response);
+        });
     }
 
     $scope.novaInscricao = function() {
