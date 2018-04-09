@@ -35,7 +35,9 @@
                                 <a ng-click="excluir(i.id)" class="btn-floating red" ng-hide="avaliacaoDosColegasIniciada()">
                                     <i class="material-icons left">close</i>
                                 </a>
-                                <span class="new badge" data-badge-caption="Avaliação(ões) pendênte(s)">{{i.totalAvaliacoesPendentes}}</span>
+                                <a ng-click="avaliarLider(a.id, a.totalAvaliacoesPendentes)">
+                                    <span class="new badge" data-badge-caption="Avaliação(ões) pendênte(s)">{{i.totalAvaliacoesPendentes}}</span>
+                                </a>
                             </td>
                         </tr>
                     </tbody>
@@ -50,4 +52,36 @@
             <button class="btn waves-effect waves-light" type="button" ng-click="voltar()">Voltar</button>
         </div>
     </form>
+</div>
+
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>Grupo {{grupo}}</h4>
+        <p>Abaixo estão os alunos que fazem parte do seu grupo.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>RA</th>
+                    <th>Nome</th>
+                    <th>e-mail</th>
+                    <th>Telefone</th>
+                    <th>Lider?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="g in listaGrupo">
+                    <td>{{g.ra}}</td>
+                    <td>{{g.nome}}</td>
+                    <td>{{g.email}}</td>
+                    <td>{{formatarTelefone(g.telefone)}}</td>
+                    <td>{{g.lider == 1 ? 'Sim': 'Não'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+    </div>
 </div>

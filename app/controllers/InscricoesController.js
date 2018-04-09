@@ -70,7 +70,7 @@ function InscricoesController($scope, $http, $location,
 
         InscricaoService.buscarPorAtividade($scope.atividade.id, function(response) {
             $scope.lista = response.data.lista;
-            configDataTable();
+            //configDataTable();
             SelectUtils.configField();
         });
     }
