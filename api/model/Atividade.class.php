@@ -80,6 +80,28 @@
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         
+      public static function buscarPorAdmin() {
+            $conn = DB::getConnection();
+            
+            $stmt = $conn->prepare("
+                SELECT a.id,
+                       a.nome,
+                       a.descricao,
+                       DATE_FORMAT(a.dt_registro, '%d/%m/%Y %H:%i:%s') AS dt_registro,
+                       DATE_FORMAT(a.dt_inicio, '%d/%m/%Y') AS dt_inicio,
+                       DATE_FORMAT(a.dt_termino, '%d/%m/%Y') AS dt_termino,
+                       DATE_FORMAT(a.dt_inicio_avaliacao, '%d/%m/%Y %H:%i:%s') AS dt_inicio_avaliacao,
+                       a.curso_id,
+                       c.nome AS curso
+                  FROM atividade a
+                INNER JOIN curso c ON c.id = a.curso_id
+                 WHERE dt_encerramento IS NULL ");
+
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }        
+        
         public static function buscarPorAluno($alunoId) {
             $conn = DB::getConnection();
             
