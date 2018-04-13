@@ -6,8 +6,13 @@
     acessoRestrito(array($ADMINISTRADOR, $COORDENADOR, $PROFESSOR));
 
     try {
-        $professorId = getUsuarioId();
-        $lista = Atividade::buscarPorProfessor($professorId);
+        
+        $Id = getUsuarioId();
+        
+        if($Id == $ADMINISTRADOR)
+            $lista = Atividade::buscarPorAdmin($Id);
+        else 
+            $lista = Atividade::buscarPorProfessor($Id);
         
         respostaListaJson($lista);
     } catch(PDOException $e) {
