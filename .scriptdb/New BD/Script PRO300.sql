@@ -8,8 +8,10 @@ CREATE TRIGGER TG_UPDATE_INSCRICAO BEFORE UPDATE
 ON inscricao
 FOR EACH ROW
 BEGIN
+IF OLD.nota1 <> NEW.nota1 OR OLD.nota300 <> new.nota300 OR OLD.grupo <> NEW.grupo OR OLD.lider <> NEW.lider THEN
 INSERT INTO inscricao_historico (id, nota1, nota300, grupo, dt_inscricao, lider, aluno_id, atividade_id, tipo_acao)
 VALUES(OLD.id, OLD.nota1, OLD.nota300, OLD.grupo, OLD.dt_inscricao, OLD.lider, OLD.aluno_id, OLD.atividade_id, 'U');
+END IF
 END $
 
 DELIMITER ;
