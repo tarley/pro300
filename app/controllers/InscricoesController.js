@@ -22,7 +22,8 @@ function InscricoesController($scope, $http, $location,
         var numeroMinimoAlunosPorGrupo = prompt("Qual o número minimo de alunos por grupo?");
         if(numeroMinimoAlunosPorGrupo) {
             GrupoService.gerarGrupos(numeroMinimoAlunosPorGrupo, listaInscricoes);
-            DialogUtils.showMessage('Grupos gerados com sucesso. Lembre-se de salvar para manter as alterações.');
+            DialogUtils.showMessage('Grupos gerados com sucesso.');
+            $scope.salvar();
         }
     }
 
