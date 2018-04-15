@@ -9,7 +9,7 @@
         
         $Id = getUsuarioId();
         
-        if($Id == $ADMINISTRADOR)
+        if(getPerfilId() == $ADMINISTRADOR)
             $lista = Atividade::buscarPorAdmin($Id);
         else 
             $lista = Atividade::buscarPorProfessor($Id);

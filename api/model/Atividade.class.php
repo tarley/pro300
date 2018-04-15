@@ -92,9 +92,11 @@
                        DATE_FORMAT(a.dt_termino, '%d/%m/%Y') AS dt_termino,
                        DATE_FORMAT(a.dt_inicio_avaliacao, '%d/%m/%Y %H:%i:%s') AS dt_inicio_avaliacao,
                        a.curso_id,
-                       c.nome AS curso
+                       c.nome AS curso,
+                       u.nome AS professor
                   FROM atividade a
                 INNER JOIN curso c ON c.id = a.curso_id
+                INNER JOIN usuario u ON u.id = a.professor_id
                  WHERE dt_encerramento IS NULL ");
 
             $stmt->execute();
