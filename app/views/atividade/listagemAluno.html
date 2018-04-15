@@ -41,7 +41,7 @@
                         <td>{{a.nota300}}</td>
                         <td>
                             <a ng-click="avaliarLider(a.id, a.totalAvaliacoesPendentes)">
-                                <span class="new badge" data-badge-caption="Avaliação(ões) pendente(s)">{{a.totalAvaliacoesPendentes}}</span>
+                                <span ng-class="{'red': a.totalAvaliacoesPendentes > 0}" class="new badge" data-badge-caption="Avaliação(ões) pendente(s)">{{a.totalAvaliacoesPendentes}}</span>
                             </a>
                         </td>
                     </tr>

@@ -15,6 +15,7 @@
                             <th>P. 300</th>
                             <th class="center-align">Acréscimo</th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,8 +36,15 @@
                                 <a ng-click="excluir(i.id)" class="btn-floating red" ng-hide="avaliacaoDosColegasIniciada()">
                                     <i class="material-icons left">close</i>
                                 </a>
-                                <a ng-click="avaliarLider(a.id, a.totalAvaliacoesPendentes)">
-                                    <span class="new badge" data-badge-caption="Avaliação(ões) pendente(s)">{{i.totalAvaliacoesPendentes}}</span>
+                            </td>
+                            <td>
+                                <span ng-show="i.lider != 1" class="new badge" data-badge-caption="Avaliação(ões) pendente(s)">{{i.totalAvaliacoesPendentes}}</span>
+                                
+                                <a ng-show="i.lider == 1" ng-click="avaliarLider(a.id, a.totalAvaliacoesPendentes)">
+                                    <span class="new badge" 
+                                        data-badge-caption="Resultado das avaliações. Avaliação(ões) pendente(s)">
+                                            {{i.totalAvaliacoesPendentes}}
+                                    </span>
                                 </a>
                             </td>
                         </tr>
