@@ -36,7 +36,7 @@ function InscricoesController($scope, $http, $location,
 
     $scope.iniciarAvaliacaoColegas = function() {
         AvaliacaoService.iniciarAvaliacaoColegas($scope.atividade.id, function(response) {
-            DialogUtils.showMessage("Foi iniciada a avaliação da ajuda dos colegas do grupo. Informe os alunos que eles devem acessar o sistema para responder as avaliações pendêntes.");
+            DialogUtils.showMessage("Foi iniciada a avaliação da ajuda dos colegas do grupo. Informe os alunos que eles devem acessar o sistema para responder as avaliações pendentes.");
             
             AtividadeService.buscarAtividadePorId($scope.atividade.id, function(atividade) {
                 AtividadeService.setAtividade(atividade);
