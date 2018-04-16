@@ -31,7 +31,7 @@
                             </td>
                             <td><input id="p1" string-to-number type="number" ng-model="i.nota1" step="0.01" ng-readonly="avaliacaoDosColegasIniciada()" /></td>
                             <td><input id="p300" string-to-number type="number" ng-model="i.nota300" step="0.01"  /></td>
-                            <td class="center-align">{{(i.nota300 != null && i.nota1 != null) ? i.nota300 - i.nota1 : 0}}</td>
+                            <td class="center-align">{{calcularAcrescimo(i)}}</td>
                             <td>
                                 <a ng-click="excluir(i.id)" class="btn-floating red" ng-hide="avaliacaoDosColegasIniciada()">
                                     <i class="material-icons left">close</i>

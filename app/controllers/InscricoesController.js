@@ -8,6 +8,25 @@ function InscricoesController($scope, $http, $location,
         buscarInscricoes();
     }
 
+    $scope.calcularAcrescimo = function(inscricao) {
+        
+        if(inscricao == undefined || inscricao == null)
+            return 0;
+        
+        var nota1 = Number(inscricao.nota1);
+        var nota300 = Number(inscricao.nota300);
+        
+        if(isNaN(nota1))
+            return 0;
+        
+        if(isNaN(nota300))
+            return 0;
+            
+        var acrescimo = nota300 - nota1;
+        
+        return Math.round(acrescimo * 100) / 100;
+    }
+
     $scope.excluir = function(id) {
         InscricaoService.excluir(id, buscarInscricoes);
     }
