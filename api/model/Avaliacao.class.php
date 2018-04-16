@@ -43,6 +43,28 @@
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         
+        public static function getAvaliacoesPara($inscricaoId) {
+            $conn = DB::getConnection();
+            
+            $stmt = $conn->prepare(" 
+                SELECT a.id,
+                       a.nota,
+                       u.ra,
+                       u.nome AS aluno,
+                       u.email,
+                       u.telefone
+                  FROM avaliacao a
+                 INNER JOIN inscricao i ON i.id = a.avaliador_id
+                 INNER JOIN usuario u ON u.id = i.aluno_id
+                 WHERE a.avaliado_id = :avaliado_id
+            ");
+            
+            $stmt->bindParam(":avaliado_id", $inscricaoId);
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        
         public static function getNotasAvaliado($idInscricaoAlunoAvaliado) {
             $conn = DB::getConnection();
             

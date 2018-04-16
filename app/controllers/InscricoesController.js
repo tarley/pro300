@@ -66,6 +66,39 @@ function InscricoesController($scope, $http, $location,
         return StringUtils.isNotNullOrEmpty($scope.atividade.dt_inicio_avaliacao);
     }
 
+    $scope.visualizarAvaliacoes = function(inscricaoId, raLider, nomeLider) {
+        $scope.raLider = raLider;
+        $scope.nomeLider = nomeLider;
+        $scope.listaAvaliacoes = {};
+        
+        AvaliacaoService.listarAvaliacoesPara(inscricaoId, function(response) {
+            $scope.listaAvaliacoes = response.data.lista;
+            
+            var soma = 0;
+            var total = 0;
+            
+            $scope.listaAvaliacoes.forEach(function(avaliacao) {
+                if(avaliacao.nota) {
+                    soma += parseInt(avaliacao.nota);
+                    total++;
+                }
+            });
+            
+            $scope.notaMedia = 0;
+            
+            if(total > 0)
+                $scope.notaMedia = soma / total;
+        });
+
+        $(document).ready(function() {
+            $('#modal1').modal('open');
+        });
+    }
+    
+    $scope.formatarTelefone = function(value) {
+        return StringUtils.formatarTelefone(value);
+    }
+
     function buscarInscricoes() {
         $scope.lista = {};
 
