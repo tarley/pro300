@@ -15,6 +15,7 @@
                             <th>P. 300</th>
                             <th class="center-align">Acréscimo</th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,13 +31,19 @@
                             </td>
                             <td><input id="p1" string-to-number type="number" ng-model="i.nota1" step="0.01" ng-readonly="avaliacaoDosColegasIniciada()" /></td>
                             <td><input id="p300" string-to-number type="number" ng-model="i.nota300" step="0.01"  /></td>
-                            <td class="center-align">{{(i.nota300 != null && i.nota1 != null) ? i.nota300 - i.nota1 : 0}}</td>
+                            <td class="center-align">{{calcularAcrescimo(i)}}</td>
                             <td>
                                 <a ng-click="excluir(i.id)" class="btn-floating blue darken-4" ng-hide="avaliacaoDosColegasIniciada()">
                                     <i class="material-icons left">close</i>
                                 </a>
-                                <a ng-click="avaliarLider(a.id, a.totalAvaliacoesPendentes)">
-                                    <span class="new badge" data-badge-caption="Avaliação(ões) pendênte(s)">{{i.totalAvaliacoesPendentes}}</span>
+                            </td>
+                            <td>
+                                <span ng-show="i.lider != 1" class="new badge" data-badge-caption="Avaliação(ões) pendente(s)">
+                                    {{i.totalAvaliacoesPendentes}}
+                                </span>
+                                
+                                <a ng-show="i.lider == 1" ng-click="visualizarAvaliacoes(i.id, i.ra, i.aluno)">
+                                    <span class="new badge blue" data-badge-caption="Visualizar avaliações"></span>
                                 </a>
                             </td>
                         </tr>
@@ -58,8 +65,10 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
-        <h4>Grupo {{grupo}}</h4>
-        <p>Abaixo estão os alunos que fazem parte do seu grupo.</p>
+        <h4>Lider: {{nomeLider}}</h4>
+        <h5>RA: {{raLider}}</h5>
+        <h5>Nota Media: {{notaMedia}}</h5>
+        <p>Segue abaixo a notas dadas para o lider.</p>
         <table>
             <thead>
                 <tr>
@@ -67,21 +76,21 @@
                     <th>Nome</th>
                     <th>e-mail</th>
                     <th>Telefone</th>
-                    <th>Lider?</th>
+                    <th>Nota</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="g in listaGrupo">
-                    <td>{{g.ra}}</td>
-                    <td>{{g.nome}}</td>
-                    <td>{{g.email}}</td>
-                    <td>{{formatarTelefone(g.telefone)}}</td>
-                    <td>{{g.lider == 1 ? 'Sim': 'Não'}}</td>
+                <tr ng-repeat="a in listaAvaliacoes">
+                    <td>{{a.ra}}</td>
+                    <td>{{a.aluno}}</td>
+                    <td>{{a.email}}</td>
+                    <td>{{formatarTelefone(a.telefone)}}</td>
+                    <td>{{a.nota}}</td>
                 </tr>
             </tbody>
         </table>
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        <a class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
     </div>
 </div>

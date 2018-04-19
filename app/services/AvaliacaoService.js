@@ -42,4 +42,18 @@ function AvaliacaoService($http, DialogUtils) {
             DialogUtils.showError(response);
         })
     }
+    
+    this.listarAvaliacoesPara = function(inscricaoId, callback) {
+        $http({
+            url: '/api/avaliacao/para.php?inscricaoId=' + inscricaoId,
+            method: 'GET'
+        }).then(function(response) {
+            if(response.data.sucesso)
+                callback(response);
+            else
+                DialogUtils.showResponse(response);
+        }, function(response) {
+            DialogUtils.showError(response);
+        })
+    }
 }

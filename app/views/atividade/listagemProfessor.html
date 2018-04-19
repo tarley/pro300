@@ -13,6 +13,7 @@
                     <tr>
                         <th>Cod.</th>
                         <th>Nome</th>
+                        <th ng-show="isPerfilAdministrador()">Professor</th>
                         <th>Curso</th>
                         <th>Dt. Registro</th>
                         <th>Dt. Inicio</th>
@@ -29,6 +30,7 @@
                     <tr ng-show="lista.length > 0" ng-repeat="a in lista">
                         <td>{{a.id}}</td>
                         <td>{{a.nome}}</td>
+                        <td ng-show="isPerfilAdministrador()">{{a.professor}}</td>
                         <td>{{a.curso}}</td>
                         <td>{{a.dt_registro}}</td>
                         <td>{{a.dt_inicio}}</td>

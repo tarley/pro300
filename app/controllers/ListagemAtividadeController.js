@@ -70,4 +70,8 @@ function ListagemAtividadeController($scope, $http, $location,
     $scope.formatarTelefone = function(value) {
         return StringUtils.formatarTelefone(value);
     }
+    
+    $scope.isPerfilAdministrador = function() {
+        return AuthService.isPerfilAdministrador();
+    }
 }

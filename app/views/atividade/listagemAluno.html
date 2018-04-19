@@ -32,8 +32,8 @@
                         <td>{{a.curso}}</td>
                         <td>{{a.dt_registro}}</td>
                         <td>
-                            <a ng-click="exibirInformacoesGrupo(a.id, a.grupo)">
-                                <span class="new badge" data-badge-caption="">{{a.grupo}}</span>
+                            <a ng-show="a.grupo" ng-click="exibirInformacoesGrupo(a.id, a.grupo)">
+                                <span class="new badge blue" data-badge-caption="">{{a.grupo}}</span>
                             </a>
                         </td>
                         <td>{{a.lider == 1 ? 'Sim' : 'Não'}}</td>
@@ -41,7 +41,7 @@
                         <td>{{a.nota300}}</td>
                         <td>
                             <a ng-click="avaliarLider(a.id, a.totalAvaliacoesPendentes)">
-                                <span class="new badge" data-badge-caption="Avaliação(ões) pendênte(s)">{{a.totalAvaliacoesPendentes}}</span>
+                                <span ng-class="{'red': a.totalAvaliacoesPendentes > 0}" class="new badge" data-badge-caption="Avaliação(ões) pendente(s)">{{a.totalAvaliacoesPendentes}}</span>
                             </a>
                         </td>
                     </tr>

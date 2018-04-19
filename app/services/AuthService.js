@@ -12,10 +12,22 @@ function AuthService($http, $rootScope, $location, $window, DialogUtils) {
         return this.getUsuario() != null;
     }
 
+    this.isPerfilAdministrador = function() {
+        return this.isAutenticado() && this.getUsuario().perfil == 'Administrador';
+    }
+    
+    this.isPerfilCoordenador = function() {
+        return this.isAutenticado() && this.getUsuario().perfil == 'Coordenador';
+    }
+
+    this.isPerfilProfessor = function() {
+        return this.isAutenticado() && this.getUsuario().perfil == 'Professor';
+    }
+
     this.isPerfilAluno = function() {
         return this.isAutenticado() && this.getUsuario().perfil == 'Aluno';
     }
-
+    
     this.setItensMenu = function(value) {
         $rootScope.itensMenu = value;
     }

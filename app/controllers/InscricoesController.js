@@ -8,6 +8,25 @@ function InscricoesController($scope, $http, $location,
         buscarInscricoes();
     }
 
+    $scope.calcularAcrescimo = function(inscricao) {
+        
+        if(inscricao == undefined || inscricao == null)
+            return 0;
+        
+        var nota1 = Number(inscricao.nota1);
+        var nota300 = Number(inscricao.nota300);
+        
+        if(isNaN(nota1))
+            return 0;
+        
+        if(isNaN(nota300))
+            return 0;
+            
+        var acrescimo = nota300 - nota1;
+        
+        return Math.round(acrescimo * 100) / 100;
+    }
+
     $scope.excluir = function(id) {
         InscricaoService.excluir(id, buscarInscricoes);
     }
@@ -36,7 +55,7 @@ function InscricoesController($scope, $http, $location,
 
     $scope.iniciarAvaliacaoColegas = function() {
         AvaliacaoService.iniciarAvaliacaoColegas($scope.atividade.id, function(response) {
-            DialogUtils.showMessage("Foi iniciada a avaliação da ajuda dos colegas do grupo. Informe os alunos que eles devem acessar o sistema para responder as avaliações pendêntes.");
+            DialogUtils.showMessage("Foi iniciada a avaliação da ajuda dos colegas do grupo. Informe os alunos que eles devem acessar o sistema para responder as avaliações pendentes.");
             
             AtividadeService.buscarAtividadePorId($scope.atividade.id, function(atividade) {
                 AtividadeService.setAtividade(atividade);
@@ -64,6 +83,39 @@ function InscricoesController($scope, $http, $location,
 
     $scope.avaliacaoDosColegasIniciada = function() {
         return StringUtils.isNotNullOrEmpty($scope.atividade.dt_inicio_avaliacao);
+    }
+
+    $scope.visualizarAvaliacoes = function(inscricaoId, raLider, nomeLider) {
+        $scope.raLider = raLider;
+        $scope.nomeLider = nomeLider;
+        $scope.listaAvaliacoes = {};
+        
+        AvaliacaoService.listarAvaliacoesPara(inscricaoId, function(response) {
+            $scope.listaAvaliacoes = response.data.lista;
+            
+            var soma = 0;
+            var total = 0;
+            
+            $scope.listaAvaliacoes.forEach(function(avaliacao) {
+                if(avaliacao.nota) {
+                    soma += parseInt(avaliacao.nota);
+                    total++;
+                }
+            });
+            
+            $scope.notaMedia = 0;
+            
+            if(total > 0)
+                $scope.notaMedia = soma / total;
+        });
+
+        $(document).ready(function() {
+            $('#modal1').modal('open');
+        });
+    }
+    
+    $scope.formatarTelefone = function(value) {
+        return StringUtils.formatarTelefone(value);
     }
 
     function buscarInscricoes() {
