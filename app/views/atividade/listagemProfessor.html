@@ -1,7 +1,7 @@
 <div class="container container-listagem" ng-init="init()">
     <div class="row">
         <div clas="col s12">
-            <a class="btn-floating btn-large waves-effect waves-light red" ng-click="novaAtividade()">
+            <a class="btn-floating btn-large waves-effect waves-light blue darken-4" ng-click="novaAtividade()">
                 <i class="material-icons">add</i>
             </a>
         </div>
@@ -34,17 +34,17 @@
                         <td>{{a.dt_inicio}}</td>
                         <td>{{a.dt_termino}}</td>
                         <td>
-                            <a ng-click="editar(a.id)" class="btn-floating red">
+                            <a ng-click="editar(a.id)" class="btn-floating blue darken-4">
                                 <i class="material-icons left">edit</i>
                             </a>
                         </td>
                         <td>
-                            <a ng-click="excluir(a.id)" class="btn-floating red">
+                            <a ng-click="excluir(a.id)" class="btn-floating blue darken-4">
                                 <i class="material-icons left">delete</i>
                             </a>
                         </td>
                         <td>
-                            <a ng-click="visualizarInscricoes(a.id)" class="btn-floating red">
+                            <a ng-click="visualizarInscricoes(a.id)" class="btn-floating blue darken-4">
                                 <i class="material-icons left">dehaze</i>
                             </a>
                         </td>

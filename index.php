@@ -56,11 +56,11 @@
     </ul>
 
     <nav>
-        <div class="nav-wrapper">
-            <a id="button-menu" class="btn-floating btn-large waves-effect waves-light red" data-activates="slide-out">
+        <div class="nav-wrapper blue darken-4">
+            <a id="button-menu" class="btn-floating btn-large waves-effect waves-light blue darken-4" data-activates="slide-out">
                 <i class="material-icons">menu</i>
             </a>
-            <label class="brand-logo" style="margin: 0 0 0 10px">Projeto 300</label>
+            <label class="brand-logo center" style="margin: 0 0 0 10px">Projeto 300</label>
         </div>
     </nav>
 
@@ -70,7 +70,7 @@
         </div>
     </main>
 
-    <footer class="page-footer">
+    <footer class="page-footer blue darken-4">
         <div class="container">
             <div class="row">
                 <a class="white-text text-lighten-3" href="https://www.newtonpaiva.br/graduacao/sistemas-de-informacao">
