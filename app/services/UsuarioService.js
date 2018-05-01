@@ -13,4 +13,15 @@ function UsuarioService($http, DialogUtils) {
             DialogUtils.showError(response);
         });
     }
+    
+    this.recuperarSenha = function(email, callback) {
+        $http({
+            method: 'GET',
+            url: '/api/usuario/recuperarSenha.php?email=' + email
+        }).then(function(response) {
+            DialogUtils.showResponse(response);
+        }, function(response) {
+            DialogUtils.showError(response);
+        });
+    }
 }

@@ -129,6 +129,7 @@
 
     <!--Controllers da aplicação-->
     <script type="text/javascript" src="/app/controllers/LoginController.js?<?php version('controllers/LoginController.js');?>"></script>
+    <script type="text/javascript" src="/app/controllers/RecuperarSenhaController.js?<?php version('controllers/RecuperarSenhaController.js');?>"></script>
     <script type="text/javascript" src="/app/controllers/MenuController.js?<?php version('controllers/MenuController.js');?>"></script>
     <script type="text/javascript" src="/app/controllers/UsuarioController.js?<?php version('controllers/UsuarioController.js');?>"></script>
     <script type="text/javascript" src="/app/controllers/ListagemAtividadeController.js?<?php version('controllers/ListagemAtividadeController.js');?>"></script>

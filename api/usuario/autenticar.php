@@ -9,26 +9,7 @@
     $log->Debug(print_r($request, true));
 
     try {
-        $conn = new PDO("mysql:host={$DB_HOST};dbname={$DB_NAME}", $DB_USERNAME, $DB_PASSWORD);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conn->exec("set names utf8");
-        
-        $stmt = $conn->prepare("
-            SELECT  u.id, 
-                    u.email, 
-                    u.senha, 
-                    u.ra, 
-                    u.nome,
-                    u.perfil_id,
-                    p.perfil
-             FROM  usuario u
-            INNER JOIN perfil p ON p.id = u.perfil_id
-            WHERE email = :email ");
-               
-        $stmt->bindParam(':email', $request['email']);
-        $stmt->execute();
-        
-        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+        $usuario = Usuario::buscarPorEmail($request['email']);
         
         if(empty($usuario))
             respostaJson("Usuário com e-mail {$request['email']} não encontrado.", null, false);
@@ -45,9 +26,8 @@
         
         setUsuario($usuario);
         
-        respostaJson('Autenticação realizada com sucesso.', $usuario, true, $log);
+        respostaJson('Autenticação realizada com sucesso.', $usuario, true);
     } catch(PDOException $e) {
-        $log->Error($e->getMessage());
-        respostaErroJson($e);
+        respostaErroJson($e);  
     }
 ?>

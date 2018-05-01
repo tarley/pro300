@@ -13,6 +13,11 @@ function RouteConfig($routeProvider) {
             controller: "LoginController",
             open: true
         })
+        .when("/recuperarSenha", {
+            templateUrl: "/app/views/usuario/recuperarSenha.html",
+            controller: "RecuperarSenhaController",
+            open: true
+        })
         .when("/cadastrarAluno", {
             templateUrl: "/app/views/usuario/cadastroAluno.html",
             controller: "UsuarioController",
