@@ -47,8 +47,8 @@ function RouteConfig($routeProvider) {
             
         })
         .when("/relatorio", {
-            templateUrl: "/app/atividade/emitirRelatorio.html",
-            controller: "RelaorioController"
+            templateUrl: "/app/atividade/relatorio.html",
+            controller: "RelatorioController"
         })
         .otherwise({
             redirectTo: "/login"

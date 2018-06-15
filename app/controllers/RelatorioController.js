@@ -1,9 +1,9 @@
-function FundadoresController ($scope, $location) {
+function RelatorioController ($scope, $location) {
     $scope.voltar = function() {
         $location.path("/")
     }
     
     $scope.init = function() {
-        $location.path("/emitirRelaorio.html")
+        $location.path("/relatorio.html")
     }
 }
