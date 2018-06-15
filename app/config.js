@@ -25,6 +25,7 @@ app.controller('ListagemAtividadeController', ListagemAtividadeController);
 app.controller('InscricaoController', InscricaoController);
 app.controller('InscricoesController', InscricoesController);
 app.controller('LoginController', LoginController);
+app.controller('RecuperarSenhaController', RecuperarSenhaController);
 app.controller('MenuController', MenuController);
 app.controller('UsuarioController', UsuarioController);
 app.controller('AvaliacaoController', AvaliacaoController);

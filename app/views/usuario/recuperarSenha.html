@@ -1,0 +1,19 @@
+<div class="container" ng-init="init()">
+    <div class="row">
+        <div clas="col s12">
+            <form id="formRecuperarSenha" ng-submit="recuperarSenha()">
+                <div class="input-field">
+                    <i class="material-icons prefix"></i>
+                    <input id="input-email" type="email" name="email" ng-model="email" />
+                    <label for="input-email">e-mail (Obrigatório)</label>
+                </div>
+                <button class="btn waves-effect waves-light blue darken-4" type="submit">
+                    Enviar nova senha<i class="material-icons right">send</i>
+                </button>
+                <button class="btn waves-effect waves-light blue darken-4" type="button" ng-click="voltar()">
+                    Voltar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

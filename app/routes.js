@@ -13,6 +13,11 @@ function RouteConfig($routeProvider) {
             controller: "LoginController",
             open: true
         })
+        .when("/recuperarSenha", {
+            templateUrl: "/app/views/usuario/recuperarSenha.html",
+            controller: "RecuperarSenhaController",
+            open: true
+        })
         .when("/cadastrarAluno", {
             templateUrl: "/app/views/usuario/cadastroAluno.html",
             controller: "UsuarioController",
@@ -34,6 +39,14 @@ function RouteConfig($routeProvider) {
         .when("/avaliarLider", {
             templateUrl: "/app/views/avaliacao/avaliarLider.html",
             controller: "AvaliacaoController"
+        })
+        .when("/fundadores", {
+            templateUrl: "/app/views/shared/fundadores.html",
+            controller: "FundadoresController"
+        })
+        .when("/relatorio", {
+            templateUrl: "/app/atividade/emitirRelatorio.html",
+            controller: "RelaorioController"
         })
         .otherwise({
             redirectTo: "/login"

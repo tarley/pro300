@@ -44,7 +44,7 @@
         </li>
         <li><a class="subheader">Mais opções</a></li>
         <li>
-            <a class="waves-effect" href="#!/Fundadores">
+            <a class="waves-effect" ng-click="fundadores" href="#!/fundadores.html">
                 <i class="material-icons left">sentiment_very_satisfied</i>Fundadores do sistema
             </a>
         </li>
@@ -129,6 +129,7 @@
 
     <!--Controllers da aplicação-->
     <script type="text/javascript" src="/app/controllers/LoginController.js?<?php version('controllers/LoginController.js');?>"></script>
+    <script type="text/javascript" src="/app/controllers/RecuperarSenhaController.js?<?php version('controllers/RecuperarSenhaController.js');?>"></script>
     <script type="text/javascript" src="/app/controllers/MenuController.js?<?php version('controllers/MenuController.js');?>"></script>
     <script type="text/javascript" src="/app/controllers/UsuarioController.js?<?php version('controllers/UsuarioController.js');?>"></script>
     <script type="text/javascript" src="/app/controllers/ListagemAtividadeController.js?<?php version('controllers/ListagemAtividadeController.js');?>"></script>
