@@ -42,7 +42,9 @@ function RouteConfig($routeProvider) {
         })
         .when("/fundadores", {
             templateUrl: "/app/views/shared/fundadores.html",
-            controller: "FundadoresController"
+            controller: "FundadoresController",
+            open: true
+            
         })
         .when("/relatorio", {
             templateUrl: "/app/atividade/emitirRelatorio.html",

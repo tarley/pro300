@@ -44,7 +44,7 @@
         </li>
         <li><a class="subheader">Mais opções</a></li>
         <li>
-            <a class="waves-effect" ng-click="fundadores" href="#!/fundadores.html">
+            <a class="waves-effect" ng-click="fundadores" href="#!/fundadores">
                 <i class="material-icons left">sentiment_very_satisfied</i>Fundadores do sistema
             </a>
         </li>
