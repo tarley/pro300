@@ -4,6 +4,6 @@ function RelatorioController ($scope, $location) {
     }
     
     $scope.init = function() {
-        $location.path("/relatorio.html")
+        $location.path("/relatorio")
     }
 }
