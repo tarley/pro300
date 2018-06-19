@@ -44,7 +44,6 @@ function RouteConfig($routeProvider) {
             templateUrl: "/app/views/shared/fundadores.html",
             controller: "FundadoresController",
             open: true
-            
         })
         .when("/relatorio", {
             templateUrl: "/app/atividade/relatorio.html",
