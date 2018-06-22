@@ -29,6 +29,8 @@ app.controller('RecuperarSenhaController', RecuperarSenhaController);
 app.controller('MenuController', MenuController);
 app.controller('UsuarioController', UsuarioController);
 app.controller('AvaliacaoController', AvaliacaoController);
+app.controller('FundadoresController', FundadoresController);
+app.controller('RelatorioController', RelatorioController);
 
 app.config(RouteConfig);
 app.run(OnRouteChangeStart);

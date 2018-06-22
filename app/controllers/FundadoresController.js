@@ -4,6 +4,6 @@ function FundadoresController ($scope, $location) {
     }
     
     $scope.init = function() {
-        $location.path("/fundadores.html")
+        $location.path("/fundadores")
     }
 }
