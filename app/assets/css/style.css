@@ -1,11 +1,12 @@
 p {
-    
+    font:arial;
+    font-size:20px;
 }
-h3 {
+.titulo-fundadores {
     color: black;
     text-align: center;   
 }
-img {
+.imagem-fundadores {
    padding-left: 10px;
    text-align: center;
 }
