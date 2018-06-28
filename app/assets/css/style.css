@@ -1,6 +1,7 @@
-p {
+.fundo-fundadores {
     font:arial;
     font-size:20px;
+    border-bottom: 1px solid;
 }
 .titulo-fundadores {
     color: black;
