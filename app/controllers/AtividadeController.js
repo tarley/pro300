@@ -1,4 +1,4 @@
-function CadastroAtividadeController($scope, $http, $location, 
+function AtividadeController($scope, $http, $location, 
     DateUtils, SelectUtils, DialogUtils, ValidationUtils,
     AuthService, CursoService, AtividadeService) {
 
@@ -14,6 +14,10 @@ function CadastroAtividadeController($scope, $http, $location,
             $scope.cursos = response.data.lista;
             SelectUtils.configField();
         });
+        
+        $scope.isEditMode = $scope.atividade != null && 
+            $scope.atividade.id != null;
+        $scope.getClassLabels = $scope.isEditMode() ? 'active' : '';
     }
 
     $scope.salvar = function() {
@@ -30,14 +34,6 @@ function CadastroAtividadeController($scope, $http, $location,
 
     $scope.voltar = function() {
         $location.path('/');
-    }
-
-    $scope.isEditMode = function() {
-        return $scope.atividade != null && $scope.atividade.id != null;
-    }
-
-    $scope.getClassLabels = function() {
-        return $scope.isEditMode() ? 'active' : '';
     }
 
     function configCharacterCounter() {

@@ -133,7 +133,7 @@
     <script type="text/javascript" src="/app/controllers/MenuController.js?<?php version('controllers/MenuController.js');?>"></script>
     <script type="text/javascript" src="/app/controllers/UsuarioController.js?<?php version('controllers/UsuarioController.js');?>"></script>
     <script type="text/javascript" src="/app/controllers/ListagemAtividadeController.js?<?php version('controllers/ListagemAtividadeController.js');?>"></script>
-    <script type="text/javascript" src="/app/controllers/CadastroAtividadeController.js?<?php version('controllers/CadastroAtividadeController.js');?>"></script>
+    <script type="text/javascript" src="/app/controllers/AtividadeController.js?<?php version('controllers/AtividadeController.js');?>"></script>
     <script type="text/javascript" src="/app/controllers/InscricaoController.js?<?php version('controllers/InscricaoController.js');?>"></script>
     <script type="text/javascript" src="/app/controllers/InscricoesController.js?<?php version('controllers/InscricoesController.js');?>"></script>
     <script type="text/javascript" src="/app/controllers/AvaliacaoController.js?<?php version('controllers/AvaliacaoController.js');?>"></script>

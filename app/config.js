@@ -20,7 +20,7 @@ app.service('CalcularNotaService', CalcularNotaService);
 
 
 
-app.controller('CadastroAtividadeController', CadastroAtividadeController);
+app.controller('AtividadeController', AtividadeController);
 app.controller('ListagemAtividadeController', ListagemAtividadeController);
 app.controller('InscricaoController', InscricaoController);
 app.controller('InscricoesController', InscricoesController);

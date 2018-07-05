@@ -25,7 +25,7 @@ function RouteConfig($routeProvider) {
         })
         .when("/cadastrarAtividade", {
             templateUrl: "/app/views/atividade/cadastro.html",
-            controller: "CadastroAtividadeController"
+            controller: "AtividadeController"
         })
         .when("/inscricao", {
             templateUrl: "/app/views/atividade/inscricao.html",

@@ -1,8 +1,7 @@
 <?php
     require_once '../../Config.php';
     
-
-    $log->Debug("API: usuario/recuperarSenha");
+    LOG::Debug("API: usuario/recuperarSenha");
    
     $email = $_GET['email'];
    
@@ -34,8 +33,10 @@
     
         $mail->setFrom('sistema@pro300.com.br', 'Projeto 300');
         $mail->addReplyTo('sistema@pro300.com.br', 'Projeto 300');
-    
-        $mail->AddAddress("tarley.lana@gmail.com", 'Tarley Lana');    
+        
+        $mail->AddAddress($email);
+        
+        //$mail->AddAddress("tarley.lana@gmail.com", 'Tarley Lana');    
         $mail->addBCC('tarley.lana@gmail.com');
     
         $mail->isHTML(true);

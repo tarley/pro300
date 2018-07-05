@@ -1,33 +1,37 @@
 <div class="container" ng-init="init()">
     <div class="row">
         <div clas="col s12">
-            <h5>{{usuario.id == undefined ? 'Nova conta de aluno' : 'Alterar conta de aluno'}}</h5>
+            <h5>{{isEditMode ? 'Alterar conta de aluno' : 'Nova conta de aluno'}}</h5>
             <!--p>A bunch of text</p-->
             <form id="formUsuario" ng-submit="salvar()">
                 <input type="hidden" ng-model="usuario.id" />
-                <div class="input-field">
-                    <input id="input-ra" type="number" name="ra" ng-model="usuario.ra" data-length="20" />
-                    <label for="input-ra">RA (Obrigatório)</label>
+                <div class="input-field" ng-hide="isPerfilProfessor">
+                    <input id="input-ra" type="text" name="ra" ng-model="usuario.ra" data-length="20" />
+                    <label for="input-ra" ng-class="getClassLabels">RA (Obrigatório)</label>
                 </div>
                 <div class="input-field">
                     <input id="input-nome" type="text" name="nome" ng-model="usuario.nome" data-length="255" />
-                    <label for="input-nome">Nome Completo (Obrigatório)</label>
+                    <label for="input-nome" ng-class="getClassLabels">Nome Completo (Obrigatório)</label>
                 </div>
-                <div class="input-field">
+                <div class="input-field" ng-hide="isEditMode">
                     <input id="input-email" type="email" name="email" ng-model="usuario.email" data-length="50" />
-                    <label for="input-email">e-mail (Obrigatório)</label>
+                    <label for="input-email" ng-class="getClassLabels">e-mail (Obrigatório)</label>
                 </div>
-                <div class="input-field">
+                <div class="input-field" ng-hide="isPerfilProfessor">
                     <input id="input-telefone" type="text" name="telefone" ng-model="usuario.telefone" data-length="20" ui-mask="(99) 99999-9999" />
-                    <label for="input-telefone">Telefone (Obrigatório)</label>
+                    <label for="input-telefone" ng-class="getClassLabels">Telefone (Obrigatório)</label>
+                </div>
+                <div class="input-field" ng-show="isEditMode">
+                    <input id="input-senha-atual" type="password" name="senhaAtual" ng-model="usuario.senhaAtual" data-length="20" />
+                    <label for="input-senha-atual" ng-class="getClassLabels">Senha Atual (Obrigatório)</label>
                 </div>
                 <div class="input-field">
-                    <input id="input-senha" type="password" name="senha" ng-model="usuario.senha" data-length="20" />
-                    <label for="input-senha">Senha (Obrigatório)</label>
+                    <input id="input-nova-senha" type="password" name="novaSenha" ng-model="usuario.novaSenha" data-length="20" />
+                    <label for="input-nova-senha" ng-class="getClassLabels">{{ehCadastro ? "Senha " : "Nova Senha "}} (Obrigatório)</label>
                 </div>
                 <div class="input-field">
                     <input id="input-confirmacaoSenha" type="password" name="confirmacaoSenha" ng-model="usuario.confirmacaoSenha" data-length="20" />
-                    <label for="input-confirmacaoSenha">Confirmação da senha (Obrigatório)</label>
+                    <label for="input-confirmacaoSenha" ng-class="getClassLabels">Confirmação da senha (Obrigatório)</label>
                 </div>
                 <div id="div-botoes" class="row">
                     <button class="btn waves-effect waves-light blue darken-4" type="reset">

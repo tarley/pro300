@@ -19,7 +19,8 @@
     define('EMAIL_PORT', 465);
     
     /* CONFIGURAÇÕES LOGENTRIES */
-	$LOGENTRIES_TOKEN = "15adbbcc-0343-44ea-aba5-411b83f6e437";
+	//$LOGENTRIES_TOKEN = "bbde0841-f017-41ab-851f-563e6dffb70b";
+    $LOGENTRIES_TOKEN = "15adbbcc-0343-44ea-aba5-411b83f6e437";
     
     // Caminho para a raiz
     define( 'ABSPATH', dirname( __FILE__ ) ); 

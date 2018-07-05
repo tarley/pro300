@@ -1,12 +1,12 @@
 <?php
     require_once '../../Config.php';
-
-    $log->Debug("API: usuario/autenticar");
+    
+    LOG::Debug("API: usuario/autenticar");
 
     $postdata = file_get_contents('php://input');
     $request = json_decode($postdata, true);
-
-    $log->Debug(print_r($request, true));
+    
+    LOG::Debug(print_r($request, true));
 
     try {
         $usuario = Usuario::buscarPorEmail($request['email']);
@@ -16,9 +16,8 @@
             
         $senha = sha1($request['senha']);
         
-        $log->Debug("Senha do banco: {$usuario['senha']}");
-        $log->Debug("Senha informada: {$senha}");
-            
+        LOG::Debug("Senha do banco: {$usuario['senha']} - Senha informada: {$senha}");
+        
         if($senha != $usuario['senha'])
             respostaJson('Senha inválida.', null, false);
         

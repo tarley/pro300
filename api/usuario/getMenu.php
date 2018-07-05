@@ -9,16 +9,24 @@
     
     switch(getPerfilId()) {
         case $ADMINISTRADOR:
-            $lista = [];
+            $lista = [
+                ["descricao" => "Alterar meus dados", "url" => "#!/cadastrarAluno"]        
+            ];
             break;
         case $COORDENADOR:
-            $lista = [];
+            $lista = [
+                ["descricao" => "Alterar meus dados", "url" => "#!/cadastrarAluno"]        
+            ];
             break;
         case $PROFESSOR:
-            $lista = [];
+            $lista = [
+                ["descricao" => "Alterar meus dados", "url" => "#!/cadastrarAluno"]        
+            ];
             break;
         case $ALUNO:
-            $lista = []; // $menu->getMenuAluno();
+            $lista = [
+                ["descricao" => "Alterar meus dados", "url" => "#!/cadastrarAluno"]        
+            ]; // $menu->getMenuAluno();
             break;
     }
 
