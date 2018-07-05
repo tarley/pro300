@@ -1,14 +1,14 @@
 <?php
     require_once '../../Config.php';
 
-    $log->debug("API: inscricao/excluir");
+    LOG::Debug("API: inscricao/excluir");
 
     acessoRestrito(array($ADMINISTRADOR, $COORDENADOR, $PROFESSOR));
     
     $deletedata = file_get_contents('php://input');
     $request = json_decode($deletedata, true);
 
-    $log->debug(print_r($request, true));
+    LOG::Debug(print_r($request, true));
     
     try {
         $conn = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USERNAME, $DB_PASSWORD);
@@ -20,7 +20,7 @@
         $stmt->bindParam(":id", $request["id"]);
         $stmt->execute();
     
-        respostaJson("Incrição realizada com sucesso");
+        respostaJson("Inscrição removida com sucesso");
     } catch(Exception $e) {
         $log->Error($e);
         respostaErroJson($e);

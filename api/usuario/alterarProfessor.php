@@ -8,6 +8,8 @@
     
     LOG::Debug(print_r($request, true));
     
+    acessoRestrito(array($ADMINISTRADOR, $COORDENADOR, $PROFESSOR));
+    
     try {
         $usuario = Usuario::buscarPorEmail($request['email']);
         
