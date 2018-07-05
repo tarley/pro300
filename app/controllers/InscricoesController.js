@@ -81,6 +81,10 @@ function InscricoesController($scope, $http, $location,
         $location.path('/');
     }
 
+    $scope.irParaRelatorio = function() {
+        $location.path('/relatorio');
+    }
+
     $scope.avaliacaoDosColegasIniciada = function() {
         return StringUtils.isNotNullOrEmpty($scope.atividade.dt_inicio_avaliacao);
     }

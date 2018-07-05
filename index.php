@@ -44,7 +44,7 @@
         </li>
         <li><a class="subheader">Mais opções</a></li>
         <li>
-            <a class="waves-effect" href="#!/Fundadores">
+            <a class="waves-effect" ng-click="fundadores" href="#!/fundadores">
                 <i class="material-icons left">sentiment_very_satisfied</i>Fundadores do sistema
             </a>
         </li>
@@ -60,7 +60,7 @@
             <a id="button-menu" class="btn-floating btn-large waves-effect waves-light blue darken-4" data-activates="slide-out">
                 <i class="material-icons">menu</i>
             </a>
-            <label class="brand-logo center" style="margin: 0 0 0 10px">Projeto 300</label>
+            <label class="brand-logo center" href="#!/" style="margin: 0 0 0 10px">Projeto 300</label>
         </div>
     </nav>
 
@@ -137,6 +137,8 @@
     <script type="text/javascript" src="/app/controllers/InscricaoController.js?<?php version('controllers/InscricaoController.js');?>"></script>
     <script type="text/javascript" src="/app/controllers/InscricoesController.js?<?php version('controllers/InscricoesController.js');?>"></script>
     <script type="text/javascript" src="/app/controllers/AvaliacaoController.js?<?php version('controllers/AvaliacaoController.js');?>"></script>
+    <script type="text/javascript" src="/app/controllers/RelatorioController.js?<?php version('controllers/RelatorioController.js');?>"></script>
+    <script type="text/javascript" src="/app/controllers/FundadoresController.js?<?php version('controllers/FundadoresController.js');?>"></script>
 
     <!--Configurações da aplicação-->
     <script type="text/javascript" src="/app/routes.js?<?php version('routes.js');?>"></script>

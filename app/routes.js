@@ -40,6 +40,15 @@ function RouteConfig($routeProvider) {
             templateUrl: "/app/views/avaliacao/avaliarLider.html",
             controller: "AvaliacaoController"
         })
+        .when("/fundadores", {
+            templateUrl: "/app/views/shared/fundadores.html",
+            controller: "FundadoresController",
+            open: true
+        })
+        .when("/relatorio", {
+            templateUrl: "/app/views/atividade/relatorio.html",
+            controller: "RelatorioController"
+        })
         .otherwise({
             redirectTo: "/login"
         });
