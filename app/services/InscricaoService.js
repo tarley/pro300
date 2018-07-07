@@ -71,4 +71,35 @@ function InscricaoService($http, DialogUtils) {
             DialogUtils.showError(response);
         });
     }
+    
+    this.calcularNotaFinal = function(inscricao) {
+        
+        if(inscricao == undefined || inscricao == null)
+            return 0;
+        
+        var nota1 = Number(inscricao.nota1);
+        
+        if(isNaN(nota1))
+            return 0;
+        
+        if(inscricao.lider == 1) {
+            var acrescimoLider = inscricao.acrescimoLider;
+            
+            if(isNaN(acrescimoLider))
+                return nota1;
+            else if(nota1 + acrescimoLider > 30)
+                return 30;
+            else
+                return nota1 + acrescimoLider;
+        } else {
+            var nota300 = Number(inscricao.nota300);
+            
+            if(isNaN(nota300))
+                return 0;
+            else if(nota1 > nota300)
+                return nota1;
+            else
+                return nota300;
+        }
+    }
 }

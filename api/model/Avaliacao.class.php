@@ -16,7 +16,7 @@
             $stmt->bindParam(":atividade_id", $atividadeId);
             $stmt->execute();
             
-            return $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+            return doubleval($stmt->fetch(PDO::FETCH_ASSOC)['total']);
         }
         
         public static function getAvaliacoesPendentes($alunoId, $atividadeId) {
@@ -79,6 +79,34 @@
             $stmt->execute();
             
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        
+        public static function getMediaLider($idInscricaoLider) {
+            $conn = DB::getConnection();
+            
+            $stmt = $conn->prepare(" 
+                SELECT IFNULL(AVG(a.nota), 0) as media
+                  FROM avaliacao a
+                 WHERE a.avaliado_id = :avaliado_id
+                   AND a.nota IS NOT NULL
+            ");
+            
+            $stmt->bindParam(":avaliado_id", $idInscricaoLider);
+            $stmt->execute();
+            
+            return doubleval($stmt->fetch(PDO::FETCH_ASSOC)['media']);
+        }
+        
+        public static function getAcrescimoLider($mediaAvaliacao) {
+            
+            if($mediaAvaliacao < 1)
+                return 0.0;
+            elseif($mediaAvaliacao < 3)
+                return 1.0;
+            elseif($mediaAvaliacao < 4)
+                return 2.0;
+            else
+                return 3.0;
         }
         
         public static function criar($atividadeId) {

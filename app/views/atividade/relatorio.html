@@ -1,62 +1,49 @@
 <div class="container container-listagem" ng-init="init()">
-<table id="table_id" class="display">
-    <thead>
-        <tr>
-            <th>Aluno</th>
-            <th>RA</th>
-            <th>Turma</th>
-            <th>Column 5</th>
-            <th>Column 3</th>
-            <th>Column 7</th>
-            <th>Column 9</th>
-            <th>Column 8</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-        </tr>
-        <tr>
-            <td>Row 2 Data 1</td>
-            <td>Row 2 Data 2</td>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-        </tr>
-        <tr>
-            <td>Row 2 Data 1</td>
-            <td>Row 2 Data 2</td>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-        </tr>
-        <tr>
-            <td>Row 2 Data 1</td>
-            <td>Row 2 Data 2</td>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-        </tr>
-        <tr>
-            <td>Row 2 Data 1</td>
-            <td>Row 2 Data 2</td>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-        </tr>
-        <tr>
-            <td>Row 2 Data 1</td>
-            <td>Row 2 Data 2</td>
-        </tr>
-    </tbody>
-</table>
+<table id="relatorio-final" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Aluno</th>
+                <th>RA</th>
+                <th>e-mail</th>
+                <th>Telefone</th>
+                <th>Lider?</th>
+                <th>Nota P1</th>
+                <th>Nota P300</th>
+                <th>Média Lider</th>
+                <th>Nota do Lider</th>
+                <th>Nota final</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="i in lista">
+                <td>{{i.aluno}}</td>
+                <td>{{i.ra}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.telefone}}</td>
+                <td>{{i.lider == 1 ? 'Sim' : 'Não'}}</td>
+                <td>{{i.nota1}}</td>
+                <td>{{i.nota300}}</td>
+                <td>{{i.mediaLider}}</td>
+                <td>{{i.acrescimoLider}}</td>
+                <td>{{calcularNotaFinal(i)}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Aluno</th>
+                <th>RA</th>
+                <th>e-mail</th>
+                <th>Telefone</th>
+                <th>Lider?</th>
+                <th>Nota P1</th>
+                <th>Nota P300</th>
+                <th>Média Lider</th>
+                <th>Nota do Lider</th>
+                <th>Nota final</th>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="row">
+        <button class="btn waves-effect waves-light blue darken-4" type="button" ng-click="voltar()">Voltar</button>
+    </div>
 </div>

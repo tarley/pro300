@@ -11,6 +11,7 @@
     <!-- DataTable-->
     <link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico">
     <link type="text/css" rel="stylesheet" href="/plugins/dataTables/media/css/jquery.dataTables.css">
+    <link type="text/css" rel="stylesheet" href="/plugins/dataTables/extensions/Buttons/css/buttons.dataTables.min.css">
 
     <!-- CSS da aplicação -->
     <link type="text/css" rel="stylesheet" href="/app/assets/css/app.css">
@@ -88,6 +89,16 @@
 
     <!--DataTables-->
     <script type="text/javascript" src="/plugins/dataTables/media/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="/plugins/dataTables/extensions/Buttons/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="/plugins/dataTables/extensions/Buttons/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="/plugins/jszip/js/jszip.min.js"></script>
+    <script type="text/javascript" src="/plugins/pdfmake/js/pdfmake.min.js"></script>
+    <script type="text/javascript" src="/plugins/pdfmake/js/vfs_fonts.js"></script>
+    <script type="text/javascript" src="/plugins/dataTables/extensions/Buttons/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="/plugins/dataTables/extensions/Buttons/js/buttons.print.min.js"></script>
+
+
+
 
     <!-- JQuery Validate -->
     <script type="text/javascript" src="/plugins/jquery-validate/jquery.validate.min.js"></script>

@@ -60,7 +60,9 @@
                        i.aluno_id,
                        i.atividade_id,
                        u.ra,
-                       u.nome AS aluno
+                       u.nome AS aluno,
+                       u.email,
+                       u.telefone
                   FROM inscricao i
                 INNER JOIN usuario u ON u.id = i.aluno_id
                 INNER JOIN atividade a ON a.id = i.atividade_id

@@ -41,7 +41,7 @@ function RouteConfig($routeProvider) {
             controller: "AvaliacaoController"
         })
         .when("/fundadores", {
-            templateUrl: "/app/views/shared/fundadores.html",
+            templateUrl: "/app/views/fundadores/fundadores.html",
             controller: "FundadoresController",
             open: true
         })
