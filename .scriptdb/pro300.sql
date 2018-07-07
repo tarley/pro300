@@ -118,8 +118,9 @@ CREATE TABLE IF NOT EXISTS `pro300`.`inscricao` (
   `aluno_id` INT NOT NULL,
   `atividade_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `inscricao_i01` (`aluno_id` ASC),
+  UNIQUE KEY `inscricao_i03` (`aluno_id`,`atividade_id`),
   INDEX `inscricao_i02` (`atividade_id` ASC),
+  INDEX `inscricao_i03` (`atividade_id` ASC),
   CONSTRAINT `fk_tb_inscricao_tb_usuario1`
     FOREIGN KEY (`aluno_id`)
     REFERENCES `pro300`.`usuario` (`id`)
