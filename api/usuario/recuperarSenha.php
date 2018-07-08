@@ -2,6 +2,8 @@
     require_once '../../Config.php';
     
     LOG::Debug("API: usuario/recuperarSenha");
+    
+    acessoRestrito(array($ADMINISTRADOR, $COORDENADOR, $PROFESSOR));
    
     $email = $_GET['email'];
    
@@ -66,12 +68,11 @@
             </font>
         ';
 
-        if(!$mail->send()) {
-            respostaJson('Contato não pode ser enviado. Erro: ' . $mail->ErrorInfo, null, false);
-        } else {
+        if($mail->send()) {
             respostaJson('Nova senha enviada para o seu e-mail.', null, true);
+        } else {
+            respostaJson('Contato não pode ser enviado. Erro: ' . $mail->ErrorInfo, null, false);
         }
-        
     } catch(Exception $e) {
         respostaErroJson($e);  
     }

@@ -98,6 +98,37 @@
             $stmt->execute();
             
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }   
+        }
+        
+        public static function buscarInscricoesComPendenciaDeAvaliacao($atividadeId) {
+            $conn = DB::getConnection();
+            $stmt = $conn->prepare("
+                SELECT  i.id,
+                        i.lider,
+                        u.ra,
+                        u.email,
+                        u.nome,
+                        u.telefone,
+                        a.nome AS atividade,
+						(SELECT COUNT(1)
+                                 FROM avaliacao a
+                                WHERE a.avaliador_id = i.id
+                                  AND a.nota IS NULL) AS totalAvaliacoesPendentes
+						
+                  FROM inscricao i
+            INNER JOIN usuario u ON u.id = i.aluno_id
+            INNER JOIN atividade a ON a.id = i.atividade_id
+                 WHERE i.atividade_id = :atividade_id
+                   AND EXISTS (SELECT 1
+                                 FROM avaliacao a
+                                WHERE a.avaliador_id = i.id
+                                  AND a.nota IS NULL)
+            ");
+            
+            $stmt->bindParam(":atividade_id", $atividadeId);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
     }
 ?>

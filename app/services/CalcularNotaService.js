@@ -14,7 +14,7 @@ function CalcularNotaService(StringUtils, DialogUtils, ListaUtils) {
 
             return false;
         },
-
+        // TODO Remover esse código
         calcularNotasLideres: function(listaInscricoes) {
             if (ListaUtils.isNullOrEmpty(listaInscricoes)) {
                 DialogUtils.showMessage("Lista de inscrições vazia ou nula.");
@@ -73,7 +73,7 @@ function CalcularNotaService(StringUtils, DialogUtils, ListaUtils) {
 
         return false;
     }
-
+    // TODO Remover esse código
     function calcularMediaMelhoriaNotas(listaInscricoes, grupo) {
 
         var somaMelhoriaNotas = 0;
@@ -92,7 +92,7 @@ function CalcularNotaService(StringUtils, DialogUtils, ListaUtils) {
         else
             return somaMelhoriaNotas / totalAlunos;
     }
-
+    // TODO Remover esse código
     function calcularMediaDasAvaliacoes(listaNotasAvaliado) {
 
         var somaNotasAvaliacoes = 0;
@@ -111,7 +111,7 @@ function CalcularNotaService(StringUtils, DialogUtils, ListaUtils) {
         else
             return somaNotasAvaliacoes / totalAvaliacoes;
     }
-
+    
     function obterAcrecimo(mediaMelhoriaNotas, mediaDasAvaliacoes) {
         if (mediaMelhoriaNotas < 5) {
             switch (true) {

@@ -50,12 +50,13 @@
             </div>
         </div>
         <div id="div-botoes" class="row">
-            <button class="btn waves-effect waves-light blue darken-4" type="button" ng-click="gerarGrupos()" ng-hide="avaliacaoDosColegasIniciada()">Gerar grupos</button>
-            <button class="btn waves-effect waves-light blue darken-4" type="button" ng-click="irParaRelatorio()">Relatorio Final</button>
-            <button class="btn waves-effect waves-light blue darken-4" type="submit">Salvar</button>
-            <button class="btn waves-effect waves-light blue darken-4" type="button" ng-click="iniciarAvaliacaoColegas()" ng-hide="avaliacaoDosColegasIniciada()">Iniciar avaliação dos colegas</button>
-            <button class="btn waves-effect waves-light blue darken-4" type="button" ng-click="calcularNotasLideres()" ng-show="avaliacaoDosColegasIniciada()">Calcular notas dos lideres</button>
-            <button class="btn waves-effect waves-light blue darken-4" type="button" ng-click="voltar()">Voltar</button>
+            <button type="button" ng-click="gerarGrupos()" ng-hide="avaliacaoDosColegasIniciada()" class="btn waves-effect waves-light blue darken-4">Gerar grupos</button>
+            <button type="button" ng-click="irParaRelatorio()" class="btn waves-effect waves-light blue darken-4">Relatorio Final</button>
+            <button type="submit" class="btn waves-effect waves-light blue darken-4">Salvar</button>
+            <button type="button" ng-click="iniciarAvaliacaoColegas()" ng-hide="avaliacaoDosColegasIniciada()" class="btn waves-effect waves-light blue darken-4">Iniciar avaliação dos lideres</button>
+            <!--button type="button" ng-click="calcularNotasLideres()" ng-show="avaliacaoDosColegasIniciada()" class="btn waves-effect waves-light blue darken-4">Calc. notas lideres</button-->
+            <button type="button" ng-click="notificarAlunos()" ng-show="avaliacaoDosColegasIniciada()" class="btn waves-effect waves-light blue darken-4">Enviar e-mail AV. lideres</button>
+            <button type="button" ng-click="voltar()" class="btn waves-effect waves-light blue darken-4">Voltar</button>
         </div>
     </form>
 </div>

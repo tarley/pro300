@@ -36,7 +36,7 @@ function InscricoesController($scope, $location,
 
     $scope.iniciarAvaliacaoColegas = function() {
         AvaliacaoService.iniciarAvaliacaoColegas($scope.atividade.id, function(response) {
-            DialogUtils.showMessage("Foi iniciada a avaliação da ajuda dos colegas do grupo. Informe os alunos que eles devem acessar o sistema para responder as avaliações pendentes.");
+            DialogUtils.showMessage("Foi iniciada a avaliação dos lideres. Informe os alunos que eles devem acessar o sistema para responder as avaliações pendentes.");
             
             AtividadeService.buscarAtividadePorId($scope.atividade.id, function(atividade) {
                 AtividadeService.setAtividade(atividade);
@@ -44,9 +44,11 @@ function InscricoesController($scope, $location,
             });
             
             buscarInscricoes();
+            
+            AvaliacaoService.notificarAlunos($scope.atividade.id);
         });
     }
-    
+    // TODO Remover esse código
     $scope.calcularNotasLideres = function() {
         var listaInscricoes = $scope.lista;
 
@@ -57,7 +59,12 @@ function InscricoesController($scope, $location,
         CalcularNotaService.calcularNotasLideres(listaInscricoes);
         DialogUtils.showMessage('Calculo de Notas dos lideres concluido com sucesso. Lembre-se de salvar para manter as alterações.');
     }
-
+    
+    $scope.notificarAlunos = function() {
+        AvaliacaoService.notificarAlunos($scope.atividade.id);
+        DialogUtils.showMessage('Notificação em andamento. Aguarde alguns minutos...');
+    }
+    
     $scope.voltar = function() {
         $location.path('/');
     }

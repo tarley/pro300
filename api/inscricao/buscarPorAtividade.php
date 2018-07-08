@@ -3,7 +3,7 @@
 
     Log::Debug("API: inscricao/buscarPorAtividade");
     
-    //acessoRestrito(array($ADMINISTRADOR, $COORDENADOR, $PROFESSOR));
+    acessoRestrito(array($ADMINISTRADOR, $COORDENADOR, $PROFESSOR));
 
     try {
         $lista = Inscricao::buscarPorAtividade($_GET["atividade_id"]);
