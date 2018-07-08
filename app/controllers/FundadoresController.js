@@ -1,6 +1,6 @@
 function FundadoresController ($scope, $location) {
     $scope.voltar = function() {
-        $location.path("/")
+        $location.path("/");
     }
     
     $scope.init = function() {

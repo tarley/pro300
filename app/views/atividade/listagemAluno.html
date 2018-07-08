@@ -15,10 +15,10 @@
                         <th>Nome</th>
                         <th>Curso</th>
                         <th>Dt. Registro</th>
-                        <th>Grupo</th>
                         <th>Lider</th>
                         <th>P. 1</th>
                         <th>P. 300</th>
+                        <th></th>
                         <th></th>
                     </tr>
                 </thead>
@@ -31,14 +31,14 @@
                         <td>{{a.nome}}</td>
                         <td>{{a.curso}}</td>
                         <td>{{a.dt_registro}}</td>
-                        <td>
-                            <a ng-show="a.grupo" ng-click="exibirInformacoesGrupo(a.id, a.grupo)">
-                                <span class="new badge blue" data-badge-caption="">{{a.grupo}}</span>
-                            </a>
-                        </td>
                         <td>{{a.lider == 1 ? 'Sim' : 'Não'}}</td>
                         <td>{{a.nota1}}</td>
                         <td>{{a.nota300}}</td>
+                        <td>
+                            <a ng-show="a.grupo" ng-click="exibirInformacoesGrupo(a.id, a.grupo)">
+                                <span class="new badge blue" data-badge-caption="">Ver integrantes do grupo {{a.grupo}}</span>
+                            </a>
+                        </td>
                         <td>
                             <a ng-click="avaliarLider(a.id, a.totalAvaliacoesPendentes)">
                                 <span ng-class="{'red': a.totalAvaliacoesPendentes > 0}" class="new badge" data-badge-caption="Avaliação(ões) pendente(s)">{{a.totalAvaliacoesPendentes}}</span>
@@ -78,6 +78,6 @@
         </table>
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves blue darken-4 btn-flat">Fechar</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-light blue darken-4 btn">Fechar</a>
     </div>
 </div>
