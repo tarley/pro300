@@ -2,8 +2,6 @@
     require_once '../../Config.php';
     
     LOG::Debug("API: usuario/recuperarSenha");
-    
-    acessoRestrito(array($ADMINISTRADOR, $COORDENADOR, $PROFESSOR));
    
     $email = $_GET['email'];
    
