@@ -17,7 +17,7 @@ function AtividadeController($scope, $http, $location,
         
         $scope.isEditMode = $scope.atividade != null && 
             $scope.atividade.id != null;
-        $scope.getClassLabels = $scope.isEditMode() ? 'active' : '';
+        $scope.getClassLabels = $scope.isEditMode ? 'active' : '';
     }
 
     $scope.salvar = function() {
