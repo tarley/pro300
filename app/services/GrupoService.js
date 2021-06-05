@@ -76,12 +76,14 @@ function GrupoService(StringUtils, DialogUtils, ListaUtils) {
         
         /* Definir os grupos dos ajudados */
         for(var j = i; j < listaInscricoes.length; j++) {
-            listaInscricoes[j].lider = false;
+            var inscricao = listaInscricoes[j]
+            
+            inscricao.lider = inscricao.nota1 > 16.5
             
             if(--i < 0) 
                 i = numeroDeGrupos - 1;
             
-            listaInscricoes[j].grupo = GRUPOS[i];
+            inscricao.grupo = GRUPOS[i];
         }
     }
 }
