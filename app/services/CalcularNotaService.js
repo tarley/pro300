@@ -102,7 +102,7 @@ function CalcularNotaService(StringUtils, DialogUtils, ListaUtils) {
             if (StringUtils.isNullOrEmpty(notaAvaliado.nota))
                 return;
 
-            somaNotasAvaliacoes += notaAvaliado.nota;
+            somaNotasAvaliacoes += parseInt(notaAvaliado.nota);
             totalAvaliacoes++;
         }, this);
 
@@ -113,7 +113,7 @@ function CalcularNotaService(StringUtils, DialogUtils, ListaUtils) {
     }
     
     function obterAcrecimo(mediaMelhoriaNotas, mediaDasAvaliacoes) {
-        if (mediaMelhoriaNotas < 5) {
+        if (mediaMelhoriaNotas < 4.5) {
             switch (true) {
                 case (mediaDasAvaliacoes < 1):
                     return 0;
