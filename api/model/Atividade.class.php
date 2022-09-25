@@ -23,7 +23,11 @@
                    AND NOT EXISTS (SELECT 1 
                                      FROM inscricao i
                                     WHERE i.atividade_id = a.id
-                                      AND i.aluno_id = :aluno_id)");
+                                      AND i.aluno_id = :aluno_id)
+                   AND NOT EXISTS (SELECT 1 
+                                      FROM inscricao i
+                                     WHERE i.atividade_id = a.id
+                                       AND i.grupo IS NOT NULL)");
                    
             $stmt->bindParam(":curso_id", $cursoId);
             $stmt->bindParam(":aluno_id", $alunoId);
