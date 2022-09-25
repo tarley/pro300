@@ -2,6 +2,11 @@
     <div class="row">
         <div clas="col s12">
             <h5>{{isEditMode ? 'Alterar conta de aluno' : 'Nova conta de aluno'}}</h5>
+            <div class="alert alert-danger">
+                Prezado aluno, favor preencher o nome <strong>COMPLETO</strong> com as iniciais maiúsculas!
+                Os certificados do projeto são impressos levando em consideração o banco de dados do seu cadastro no site.
+                Por este motivo o preenchimento indevido de suas informações de cadastro podem acarretar na invalidação de seu certificado.
+            </div>
             <!--p>A bunch of text</p-->
             <form id="formUsuario" ng-submit="salvar()">
                 <input type="hidden" ng-model="usuario.id" />

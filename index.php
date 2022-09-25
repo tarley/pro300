@@ -14,7 +14,7 @@
     <link type="text/css" rel="stylesheet" href="/plugins/dataTables/extensions/Buttons/css/buttons.dataTables.min.css">
 
     <!-- CSS da aplicação -->
-    <link type="text/css" rel="stylesheet" href="/app/assets/css/app.css">
+    <link type="text/css" rel="stylesheet" href="/app/assets/css/app-v2.css">
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
@@ -71,17 +71,10 @@
         </div>
     </main>
 
-    <footer class="page-footer blue darken-4">
-        <div class="container">
-            <div class="row">
-                <a class="white-text text-lighten-3" href="https://www.newtonpaiva.br/graduacao/sistemas-de-informacao">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">Sistemas de Informação - Newton Paiva</h5>
-                        <p class="grey-text text-lighten-4">Sistema desenvolvido pelos alunos do curso de Sistemas de Informação.</p>
-                    </div>
-                </a>
-            </div>
-        </div>
+    <footer class="blue darken-4">
+        <a class="white-text text-lighten-3" href="https://www.newtonpaiva.br/graduacao/sistemas-de-informacao">
+            Aplicativo desenvolvido pelos alunos do curso de Sistemas de Informação - Newton Paiva.
+        </a>
     </footer>
 
     <!--jQuery -->
