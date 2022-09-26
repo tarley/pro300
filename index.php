@@ -9,10 +9,8 @@
     <link rel="stylesheet" href="/plugins/materialize/css/materialize.min.css">
 
     <!-- DataTable-->
-    <link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico">
-    <link type="text/css" rel="stylesheet" href="/plugins/dataTables/media/css/jquery.dataTables.css">
-    <link type="text/css" rel="stylesheet" href="/plugins/dataTables/extensions/Buttons/css/buttons.dataTables.min.css">
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    
     <!-- CSS da aplicação -->
     <link type="text/css" rel="stylesheet" href="/app/assets/css/app-v2.css">
 
@@ -81,17 +79,7 @@
     <script type="text/javascript" src="/plugins/jquery/jquery.js"></script>
 
     <!--DataTables-->
-    <script type="text/javascript" src="/plugins/dataTables/media/js/jquery.dataTables.js"></script>
-    <script type="text/javascript" src="/plugins/dataTables/extensions/Buttons/js/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" src="/plugins/dataTables/extensions/Buttons/js/buttons.flash.min.js"></script>
-    <script type="text/javascript" src="/plugins/jszip/js/jszip.min.js"></script>
-    <script type="text/javascript" src="/plugins/pdfmake/js/pdfmake.min.js"></script>
-    <script type="text/javascript" src="/plugins/pdfmake/js/vfs_fonts.js"></script>
-    <script type="text/javascript" src="/plugins/dataTables/extensions/Buttons/js/buttons.html5.min.js"></script>
-    <script type="text/javascript" src="/plugins/dataTables/extensions/Buttons/js/buttons.print.min.js"></script>
-
-
-
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 
     <!-- JQuery Validate -->
     <script type="text/javascript" src="/plugins/jquery-validate/jquery.validate.min.js"></script>
@@ -117,7 +105,6 @@
     <script type="text/javascript" src="/app/utils/StringUtils.js?<?php version('utils/StringUtils.js');?>"></script>
     <script type="text/javascript" src="/app/utils/DialogUtils.js?<?php version('utils/DialogUtils.js');?>"></script>
     <script type="text/javascript" src="/app/utils/SelectUtils.js?<?php version('utils/SelectUtils.js');?>"></script>
-    <script type="text/javascript" src="/app/utils/TableUtils.js?<?php version('utils/TableUtils.js');?>"></script>
     <script type="text/javascript" src="/app/utils/ValidationUtils.js?<?php version('utils/ValidationUtils.js');?>"></script>
     <script type="text/javascript" src="/app/utils/DateUtils.js?<?php version('utils/DateUtils.js');?>"></script>
     <script type="text/javascript" src="/app/utils/ListaUtils.js?<?php version('utils/ListaUtils.js');?>"></script>

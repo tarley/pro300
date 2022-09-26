@@ -1,5 +1,5 @@
 function InscricoesController($scope, $location, 
-    DialogUtils, TableUtils, SelectUtils, StringUtils,
+    DialogUtils, SelectUtils, StringUtils,
     AtividadeService, InscricaoService, GrupoService, AvaliacaoService, 
     CalcularNotaService) {
 
@@ -115,27 +115,29 @@ function InscricoesController($scope, $location,
 
         InscricaoService.buscarPorAtividade($scope.atividade.id, function(response) {
             $scope.lista = response.data.lista;
-            //configDataTable();
+            configDataTable();
             SelectUtils.configField();
         });
     }
 
     function configDataTable() {
-        TableUtils.configOrderDataType();
-
-        TableUtils.configDataTable('table-inscricoes', {
-            "order": [
-                [1, "desc"]
-            ],
-            "columns": [
-                null, null,
-                { "orderDataType": "dom-text", type: 'string' },
-                { "orderDataType": "dom-checkbox" },
-                { "orderDataType": "dom-text-numeric" },
-                { "orderDataType": "dom-text-numeric" },
-                { "orderDataType": "dom-text-numeric" },
-                null
-            ]
+       /*
+        * Configura o componente Data Table.
+        * 
+        * Ver: https://datatables.net/reference/option/
+        */
+        $(document).ready(function() {
+            $('#table-inscricoes').DataTable({
+                "paging": false,
+                "ordering": true,
+                "info": false,
+                "searching": false,
+                order: [[1, "asc"]], // uma matriz indicando a ordenação da tabela. Exemplo: [[1, "desc"], [2, "asc"]].
+                language: {
+                    emptyTable: "Ops! Nenhuma inscrição encontrada.",
+                    zeroRecords: "Ops! Nenhuma inscrição encontrada."
+                }
+            });
         });
     }
 }

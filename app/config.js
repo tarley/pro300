@@ -3,7 +3,6 @@ var app = angular.module('pro300App', ["ngRoute", "ui.mask"]);
 app.service('StringUtils', StringUtils);
 app.service('DialogUtils', DialogUtils);
 app.service('SelectUtils', SelectUtils);
-app.service('TableUtils', TableUtils);
 app.service('ValidationUtils', ValidationUtils)
 app.service('DateUtils', DateUtils);
 app.service('ListaUtils', ListaUtils);
