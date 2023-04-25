@@ -31,8 +31,12 @@
         $mail->SMTPSecure = EMAIL_SMTPSECURE;
         $mail->Port = EMAIL_PORT;
     
-        $mail->setFrom('sistema@pro300.com.br', 'Projeto 300');
-        $mail->addReplyTo('sistema@pro300.com.br', 'Projeto 300');
+    
+        //$mail->setFrom('sistema@pro300.com.br', 'Projeto 300');
+        //$mail->addReplyTo('sistema@pro300.com.br', 'Projeto 300');
+        
+        $mail->setFrom('pro300@tarley.eti.br', 'Projeto 300');
+        $mail->addReplyTo('pro300@tarley.eti.br', 'Projeto 300');
         
         $mail->AddAddress($email);
         
