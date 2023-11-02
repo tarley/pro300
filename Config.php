@@ -36,18 +36,16 @@
     require_once ABSPATH . '/api/util/JsonUtil.php';
     require_once ABSPATH . '/api/util/SegurancaUtil.php';
     
-    function __autoload($classname) {
-    	$filename = ABSPATH . '/api/model/' . $classname . '.class.php';
-    	if (is_readable($filename)) {
-    	    // Inclui o arquivo da classe
-            require $filename;
-    	}
-    	
-    	$filename = ABSPATH . '/api/util/mailer/' . 'class.'.strtolower($classname).'.php';
-        if (is_readable($filename)) {
-            require $filename;
-        }
-    }
+    require_once ABSPATH . '/api/model/Atividade.class.php';
+    require_once ABSPATH . '/api/model/Avaliacao.class.php';
+    require_once ABSPATH . '/api/model/Curso.class.php';
+    require_once ABSPATH . '/api/model/DB.class.php';
+    require_once ABSPATH . '/api/model/Inscricao.class.php';
+    require_once ABSPATH . '/api/model/Log.class.php';
+    require_once ABSPATH . '/api/model/Menu.class.php';
+    require_once ABSPATH . '/api/model/Usuario.class.php';
+    
+    require_once ABSPATH . '/api/util/mailer/PHPMailerAutoload.php';
     
     Log::$log = $log;
     
